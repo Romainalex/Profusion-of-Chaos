@@ -18,7 +18,6 @@ var current_attack : int = 0
 #### BUILT-IN ####
 
 func _ready() -> void:
-	owner.connect("attack", Callable(self, "_on_Owner_attack"))
 	cooldown_timer.connect("timeout", Callable(self, "_on_Cooldown_timeout"))
 
 
@@ -55,9 +54,6 @@ func is_delay_combo_running() -> bool:
 	return !delay_combo.is_stopped() && !delay_combo.is_paused()
 
 #### SIGNAL RESPONSES ####
-
-func _on_Owner_attack() -> void:
-	_attack_effect()
 
 
 func _on_Cooldown_timeout() -> void:

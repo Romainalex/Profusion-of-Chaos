@@ -38,6 +38,12 @@ func get_state_name() -> String :
 func get_previous_state() -> Node:
 	return previous_state
 
+func get_previous_state_name() -> String : 
+	if previous_state == null:
+		return ""
+	else:
+		return previous_state.name
+
 
 #### BUILT-IN ####
 
@@ -64,6 +70,7 @@ func exit_state() -> void:
 
 func set_to_default_state() -> void:
 	set_state(get_child(0))
+	print(get_state_name())
 
 func _on_state_changed(_state: Node) -> void:
 	emit_signal("state_changed_recursive", current_state)

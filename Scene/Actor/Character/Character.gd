@@ -58,7 +58,7 @@ func _input(_event: InputEvent) -> void:
 #### LOGIC ####
 
 func _update_state() -> void:
-	if not state_machine.get_state_name() in attack_dict.keys():
+	if not (state_machine.get_state_name() in attack_dict.keys()):
 		if Input.is_action_pressed("Esquive_action"):
 			state_machine.set_state("Esquive")
 		elif moving_direction == Vector2.ZERO:
@@ -84,7 +84,7 @@ func hurt(damage: int) -> void:
 #### SIGNAL RESPONSES ####
 
 func _on_state_changed(_new_state: Object) -> void:
-	if state_machine.previous_state == $StateMachine/Attack:
+	if state_machine.get_previous_state_name() in attack_dict:
 		_update_state()
 	
 	super._on_state_changed(state_machine.get_state())

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcqgi85erd4p3"]
+
+[ext_resource type="PackedScene" uid="uid://dqkmyvvmo4itf" path="res://Scene/Actor/Character/Character.tscn" id="1_p7yas"]
+[ext_resource type="SpriteFrames" uid="uid://diryhf05ebh51" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire_sprite_frame.tres" id="2_utpyo"]
+[ext_resource type="Script" path="res://StateMachine/State.gd" id="3_ongr6"]
+
+[node name="LHommeDAffaire" instance=ExtResource("1_p7yas")]
+
+[node name="AnimatedSprite" parent="." index="0"]
+sprite_frames = ExtResource("2_utpyo")
+animation = &"IdleDown"
+
+[node name="Move" parent="StateMachine" index="1"]
+script = ExtResource("3_ongr6")

@@ -21,7 +21,7 @@ func _ready() -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_EVENTS_object_collected(object) -> void:
-	if object is Coin:
-		set_nb_coins(nb_coins + 1)
+#func _on_EVENTS_object_collected(object) -> void:
+	#if object is Coin:
+		#set_nb_coins(nb_coins + 1)
 	
