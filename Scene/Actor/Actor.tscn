@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://cswyylwaj4a33"]
+
+[ext_resource type="Script" path="res://StateMachine/State.gd" id="1_3xsrm"]
+[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="1_qnkym"]
+
+[node name="Actor" type="CharacterBody2D"]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+animation = &""
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="InteractionArea" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+metadata/_edit_lock_ = true
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("1_qnkym")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("1_3xsrm")
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("1_3xsrm")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("1_3xsrm")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("1_3xsrm")

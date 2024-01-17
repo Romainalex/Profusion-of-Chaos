@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmtia6edn0hwa"]
+
+[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="1_4rvy0"]
+[ext_resource type="Script" path="res://StateMachine/State.gd" id="2_p56er"]
+
+[node name="PNJ" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="BehaviourTree" type="Node" parent="."]
+script = ExtResource("1_4rvy0")
+
+[node name="Work" type="Node" parent="BehaviourTree"]
+script = ExtResource("2_p56er")
+
+[node name="Talk" type="Node" parent="BehaviourTree"]
+script = ExtResource("2_p56er")
