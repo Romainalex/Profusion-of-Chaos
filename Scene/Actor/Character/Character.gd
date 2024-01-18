@@ -2,17 +2,9 @@ extends Actor
 class_name Character
 
 
-@onready var attack_principal_behaviour = $AttackPrincipalBehaviour
-@onready var attack_secondaire_behaviour = $AttackSecondaireBehaviour
-@onready var attack_special1_behaviour = $AttackSpecial1Behaviour
-@onready var attack_special2_behaviour = $AttackSpecial2Behaviour
+@onready var attack_behaviour = $AttackBehaviour
 
-var attack_dict = {
-	"AttackPrincipal" : attack_principal_behaviour, 
-	"AttackSecondaire" : attack_secondaire_behaviour, 
-	"AttackSpecial1": attack_special1_behaviour, 
-	"AttackSpecial2" : attack_special2_behaviour,
-}
+var attack_array : Array = ["AttackPrincipal", "AttackSecondaire", "AttackSpecial1", "AttackSpecial2"]
 
 #### ACCESSORS ####
 
@@ -58,7 +50,7 @@ func _input(_event: InputEvent) -> void:
 #### LOGIC ####
 
 func _update_state() -> void:
-	if not (state_machine.get_state_name() in attack_dict.keys()):
+	if not (state_machine.get_state_name() in attack_array):
 		if Input.is_action_pressed("Esquive_action"):
 			state_machine.set_state("Esquive")
 		elif moving_direction == Vector2.ZERO:
@@ -80,11 +72,19 @@ func hurt(damage: int) -> void:
 	if state_machine.get_state_name() != "Esquive":
 		super.hurt(damage)
 
+# Met à jour l'animation en se basant sur l'état courant et facing_direction
+func _update_animation() -> void:
+	var state = state_machine.get_state_name
+	if state in attack_array:
+		attack_behaviour.update_attack_animation(state)
+	else:
+		super._update_animation()
+
 
 #### SIGNAL RESPONSES ####
 
 func _on_state_changed(_new_state: Object) -> void:
-	if state_machine.get_previous_state_name() in attack_dict:
+	if state_machine.get_previous_state_name() in attack_array:
 		_update_state()
 	
 	super._on_state_changed(state_machine.get_state())
@@ -99,9 +99,3 @@ func _on_Sprite_animation_finished() -> void:
 		state_machine.set_state("Idle")
 	else:
 		super._on_Sprite_animation_finished()
-
-func _on_Sprite_frame_changed() -> void:
-	
-	for attack in attack_dict.keys():
-		if attack.is_subsequence_of(animated_sprite.get_animation()):
-			attack_dict[attack].procede_attack(animated_sprite.get_frame())

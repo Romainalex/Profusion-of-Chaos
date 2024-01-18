@@ -4,9 +4,3 @@
 
 [node name="AttackBehaviour" type="Node2D"]
 script = ExtResource("1_me8si")
-
-[node name="Cooldown" type="Timer" parent="."]
-one_shot = true
-
-[node name="DelayCombo" type="Timer" parent="."]
-wait_time = 2.0

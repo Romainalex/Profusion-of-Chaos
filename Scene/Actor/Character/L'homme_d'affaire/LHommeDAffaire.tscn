@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dqkmyvvmo4itf" path="res://Scene/Actor/Character/Character.tscn" id="1_p7yas"]
 [ext_resource type="SpriteFrames" uid="uid://diryhf05ebh51" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire_sprite_frame.tres" id="2_utpyo"]
-[ext_resource type="Script" path="res://StateMachine/State.gd" id="3_ongr6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3co5m"]
 
 [node name="LHommeDAffaire" instance=ExtResource("1_p7yas")]
 
@@ -10,5 +11,10 @@
 sprite_frames = ExtResource("2_utpyo")
 animation = &"IdleDown"
 
-[node name="Move" parent="StateMachine" index="1"]
-script = ExtResource("3_ongr6")
+[node name="AttackPrincipalBehaviour_Area2D#CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 18)
+scale = Vector2(2, 0.75)
+shape = SubResource("RectangleShape2D_3co5m")
+metadata/_edit_lock_ = true
+
+[editable path="AttackBehaviour"]
