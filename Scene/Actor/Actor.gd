@@ -22,7 +22,7 @@ var dir_dict = {
 var moving_direction  := Vector2.ZERO # créer un vecteur x-y dont x et y sont initialisé à 0
 var facing_direction := Vector2.DOWN
 
-@export var max_pv : int = 3
+@export var max_pv : int = 100
 @onready var pv : int = max_pv
 
 
@@ -63,12 +63,12 @@ func get_pv() -> int:
 #### BUILT-IN ####
 
 func _ready() -> void:
-	state_machine.connect("state_changed", Callable(self, "_on_state_changed"))
+	state_machine.connect("state_changed", Callable(self, "_on_StateMachine_state_changed"))
 	connect("facing_direction_changed", Callable(self, "_on_facing_direction_changed"))
 	connect("moving_direction_changed", Callable(self, "_on_moving_direction_changed"))
 	connect("pv_changed", Callable(self, "_on_pv_changed"))
-	animated_sprite.connect("frame_changed", Callable(self, "_on_Sprite_frame_changed"))
-	animated_sprite.connect("animation_finished", Callable(self, "_on_Sprite_animation_finished"))
+	animated_sprite.connect("frame_changed", Callable(self, "_on_AnimatedSprite_frame_changed"))
+	animated_sprite.connect("animation_finished", Callable(self, "_on_AnimatedSprite_animation_finished"))
 	connect("death_feedback_finished", Callable(self, "_on_death_feedback_finished"))
 	
 
@@ -134,10 +134,10 @@ func face_direction(dir: Vector2) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_state_changed(_new_state: Object) -> void:
+func _on_StateMachine_state_changed(_new_state: Object) -> void:
 	_update_animation()
 
-func _on_Sprite_animation_finished() -> void:
+func _on_AnimatedSprite_animation_finished() -> void:
 	if "Attack".is_subsequence_of(animated_sprite.get_animation()):
 		state_machine.set_state("Idle")
 	elif "Hurt".is_subsequence_of(animated_sprite.get_animation()):
@@ -165,7 +165,7 @@ func _on_moving_direction_changed() -> void:
 			set_facing_direction(Vector2(sign_direction.x, 0))
 
 
-func _on_Sprite_frame_changed() -> void:
+func _on_AnimatedSprite_frame_changed() -> void:
 	#if "Attack".is_subsequence_of(animated_sprite.get_animation()):
 		#if animated_sprite.get_frame() == 1:
 			#_attack_effect()
