@@ -87,7 +87,7 @@ func _on_state_changed(_new_state: Object) -> void:
 	if state_machine.get_previous_state_name() in attack_array:
 		_update_state()
 	
-	super._on_state_changed(state_machine.get_state())
+	super._on_StateMachine_state_changed(state_machine.get_state())
 	
 func _on_pv_changed(new_pv: int) -> void:
 	super._on_pv_changed(new_pv)
@@ -98,4 +98,4 @@ func _on_Sprite_animation_finished() -> void:
 	if "Esquive".is_subsequence_of(animated_sprite.get_animation()):
 		state_machine.set_state("Idle")
 	else:
-		super._on_Sprite_animation_finished()
+		super._on_AnimatedSprite_animation_finished()

@@ -70,7 +70,6 @@ func exit_state() -> void:
 
 func set_to_default_state() -> void:
 	set_state(get_child(0))
-	print(get_state_name())
 
 func _on_state_changed(_state: Node) -> void:
 	emit_signal("state_changed_recursive", current_state)
