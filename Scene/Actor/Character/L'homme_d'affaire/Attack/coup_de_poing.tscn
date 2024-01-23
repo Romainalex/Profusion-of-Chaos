@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy1u42mx1ce6m"]
+
+[ext_resource type="PackedScene" uid="uid://csxsios4xmnom" path="res://Scene/Actor/Character/Attack/AttackCombo.tscn" id="1_bcybo"]
+[ext_resource type="PackedScene" uid="uid://btubj0jvjicc8" path="res://Scene/Actor/Character/Attack/Attack.tscn" id="2_oco8y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8cag"]
+
+[node name="CoupDePoing" instance=ExtResource("1_bcybo")]
+
+[node name="Attack" parent="." index="1" instance=ExtResource("2_oco8y")]
+
+[node name="CollisionShape2D" parent="Attack/AttackHitBox" index="0"]
+position = Vector2(16, 22)
+scale = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_k8cag")
+
+[node name="Attack2" parent="." index="2" instance=ExtResource("2_oco8y")]
+
+[node name="Attack3" parent="." index="3" instance=ExtResource("2_oco8y")]
+
+[editable path="Attack"]
+[editable path="Attack2"]
+[editable path="Attack3"]

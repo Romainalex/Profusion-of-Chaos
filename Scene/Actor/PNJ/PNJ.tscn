@@ -7,25 +7,27 @@
 [node name="PNJ" type="CharacterBody2D"]
 script = ExtResource("1_bqgxi")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="InteractionArea" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+metadata/_edit_lock_ = true
 
-[node name="BehaviourTree" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_4rvy0")
 
-[node name="Work" type="Node" parent="BehaviourTree"]
+[node name="Work" type="Node" parent="StateMachine"]
 script = ExtResource("2_p56er")
 
-[node name="Talk" type="Node" parent="BehaviourTree"]
+[node name="Talk" type="Node" parent="StateMachine"]
 script = ExtResource("2_p56er")
 
 [node name="InteractingSprite" type="Sprite2D" parent="."]
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+position = Vector2(0, -60)
+scale = Vector2(0.5, 0.5)
