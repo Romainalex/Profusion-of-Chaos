@@ -13,7 +13,10 @@ config_version=5
 config/name="Prototype"
 run/main_scene="res://Scene/Level/hub.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="res://BTM_logo.png"
+boot_splash/fullsize=false
+config/icon="res://BTM_logo.png"
 
 [autoload]
 
@@ -23,6 +26,7 @@ GAME="*res://Autoload/Game.gd"
 [display]
 
 window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/mode=3
 window/size/borderless=true
 

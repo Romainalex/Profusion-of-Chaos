@@ -2,7 +2,10 @@ extends Actor
 class_name PNJ
 
 
+
 @onready var interaction_sprite = $InteractingSprite
+
+@export var pnj_data : PNJData = null
 
 
 #### ACCESSORS ####
@@ -22,11 +25,11 @@ func _ready() -> void:
 #### LOGICS ####
 
 # Masquage de la fonction hurt() de Actor.gd pour rendre les PNJ invulnérable
-func hurt(damage: int) -> void:
+func hurt(_damage: int) -> void:
 	pass
 
 func interact() -> void:
-	print("interaction")
+	EVENTS.emit_signal("pnj_interaction", pnj_data.pnj_name)
 
 
 #### SIGNAL RESPONSES ####

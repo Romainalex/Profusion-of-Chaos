@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://740xgis2sqf5"]
+[gd_scene load_steps=5 format=3 uid="uid://740xgis2sqf5"]
 
 [ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="1_y2e7b"]
 [ext_resource type="PackedScene" uid="uid://c6iodv62becyt" path="res://Scene/Actor/PNJ/Hephaistos/Hephaistos.tscn" id="2_50giu"]
+[ext_resource type="Script" path="res://Scene/UI/Blackwell.gd" id="3_3onsu"]
+[ext_resource type="Script" path="res://Scene/UI/Commerce/Commerce.gd" id="4_p62xh"]
 
 [node name="Hub" type="Node2D"]
 
@@ -10,3 +12,32 @@ position = Vector2(102, 52)
 
 [node name="PNJ" parent="." instance=ExtResource("2_50giu")]
 position = Vector2(555, 77)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackVell" type="ColorRect" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("3_3onsu")
+
+[node name="Commerce" type="Control" parent="CanvasLayer/UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_p62xh")
+
+[connection signal="hidden_commerce_changed" from="CanvasLayer/UI/Commerce" to="CanvasLayer/UI/BlackVell" method="_on_Commerce_hidden_commerce_changed"]

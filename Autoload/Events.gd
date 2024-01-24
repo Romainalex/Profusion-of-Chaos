@@ -12,5 +12,6 @@ signal obstacle_destroyed(obstacle)
 
 signal character_pv_changed(pv)
 signal actor_died(target)
+signal pnj_interaction(pnj)
 
 signal room_finished()

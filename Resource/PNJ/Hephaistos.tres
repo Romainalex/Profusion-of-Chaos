@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PNJData" load_steps=2 format=3 uid="uid://c3vd3e3ea6qhx"]
+
+[ext_resource type="Script" path="res://Resource/PNJData.gd" id="1_3tcc6"]
+
+[resource]
+script = ExtResource("1_3tcc6")
+pnj_name = "Hephaistos"
