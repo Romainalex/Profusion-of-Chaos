@@ -2,6 +2,10 @@ extends Control
 class_name Commerce
 
 
+var hephaistos = preload("res://Scene/UI/Commerce/Commerce.gd")
+var inari = preload("res://Scene/UI/Commerce/Commerce.gd")
+var tezcatlipoca = preload("res://Scene/UI/Commerce/Commerce.gd")
+
 var hidden_commerce : bool = true
 
 
@@ -37,6 +41,8 @@ func _input(_event: InputEvent) -> void:
 #### SIGNAL RESPONSES ####
 
 func _on_EVENTS_pnj_interaction(_pnj: String) -> void:
+	
+	
 	set_hidden_commerce(false)
 
 func _on_hidden_commerce_changed(_val: bool) -> void:

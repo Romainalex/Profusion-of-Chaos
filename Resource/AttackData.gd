@@ -13,6 +13,7 @@ enum EFFECT_TYPE {
 
 @export var attack_name : String = ""
 @export var description : String = ""
+@export var evolution : Array = []
 @export var path : PackedScene = null
 
 @export_range(0.0, 100.0) var crit_rate : float = 0.0
