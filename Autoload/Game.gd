@@ -1,6 +1,14 @@
 extends Node
 
+
+@export var game_data : GameData = null
+
 var nb_coins : int = 0
+var perso_selected = null
+var attack_principal = null
+var attack_secondaire = null
+var attack_special1 = null
+var attack_special2 = null
 
 #### ACCESSEUR ####
 

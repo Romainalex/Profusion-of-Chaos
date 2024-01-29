@@ -1,7 +1,14 @@
 extends ColorRect
 class_name BlackVell
 
+@onready var parent_path = get_parent().get_path()
+@onready var update_weapon = get_node(str(parent_path) + "/UpdateWeapon")
+#@onready var glossaire = get_node(str(parent_path) + "/Glossaire")
+@onready var update_spell = get_node(str(parent_path) + "/UpdateSpell")
+#@onready var cook = get_node(str(parent_path) + "/Cook")
+
 var tween : Tween
+
 
 #### ACCESSORS ####
 
@@ -11,7 +18,8 @@ var tween : Tween
 
 #### BUILT-IN ####
 
-
+func _ready() -> void:
+	update_weapon.connect("hidden_update_weapon_changed", Callable(self, "_on_UpdateWeapon_hidden_update_weapon_changed"))
 
 
 
@@ -32,5 +40,5 @@ func fade(fade_in: bool) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_Commerce_hidden_commerce_changed(value: bool) -> void:
-	fade(!value)
+func _on_UpdateWeapon_hidden_update_weapon_changed(val: bool) -> void:
+	fade(!val)

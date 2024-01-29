@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cmtia6edn0hwa" path="res://Scene/Actor/PNJ/PNJ.tscn" id="1_6qnn8"]
 [ext_resource type="Texture2D" uid="uid://7osy8dubn2p1" path="res://Scene/Actor/PNJ/Sprite/PNJ.png" id="2_4xayw"]
-[ext_resource type="Resource" uid="uid://c3vd3e3ea6qhx" path="res://Resource/PNJ/Hephaistos.tres" id="2_nsd2r"]
+[ext_resource type="Resource" uid="uid://c3vd3e3ea6qhx" path="res://Resource/PNJData/Hephaistos.tres" id="2_nsd2r"]
 [ext_resource type="Texture2D" uid="uid://pn41ig6cokj4" path="res://Scene/UI/keyboard_e.png" id="3_30cba"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8iqn"]
@@ -21,10 +21,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8heci"]
-radius = 30.0167
+radius = 32.0156
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyob7"]
-radius = 61.2046
+radius = 45.2769
 
 [node name="Hephaistos" instance=ExtResource("1_6qnn8")]
 pnj_data = ExtResource("2_nsd2r")

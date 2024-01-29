@@ -18,7 +18,7 @@ boot_splash/image="res://BTM_logo.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://BTM_logo.png"
-boot_splash/minimum_display_time=50
+boot_splash/minimum_display_time=30
 
 [autoload]
 
@@ -31,6 +31,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/mode=3
 window/size/borderless=true
+window/stretch/mode="canvas_items"
 
 [input]
 
