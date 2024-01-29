@@ -1,18 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://dijtg8c5kwati"]
 
-[ext_resource type="Script" path="res://Scene/UI/Commerce/UpdateSpell.gd" id="1_xb0e0"]
-[ext_resource type="Script" path="res://Scene/UI/Commerce/UpdateSpellManager.gd" id="2_0klh7"]
+[ext_resource type="Script" path="res://Scene/UI/Commerce/UpgradeSpell.gd" id="1_xgvcn"]
+[ext_resource type="Script" path="res://Scene/UI/Commerce/UpgradeSpellManager.gd" id="2_0klh7"]
 
-[node name="UpdateSpell" type="Control"]
+[node name="UpgradeSpell" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xb0e0")
+script = ExtResource("1_xgvcn")
 
-[node name="UpdateSpellManager" type="Node" parent="."]
+[node name="UpgradeSpellManager" type="Node" parent="."]
 script = ExtResource("2_0klh7")
 
 [node name="Panel" type="Panel" parent="."]

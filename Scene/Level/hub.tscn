@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="1_y2e7b"]
 [ext_resource type="PackedScene" uid="uid://c6iodv62becyt" path="res://Scene/Actor/PNJ/Hephaistos/Hephaistos.tscn" id="2_50giu"]
 [ext_resource type="Script" path="res://Scene/UI/Blackwell.gd" id="3_3onsu"]
-[ext_resource type="PackedScene" uid="uid://u64o5fe8tipg" path="res://Scene/UI/Commerce/UpdateWeapon.tscn" id="4_sxwtc"]
+[ext_resource type="PackedScene" uid="uid://u64o5fe8tipg" path="res://Scene/UI/Commerce/UpgradeWeapon.tscn" id="4_sxwtc"]
 [ext_resource type="PackedScene" uid="uid://c3u0g3tyno108" path="res://Scene/UI/Commerce/ChangeSpell.tscn" id="5_n336u"]
 [ext_resource type="PackedScene" uid="uid://dr3r7hkoehfmr" path="res://Scene/Actor/PNJ/Tezcatlipoca/Tezcatlipoca.tscn" id="6_wuvbb"]
 
@@ -36,7 +36,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0)
 script = ExtResource("3_3onsu")
 
-[node name="UpdateWeapon" parent="CanvasLayer/UI" instance=ExtResource("4_sxwtc")]
+[node name="UpgradeWeapon" parent="CanvasLayer/UI" instance=ExtResource("4_sxwtc")]
 layout_mode = 1
 
 [node name="ChangeSpell" parent="CanvasLayer/UI" instance=ExtResource("5_n336u")]

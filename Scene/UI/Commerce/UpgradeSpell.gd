@@ -1,5 +1,5 @@
 extends Commerce
-class_name UpdateSpell
+class_name UpgradeSpell
 
 var hidden_update_spell : bool = true
 

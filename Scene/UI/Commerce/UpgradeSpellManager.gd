@@ -1,13 +1,9 @@
 extends Node
-class_name HephaistosHubManager
+class_name UpgradeSpellManager
 
 
 
 
-
-signal capacity_buyed
-signal capacty_selected
-signal perso_changed
 
 #### ACCESSORS ####
 
