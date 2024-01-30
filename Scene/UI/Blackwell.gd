@@ -2,9 +2,9 @@ extends ColorRect
 class_name BlackVell
 
 @onready var parent_path = get_parent().get_path()
-@onready var update_weapon = get_node(str(parent_path) + "/UpdateWeapon")
+@onready var upgrade_weapon = get_node(str(parent_path) + "/UpgradeWeapon")
 #@onready var glossaire = get_node(str(parent_path) + "/Glossaire")
-@onready var update_spell = get_node(str(parent_path) + "/UpdateSpell")
+@onready var change_spell = get_node(str(parent_path) + "/ChangeSpell")
 #@onready var cook = get_node(str(parent_path) + "/Cook")
 
 var tween : Tween
@@ -19,8 +19,8 @@ var tween : Tween
 #### BUILT-IN ####
 
 func _ready() -> void:
-	update_weapon.connect("hidden_update_weapon_changed", Callable(self, "_on_UpdateWeapon_hidden_update_weapon_changed"))
-
+	upgrade_weapon.connect("hidden_upgrade_weapon_changed", Callable(self, "_on_UpgradeWeapon_hidden_upgrade_weapon_changed"))
+	change_spell.connect("hidden_change_spell_changed", Callable(self, "_on_ChangeSpell_hidden_change_spell_changed"))
 
 
 #### LOGICS ####
@@ -40,5 +40,8 @@ func fade(fade_in: bool) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_UpdateWeapon_hidden_update_weapon_changed(val: bool) -> void:
+func _on_UpgradeWeapon_hidden_upgrade_weapon_changed(val: bool) -> void:
+	fade(!val)
+
+func _on_ChangeSpell_hidden_change_spell_changed(val: bool) -> void:
 	fade(!val)

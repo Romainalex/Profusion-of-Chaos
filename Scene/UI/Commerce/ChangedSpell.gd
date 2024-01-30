@@ -44,10 +44,12 @@ func _input(_event: InputEvent) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_EVENTS_pnj_interaction(pnj: String) -> void:
+func _on_EVENTS_pnj_traid_started(pnj: String) -> void:
 	if pnj == "Tezcatlipoca":
 		set_hidden_change_spell(false)
 
 func _on_hidden_change_spell_changed(_val: bool):
 	_animation(!hidden_change_spell)
 	get_tree().paused = !hidden_change_spell
+	if hidden_change_spell:
+		EVENTS.emit_signal("pnj_traid_finished", "Tezcatlipoca")

@@ -1,9 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr3r7hkoehfmr"]
+[gd_scene load_steps=11 format=3 uid="uid://dr3r7hkoehfmr"]
 
 [ext_resource type="PackedScene" uid="uid://cmtia6edn0hwa" path="res://Scene/Actor/PNJ/PNJ.tscn" id="1_a0lwj"]
 [ext_resource type="Resource" uid="uid://bx01bno46rfht" path="res://Scene/Actor/PNJ/Tezcatlipoca/TezcatlipocaPNJData.tres" id="2_j4ti3"]
 [ext_resource type="Texture2D" uid="uid://7osy8dubn2p1" path="res://Scene/Actor/PNJ/Sprite/PNJ.png" id="3_w1vyr"]
 [ext_resource type="Texture2D" uid="uid://pn41ig6cokj4" path="res://Scene/UI/keyboard_e.png" id="4_ctmsm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvx37"]
+atlas = ExtResource("3_w1vyr")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt4i2"]
+atlas = ExtResource("3_w1vyr")
+region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2487"]
 atlas = ExtResource("3_w1vyr")
@@ -13,10 +21,18 @@ region = Rect2(64, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d2487")
+"texture": SubResource("AtlasTexture_dvx37")
 }],
 "loop": true,
-"name": &"Talk",
+"name": &"TalkDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt4i2")
+}],
+"loop": true,
+"name": &"TraidDown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -24,7 +40,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_d2487")
 }],
 "loop": true,
-"name": &"Work",
+"name": &"WorkDown",
 "speed": 5.0
 }]
 
@@ -39,7 +55,7 @@ pnj_data = ExtResource("2_j4ti3")
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ftikl")
-animation = &"Work"
+animation = &"WorkDown"
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_tma8h")

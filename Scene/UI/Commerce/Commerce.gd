@@ -19,7 +19,7 @@ var tween : Tween
 #### BUILT-IN ####
 
 func _ready() -> void:
-	EVENTS.connect("pnj_interaction", Callable(self, "_on_EVENTS_pnj_interaction"))
+	EVENTS.connect("pnj_traid_started", Callable(self, "_on_EVENTS_pnj_traid_started"))
 
 
 func _animation(appear: bool) -> void:
@@ -32,6 +32,6 @@ func _animation(appear: bool) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_EVENTS_pnj_interaction(_pnj: String) -> void:
+func _on_EVENTS_pnj_traid_started(_pnj: String) -> void:
 	pass
 

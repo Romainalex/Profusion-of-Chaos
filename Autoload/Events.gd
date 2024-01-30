@@ -12,6 +12,7 @@ signal obstacle_destroyed(obstacle)
 
 signal character_pv_changed(pv)
 signal actor_died(target)
-signal pnj_interaction(pnj)
+signal pnj_traid_started(pnj)
+signal pnj_traid_finished(pnj)
 
 signal room_finished

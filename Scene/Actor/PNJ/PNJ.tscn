@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmtia6edn0hwa"]
+[gd_scene load_steps=5 format=3 uid="uid://cmtia6edn0hwa"]
 
 [ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="1_4rvy0"]
 [ext_resource type="Script" path="res://Scene/Actor/PNJ/PNJ.gd" id="1_bqgxi"]
 [ext_resource type="Script" path="res://StateMachine/State.gd" id="2_p56er"]
+[ext_resource type="Script" path="res://StateMachine/State/TraidPNJState.gd" id="4_bdblp"]
 
 [node name="PNJ" type="CharacterBody2D"]
 script = ExtResource("1_bqgxi")
@@ -27,6 +28,9 @@ script = ExtResource("2_p56er")
 
 [node name="Talk" type="Node" parent="StateMachine"]
 script = ExtResource("2_p56er")
+
+[node name="Traid" type="Node" parent="StateMachine"]
+script = ExtResource("4_bdblp")
 
 [node name="InteractingSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -60)
