@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=3 format=3 uid="uid://hyft7vvq7603"]
+
+[ext_resource type="Script" path="res://Resource/AttackData.gd" id="1_8urrt"]
+[ext_resource type="SpriteFrames" uid="uid://bvn267c1s607c" path="res://Scene/Actor/Character/L'homme_d'affaire/Attack/CoupDePoing_animated_sprite.tres" id="2_2os5n"]
+
+[resource]
+script = ExtResource("1_8urrt")
+attack_name = "Coup de poing"
+description = "simple coup de poing"
+evolution = []
+type_attack = 0
+sprite_frames = ExtResource("2_2os5n")
+crit_rate = 5.0
+min_damage = 5
+max_damage = 35
+effect_type = 0
+damage_effect = 0

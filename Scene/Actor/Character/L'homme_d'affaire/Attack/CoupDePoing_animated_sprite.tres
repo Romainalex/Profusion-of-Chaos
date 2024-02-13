@@ -1,0 +1,82 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bvn267c1s607c"]
+
+[ext_resource type="Texture2D" uid="uid://de55throhfh4j" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png" id="1_bvx7w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6blyb"]
+atlas = ExtResource("1_bvx7w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uapad"]
+atlas = ExtResource("1_bvx7w")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akcit"]
+atlas = ExtResource("1_bvx7w")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amb4e"]
+atlas = ExtResource("1_bvx7w")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5w35"]
+atlas = ExtResource("1_bvx7w")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62hky"]
+atlas = ExtResource("1_bvx7w")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7ja2"]
+atlas = ExtResource("1_bvx7w")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf8ng"]
+atlas = ExtResource("1_bvx7w")
+region = Rect2(128, 192, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6blyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uapad")
+}],
+"loop": false,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akcit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amb4e")
+}],
+"loop": false,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5w35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62hky")
+}],
+"loop": false,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7ja2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf8ng")
+}],
+"loop": false,
+"name": &"Up",
+"speed": 5.0
+}]

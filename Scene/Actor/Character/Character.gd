@@ -2,7 +2,10 @@ extends Actor
 class_name Character
 
 
-@onready var attack_behaviour = $AttackBehaviour
+@export var attack_principal : AttackData = null
+@export var attack_secondaire : AttackData = null
+@export var attack_special1 : AttackData = null
+@export var attack_special2 : AttackData = null
 
 var attack_array : Array = ["AttackPrincipal", "AttackSecondaire", "AttackSpecial1", "AttackSpecial2"]
 
@@ -16,7 +19,7 @@ var attack_array : Array = ["AttackPrincipal", "AttackSecondaire", "AttackSpecia
 
 func _ready() -> void:
 	super._ready()
-	pass
+	change_all_attacks()
 
 
 #### INPUT ####
@@ -72,13 +75,35 @@ func hurt(damage: int) -> void:
 	if state_machine.get_state_name() != "Esquive":
 		super.hurt(damage)
 
-# Met à jour l'animation en se basant sur l'état courant et facing_direction
-func _update_animation() -> void:
-	var state = state_machine.get_state_name
-	if state in attack_array:
-		attack_behaviour.update_attack_animation(state)
-	else:
-		super._update_animation()
+func change_all_attacks() -> void:
+	for attack in attack_array:
+		match(attack):
+			"AttackPrincipal": 
+				if attack_principal != null: 
+					change_attack(attack,attack_principal)
+			"AttackSecondaire": 
+				if attack_secondaire != null: 
+					change_attack(attack,attack_secondaire)
+			"AttackSpecial1": 
+				if attack_special1 != null: 
+					change_attack(attack,attack_special1)
+			"AttackSpecial2": 
+				if attack_special2 != null: 
+					change_attack(attack,attack_special2)
+
+func change_attack(attack_slot: String, attack: Resource) -> void:
+	change_attack(attack_slot, attack.sprite_frames)
+	#TODO: Rajouter la changement changeant la colision shape 
+
+func change_attack_animation(attack_slot: String, attack_sprite_frames: Resource) -> void:
+	for direction in ["Down","Up","Left","Right"]:
+		var animation_name = attack_slot + direction
+		var sprite_frame = animated_sprite.sprite_frames
+
+		sprite_frame.clear(animation_name)
+		for i in attack_sprite_frames.get_frame_count(direction):
+			sprite_frame.add_frame(animation_name, attack_sprite_frames.get_frame_texture(direction, i), attack_sprite_frames.get_frame_duration(direction, i))
+
 
 
 #### SIGNAL RESPONSES ####
