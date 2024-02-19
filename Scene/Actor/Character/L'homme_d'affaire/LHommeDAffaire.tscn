@@ -12,8 +12,6 @@ radius = 15.0333
 
 [node name="LHommeDAffaire" instance=ExtResource("1_p7yas")]
 attack_principal = ExtResource("2_utpyo")
-speed = 300.0
-max_pv = 100
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = ExtResource("3_jui7e")

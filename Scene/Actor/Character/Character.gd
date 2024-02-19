@@ -92,7 +92,7 @@ func change_all_attacks() -> void:
 					change_attack(attack,attack_special2)
 
 func change_attack(attack_slot: String, attack: Resource) -> void:
-	change_attack(attack_slot, attack.sprite_frames)
+	change_attack_animation(attack_slot, attack.sprite_frames)
 	#TODO: Rajouter la changement changeant la colision shape 
 
 func change_attack_animation(attack_slot: String, attack_sprite_frames: Resource) -> void:
@@ -101,6 +101,7 @@ func change_attack_animation(attack_slot: String, attack_sprite_frames: Resource
 		var sprite_frame = animated_sprite.sprite_frames
 
 		sprite_frame.clear(animation_name)
+		sprite_frame.set_animation_speed(animation_name,attack_sprite_frames.get_animation_speed(direction))
 		for i in attack_sprite_frames.get_frame_count(direction):
 			sprite_frame.add_frame(animation_name, attack_sprite_frames.get_frame_texture(direction, i), attack_sprite_frames.get_frame_duration(direction, i))
 

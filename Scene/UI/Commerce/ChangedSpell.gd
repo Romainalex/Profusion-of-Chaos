@@ -11,7 +11,6 @@ signal hidden_change_spell_changed(value)
 func set_hidden_change_spell(val: bool) -> void:
 	if val != hidden_change_spell:
 		hidden_change_spell = val
-		print(hidden_change_spell)
 		emit_signal("hidden_change_spell_changed", hidden_change_spell)
 func get_hidden_change_spell() -> bool: return hidden_change_spell
 

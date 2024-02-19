@@ -43,4 +43,7 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="Tezcatlipoca" parent="." instance=ExtResource("6_wuvbb")]
-position = Vector2(128, 216)
+position = Vector2(112, 192)
+
+[node name="Tezcatlipoca2" parent="." instance=ExtResource("6_wuvbb")]
+position = Vector2(352, 120)
