@@ -1,4 +1,4 @@
-extends Resource
+extends Data
 class_name AttackData
 
 
@@ -14,8 +14,6 @@ enum EFFECT_TYPE {
 
 
 
-@export var attack_name : String = ""
-@export var description : String = ""
 @export var evolution : Array = []
 
 @export_range(0.0, 100.0) var crit_rate : float = 0.0
