@@ -11,19 +11,12 @@ enum EFFECT_TYPE {
 	RALENTISSEMENT,
 	REPOUSSE
 }
-enum ATTACK_TYPE{
-	SIMPLE,
-	COMBO,
-	GRAB
-}
+
 
 
 @export var attack_name : String = ""
 @export var description : String = ""
 @export var evolution : Array = []
-@export var type_attack : ATTACK_TYPE = ATTACK_TYPE.SIMPLE
-@export var sprite_frames : SpriteFrames = null
-@export var shapes_array : Array = []
 
 @export_range(0.0, 100.0) var crit_rate : float = 0.0
 @export var min_damage : int = 0
