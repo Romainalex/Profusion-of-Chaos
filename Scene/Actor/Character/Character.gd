@@ -2,12 +2,17 @@ extends Actor
 class_name Character
 
 
-@export var attack_principal : AttackData = null
-@export var attack_secondaire : AttackData = null
-@export var attack_special1 : AttackData = null
-@export var attack_special2 : AttackData = null
+@export var attack_principal : PackedScene = null
+@export var attack_secondaire : PackedScene = null
+@export var attack_special1 : PackedScene = null
+@export var attack_special2 : PackedScene = null
 
-var attack_array : Array = ["AttackPrincipal", "AttackSecondaire", "AttackSpecial1", "AttackSpecial2"]
+
+var attack_dict = {
+	"AttackPrincipal": attack_principal,
+	"AttackSecondaire": attack_secondaire, 
+	"AttackSpecial1" : attack_special1, 
+	"AttackSpecial2": attack_special2}
 
 #### ACCESSORS ####
 
@@ -19,7 +24,11 @@ var attack_array : Array = ["AttackPrincipal", "AttackSecondaire", "AttackSpecia
 
 func _ready() -> void:
 	super._ready()
-	change_all_attacks()
+	for key in attack_dict.keys():
+		var attack = attack_dict[key]
+		if attack != null:
+			attack.instantiate()
+			attack.connect("attack_finished", Callable(self, "_on_Attack_attack_finished"))
 
 
 #### INPUT ####
@@ -53,13 +62,18 @@ func _input(_event: InputEvent) -> void:
 #### LOGIC ####
 
 func _update_state() -> void:
-	if not (state_machine.get_state_name() in attack_array):
+	if not (state_machine.get_state_name() in attack_dict.keys()):
 		if Input.is_action_pressed("Esquive_action"):
 			state_machine.set_state("Esquive")
 		elif moving_direction == Vector2.ZERO:
 			state_machine.set_state("Idle")
 		else:
 			state_machine.set_state("Move")
+
+
+func _update_animation() -> void:
+	if not (state_machine.get_state_name() in attack_dict.keys()):
+		super._update_animation()
 
 # Lance une tentative d'intéraction et retourne vrai si l'intéraction a été effectué, faux sinon
 func _interacting_attempt() -> bool:
@@ -75,42 +89,13 @@ func hurt(damage: int) -> void:
 	if state_machine.get_state_name() != "Esquive":
 		super.hurt(damage)
 
-func change_all_attacks() -> void:
-	for attack in attack_array:
-		match(attack):
-			"AttackPrincipal": 
-				if attack_principal != null: 
-					change_attack(attack,attack_principal)
-			"AttackSecondaire": 
-				if attack_secondaire != null: 
-					change_attack(attack,attack_secondaire)
-			"AttackSpecial1": 
-				if attack_special1 != null: 
-					change_attack(attack,attack_special1)
-			"AttackSpecial2": 
-				if attack_special2 != null: 
-					change_attack(attack,attack_special2)
-
-func change_attack(attack_slot: String, attack: Resource) -> void:
-	change_attack_animation(attack_slot, attack.sprite_frames)
-	#TODO: Rajouter la changement changeant la colision shape 
-
-func change_attack_animation(attack_slot: String, attack_sprite_frames: Resource) -> void:
-	for direction in ["Down","Up","Left","Right"]:
-		var animation_name = attack_slot + direction
-		var sprite_frame = animated_sprite.sprite_frames
-
-		sprite_frame.clear(animation_name)
-		sprite_frame.set_animation_speed(animation_name,attack_sprite_frames.get_animation_speed(direction))
-		for i in attack_sprite_frames.get_frame_count(direction):
-			sprite_frame.add_frame(animation_name, attack_sprite_frames.get_frame_texture(direction, i), attack_sprite_frames.get_frame_duration(direction, i))
 
 
 
 #### SIGNAL RESPONSES ####
 
 func _on_state_changed(_new_state: Object) -> void:
-	if state_machine.get_previous_state_name() in attack_array:
+	if state_machine.get_previous_state_name() in attack_dict.keys():
 		_update_state()
 	
 	super._on_StateMachine_state_changed(state_machine.get_state())
@@ -125,3 +110,6 @@ func _on_Sprite_animation_finished() -> void:
 		state_machine.set_state("Idle")
 	else:
 		super._on_AnimatedSprite_animation_finished()
+
+func _on_Attack_attack_finished(attack: PackedScene,action: String="") -> void:
+	state_machine.set_state("Idle")

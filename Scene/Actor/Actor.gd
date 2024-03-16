@@ -82,19 +82,20 @@ func _find_direction_name(dir: Vector2) -> String:
 		return ""
 	return dir_dict.keys()[direction_index] # cherche la clé de l'index direction_index
 
-# Met à jour l'animation en se basant sur l'état courant et facing_direction
+# update animation based on current state and facing_direction
 func _update_animation() -> void:
 	var direction_name = _find_direction_name(facing_direction)
 	var state_name = state_machine.get_state_name()
 	
 	animated_sprite.play(state_name + direction_name)
 
-# Met à jour la direction de la hitbox d'attaque en se basant sur facing_direction
+# update interaction_area_direction based on facing_direction
 func _update_interaction_area_direction() -> void:
 	var angle = facing_direction.angle()
 	
 	interaction_area.set_rotation_degrees(rad_to_deg(angle) - 90)
 
+# start the hurt actions
 func hurt(damage: int) -> void:
 	state_machine.set_state("Hurt")
 	set_pv(pv - damage)
