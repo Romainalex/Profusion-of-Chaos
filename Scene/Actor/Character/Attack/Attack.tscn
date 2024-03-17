@@ -6,7 +6,3 @@
 script = ExtResource("1_6ssvw")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-
-[node name="AttackHitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]

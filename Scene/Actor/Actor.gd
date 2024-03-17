@@ -13,12 +13,6 @@ class_name Actor
 
 @export var speed = 300.0
 
-var dir_dict = {
-	"Left": Vector2.LEFT,
-	"Right": Vector2.RIGHT,
-	"Up": Vector2.UP,
-	"Down": Vector2.DOWN
-}
 var moving_direction  := Vector2.ZERO # créer un vecteur x-y dont x et y sont initialisé à 0
 var facing_direction := Vector2.DOWN
 
@@ -75,16 +69,11 @@ func _ready() -> void:
 
 #### LOGICS ####
 
-# Cherche la clé d'une valeur dir dans le dictionnaire des direction
-func _find_direction_name(dir: Vector2) -> String:
-	var direction_index = dir_dict.values().find(dir) # cherche l'index de la valeur dir dans le dictionnaire des directions
-	if direction_index == -1: # vérifie que la valeur dir est dans le dictionnaire de direction
-		return ""
-	return dir_dict.keys()[direction_index] # cherche la clé de l'index direction_index
+
 
 # update animation based on current state and facing_direction
 func _update_animation() -> void:
-	var direction_name = _find_direction_name(facing_direction)
+	var direction_name = Util.find_direction_name(facing_direction)
 	var state_name = state_machine.get_state_name()
 	
 	animated_sprite.play(state_name + direction_name)

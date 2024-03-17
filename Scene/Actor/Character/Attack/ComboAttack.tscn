@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cch5bcp3igd5r"]
+
+[ext_resource type="PackedScene" uid="uid://cpss0rrlhkonl" path="res://Scene/Actor/Character/Attack/Attack.tscn" id="1_j8hbq"]
+[ext_resource type="Script" path="res://Scene/Actor/Character/Attack/ComboAttack.gd" id="2_qeo62"]
+
+[node name="ComboAttack" instance=ExtResource("1_j8hbq")]
+script = ExtResource("2_qeo62")
+
+[node name="Timer" type="Timer" parent="." index="1"]
+one_shot = true
