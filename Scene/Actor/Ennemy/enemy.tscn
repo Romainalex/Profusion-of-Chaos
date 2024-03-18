@@ -41,8 +41,8 @@ collision_mask = 2
 position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_kmosu")
 
-[node name="collision_environnement" type="CollisionShape2D" parent="detection_area"]
-position = Vector2(-3, -7)
+[node name="collision_environnement" type="CollisionShape2D" parent="."]
+position = Vector2(2, -7)
 shape = SubResource("CircleShape2D_s4qix")
 debug_color = Color(0.992157, 0, 0.239216, 0.419608)
 
