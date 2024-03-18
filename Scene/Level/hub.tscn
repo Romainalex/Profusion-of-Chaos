@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://740xgis2sqf5"]
+[gd_scene load_steps=8 format=3 uid="uid://740xgis2sqf5"]
 
 [ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="1_y2e7b"]
 [ext_resource type="PackedScene" uid="uid://c6iodv62becyt" path="res://Scene/Actor/PNJ/Hephaistos/Hephaistos.tscn" id="2_50giu"]
@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://u64o5fe8tipg" path="res://Scene/UI/Commerce/UpgradeWeapon.tscn" id="4_sxwtc"]
 [ext_resource type="PackedScene" uid="uid://c3u0g3tyno108" path="res://Scene/UI/Commerce/ChangeSpell.tscn" id="5_n336u"]
 [ext_resource type="PackedScene" uid="uid://dr3r7hkoehfmr" path="res://Scene/Actor/PNJ/Tezcatlipoca/Tezcatlipoca.tscn" id="6_wuvbb"]
+[ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="7_me4y2"]
 
 [node name="Hub" type="Node2D"]
 
 [node name="LHommeDAffaire" parent="." instance=ExtResource("1_y2e7b")]
 position = Vector2(102, 52)
+collision_layer = 3
 
 [node name="Hephaistos" parent="." instance=ExtResource("2_50giu")]
 position = Vector2(555, 77)
@@ -47,3 +49,5 @@ position = Vector2(112, 192)
 
 [node name="Tezcatlipoca2" parent="." instance=ExtResource("6_wuvbb")]
 position = Vector2(352, 120)
+
+[node name="enemy" parent="." instance=ExtResource("7_me4y2")]
