@@ -2,17 +2,16 @@ extends Actor
 class_name Character
 
 
-@export var attack_principal : PackedScene = null
-@export var attack_secondaire : PackedScene = null
-@export var attack_special1 : PackedScene = null
-@export var attack_special2 : PackedScene = null
+@onready var attack_behaviour = $AttackBehaviour
 
+var attack_array = ["AttackPrincipal", "AttackSecondaire", "AttackSpecial1", "AttackSpecial2"]
 
-var attack_dict = {
-	"AttackPrincipal": attack_principal,
-	"AttackSecondaire": attack_secondaire, 
-	"AttackSpecial1" : attack_special1, 
-	"AttackSpecial2": attack_special2}
+enum ATTACK {
+	PRINCIPAL,
+	SECONDAIRE,
+	SPECIAL1,
+	SPECIAL2
+}
 
 #### ACCESSORS ####
 
@@ -24,11 +23,8 @@ var attack_dict = {
 
 func _ready() -> void:
 	super._ready()
-	for key in attack_dict.keys():
-		var attack = attack_dict[key]
-		if attack != null:
-			attack.instantiate()
-			attack.connect("attack_finished", Callable(self, "_on_Attack_attack_finished"))
+	attack_behaviour.connect("attack_finished", Callable(self, "_on_AttackBehaviour_attack_finished"))
+	
 
 
 #### INPUT ####
@@ -62,7 +58,7 @@ func _input(_event: InputEvent) -> void:
 #### LOGIC ####
 
 func _update_state() -> void:
-	if not (state_machine.get_state_name() in attack_dict.keys()):
+	if not (state_machine.get_state_name() in attack_array):
 		if Input.is_action_pressed("Esquive_action"):
 			state_machine.set_state("Esquive")
 		elif moving_direction == Vector2.ZERO:
@@ -72,7 +68,7 @@ func _update_state() -> void:
 
 
 func _update_animation() -> void:
-	if not (state_machine.get_state_name() in attack_dict.keys()):
+	if not (state_machine.get_state_name() in attack_array):
 		super._update_animation()
 
 # Lance une tentative d'intéraction et retourne vrai si l'intéraction a été effectué, faux sinon
@@ -95,7 +91,7 @@ func hurt(damage: int) -> void:
 #### SIGNAL RESPONSES ####
 
 func _on_state_changed(_new_state: Object) -> void:
-	if state_machine.get_previous_state_name() in attack_dict.keys():
+	if state_machine.get_previous_state_name() in attack_array:
 		_update_state()
 	
 	super._on_StateMachine_state_changed(state_machine.get_state())
@@ -111,5 +107,8 @@ func _on_Sprite_animation_finished() -> void:
 	else:
 		super._on_AnimatedSprite_animation_finished()
 
-func _on_Attack_attack_finished(attack: PackedScene,action: String="") -> void:
+func _on_Attack_attack_finished(_attack: PackedScene,_action: String="") -> void:
+	state_machine.set_state("Idle")
+
+func _on_AttackBehaviour_attack_finished(attack: Object) -> void:
 	state_machine.set_state("Idle")

@@ -9,12 +9,19 @@ enum EFFECT_TYPE {
 	GLACE,
 	POISON,
 	RALENTISSEMENT,
-	REPOUSSE
+	REPOUSSE,
+	GRAB
 }
 
+enum TYPE_ATTACK {
+	NORMAL,
+	COMBO,
+	CHARGED
+}
 
+@export var type_attack : TYPE_ATTACK = TYPE_ATTACK.NORMAL
 
-@export var evolution : Array = []
+@export var evolution_array : Array = []
 
 @export_range(0.0, 100.0) var crit_rate : float = 0.0
 @export var min_damage : int = 0

@@ -1,4 +1,5 @@
-extends State
+extends Attack
+class_name ChargedAttack
 
 
 
@@ -18,8 +19,7 @@ func _ready() -> void:
 
 #### LOGICS ####
 
-func enter_state() -> void:
-	owner.attack_behaviour.start_attack_behaviour(owner.ATTACK.PRINCIPAL,owner.get_facing_direction())
+
 
 
 #### INPUTS ####

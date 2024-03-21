@@ -18,7 +18,6 @@ var attacks_count : int
 
 func _ready() -> void:
 	super._ready()
-	_init_animation()
 
 
 
@@ -27,16 +26,21 @@ func _ready() -> void:
 # init the animations and add Area2D and ColisionShape
 func _init_animation() -> void:
 	var animation_array = attack_data.attack_animation_array
+	animated_sprite.sprite_frames.clear_all()
+	
 	for i in range(animation_array.size()):
 		var animation = animation_array[i]
-		for facing_dir in animation.sprite_frames.get_names():
-			var animation_name = "Attack"+facing_dir
+		for facing_dir in animation.sprite_frames.get_animation_names():
+			var animation_name = "Attack"+facing_dir+str(i)
 			animated_sprite.sprite_frames.add_animation(animation_name)
+			animated_sprite.sprite_frames.set_animation_loop(animation_name, false)
 			_set_animation(animation_name, animation.sprite_frames, facing_dir)
-		if animation.shape.can_instantiate():
+		if animation.shape != null:
 			var area = Area2D.new()
+			var collision_shape = CollisionShape2D.new()
+			collision_shape.shape = animation.shape
 			area.name = "Hitbox"+str(i)
-			area.add_child(animation.shape.instantiate())
+			area.add_child(collision_shape)
 			add_child(area)
 		
 	# Update the number of attack animations in the combo attack
@@ -51,6 +55,7 @@ func start_attack_behaviour(facing_direction: Vector2) -> void:
 
 
 func _start_attack_animation(facing_direction: Vector2) -> void:
+	animated_sprite.set_visible(true)
 	animated_sprite.play("Attack"+Util.find_direction_name(facing_direction)+str(attack_index))
 
 # get attack_animation in index idx in attack_animation_array

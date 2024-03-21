@@ -4,7 +4,7 @@ class_name ennemy
 var player_chase = false
 var player = null
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player_chase:
 		position += (player.position - position)/speed
 
