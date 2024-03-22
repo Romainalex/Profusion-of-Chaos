@@ -44,8 +44,8 @@ func _init_animation() -> void:
 	if attack_animation.shape != null:
 		var area = Area2D.new()
 		var collision_shape = CollisionShape2D.new()
-		collision_shape.shape = attack_animation.shape
-		area.name = "Hitbox"
+		collision_shape.set_shape(attack_animation.shape)
+		area.set_name("Hitbox")
 		area.add_child(collision_shape.instantiate())
 		add_child(area)
 
@@ -64,12 +64,12 @@ func _set_animation(anim_name: String, frames: SpriteFrames, anim: String) -> vo
 		animated_sprite.sprite_frames.add_frame(anim_name, frames.get_frame_texture(anim,i),frames.get_frame_duration(anim, i))
 
 # start attack attemption with every bodies in the area hitbox at the attack_index
-func _attack_attempt(hitbox_name: String) -> void:
+func _attack_attempt(hitbox_name: String, attack_anim: AttackAnimationData) -> void:
 	var area = find_child(hitbox_name,false, false)
 	var bodies_array = area.get_overlapping_bodies()
 	for body in bodies_array:
 		if body.has_method("hurt"):
-			body.hurt()
+			body.hurt(attack_anim)
 
 # update hitbox_direction based on facing_direction
 func _update_hitbox_direction(facing_direction: Vector2) -> void:
@@ -92,7 +92,7 @@ func _on_AnimatedSprite_animation_finished() -> void:
 
 func _on_AnimatedSprite_frame_finished() -> void:
 	if attack_data.sprite_frames.hit_frame == animated_sprite.get_frame():
-		_attack_attempt("Hitbox")
+		_attack_attempt("Hitbox", attack_data.attack_animation)
 
 func _on_attack_data_changed() -> void:
 	_init_animation()

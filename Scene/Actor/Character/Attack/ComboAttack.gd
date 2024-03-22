@@ -34,12 +34,13 @@ func _init_animation() -> void:
 			var animation_name = "Attack"+facing_dir+str(i)
 			animated_sprite.sprite_frames.add_animation(animation_name)
 			animated_sprite.sprite_frames.set_animation_loop(animation_name, false)
+			animated_sprite.sprite_frames.set_animation_speed(animation_name, 10)
 			_set_animation(animation_name, animation.sprite_frames, facing_dir)
 		if animation.shape != null:
 			var area = Area2D.new()
 			var collision_shape = CollisionShape2D.new()
-			collision_shape.shape = animation.shape
-			area.name = "Hitbox"+str(i)
+			collision_shape.set_shape(animation.shape)
+			area.set_name("Hitbox"+str(i))
 			area.add_child(collision_shape)
 			add_child(area)
 		
@@ -78,4 +79,4 @@ func _on_AnimatedSprite_animation_finished() -> void:
 func _on_AnimatedSprite_frame_finished() -> void:
 	if str(attack_index).is_subsequence_of(animated_sprite.get_animation):
 		if _get_attack_animation(attack_index).hit_frame == animated_sprite.get_frame():
-			_attack_attempt("Hitbox"+str(attack_index))
+			_attack_attempt("Hitbox"+str(attack_index), attack_data.attack_animation_array[attack_index])

@@ -85,9 +85,9 @@ func _update_interaction_area_direction() -> void:
 	interaction_area.set_rotation_degrees(rad_to_deg(angle) - 90)
 
 # start the hurt actions
-func hurt(damage: int) -> void:
+func hurt(damage_data: DamageData) -> void:
 	state_machine.set_state("Hurt")
-	set_pv(pv - damage)
+	set_pv(pv - damage_data.min_damage)
 	_hurt_feedback()
 
 func die() -> void:
