@@ -81,9 +81,9 @@ func _interacting_attempt() -> bool:
 			interaction_success = true
 	return interaction_success
 
-func hurt(damage: int) -> void:
+func hurt(damage_data: DamageData) -> void:
 	if state_machine.get_state_name() != "Esquive":
-		super.hurt(damage)
+		super.hurt(damage_data)
 
 
 
