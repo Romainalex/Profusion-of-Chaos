@@ -27,22 +27,22 @@ signal attack_finished(attack)
 func set_attack_data_principal(data: Resource) -> void:
 	if attack_data_principal != data:
 		attack_data_principal = data
-		emit_signal("attack_data_changed", type_attack.keys()[0])
+		emit_signal("attack_data_changed", "AttackPrincipal",type_attack.keys()[0])
 
 func set_attack_data_secondaire(data: Resource) -> void:
 	if attack_data_secondaire != data:
 		attack_data_secondaire = data
-		emit_signal("attack_data_changed", type_attack.keys()[1])
+		emit_signal("attack_data_changed", "AttackSecondaire", type_attack.keys()[1])
 
 func set_attack_data_special1(data: Resource) -> void:
 	if attack_data_special1 != data:
 		attack_data_special1 = data
-		emit_signal("attack_data_changed", type_attack.keys()[2])
+		emit_signal("attack_data_changed", "AttackSpecial1", type_attack.keys()[2])
 
 func set_attack_data_special2(data: Resource) -> void:
 	if attack_data_special2 != data:
 		attack_data_special2 = data
-		emit_signal("attack_data_changed", type_attack.keys()[3])
+		emit_signal("attack_data_changed", "AttackSpecial2", type_attack.keys()[3])
 
 
 
@@ -85,7 +85,8 @@ func _create_attack(attack: String) -> void:
 		a.set_attack_data(type_attack[attack])
 		_create_attack_signal(attack)
 
-func _update_attack(attack: String) -> void:
+func _update_attack(_type_attack: String, _new_attack: String) -> void:
+	#TODO: suppresion de l'ancienne attaque
 	pass
 
 func _create_attack_signal(attack: String) -> void:
@@ -107,8 +108,8 @@ func _create_attack_signal(attack: String) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_attack_data_changed(attack: String) -> void:
-	_update_attack(attack)
+func _on_attack_data_changed(type_attack: String, new_attack: String) -> void:
+	_update_attack(type_attack, new_attack)
 
 func _on_AttackPrincipal_attack_finished(attack: Object) -> void:
 	emit_signal("attack_finished", attack)

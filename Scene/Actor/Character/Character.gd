@@ -110,5 +110,5 @@ func _on_Sprite_animation_finished() -> void:
 func _on_Attack_attack_finished(_attack: PackedScene,_action: String="") -> void:
 	state_machine.set_state("Idle")
 
-func _on_AttackBehaviour_attack_finished(attack: Object) -> void:
+func _on_AttackBehaviour_attack_finished(_attack: Object) -> void:
 	state_machine.set_state("Idle")

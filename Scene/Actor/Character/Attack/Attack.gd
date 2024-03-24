@@ -69,7 +69,7 @@ func _attack_attempt(hitbox_name: String, attack_anim: AttackAnimationData) -> v
 	var bodies_array = area.get_overlapping_bodies()
 	for body in bodies_array:
 		if body.has_method("hurt"):
-			body.hurt(attack_anim)
+			body.hurt(attack_anim.damage_data)
 
 # update hitbox_direction based on facing_direction
 func _update_hitbox_direction(facing_direction: Vector2) -> void:

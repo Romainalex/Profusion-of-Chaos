@@ -27,7 +27,7 @@ func _ready() -> void:
 #### LOGICS ####
 
 # Masquage de la fonction hurt() de Actor.gd pour rendre les PNJ invulnérable
-func hurt(damage_data: DamageData) -> void:
+func hurt(_damage_data: DamageData) -> void:
 	pass
 
 func interact() -> void:
