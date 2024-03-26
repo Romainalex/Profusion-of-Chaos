@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b02qj4hjdoup"]
+
+[ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="1_dakiu"]
+[ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="2_3cbtt"]
+
+[node name="TestsEnnemies" type="Node2D"]
+
+[node name="Ennemy" parent="." instance=ExtResource("1_dakiu")]
+position = Vector2(191, 92)
+
+[node name="LHommeDAffaire" parent="." instance=ExtResource("2_3cbtt")]
+position = Vector2(-1, -2)
