@@ -1,0 +1,109 @@
+[gd_resource type="Resource" script_class="SimpleAttackData" load_steps=15 format=3 uid="uid://dxrq50s2oeily"]
+
+[ext_resource type="Script" path="res://Resource/SimpleAttackData.gd" id="1_7kyrp"]
+[ext_resource type="Texture2D" uid="uid://cdbr22tksnoat" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png" id="1_agv2f"]
+[ext_resource type="Texture2D" uid="uid://biw2p464vd6g8" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_cravate_SpriteSheet.png" id="1_i0hbe"]
+[ext_resource type="Script" path="res://Resource/AttackAnimationData.gd" id="1_ljah1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifski"]
+atlas = ExtResource("1_i0hbe")
+region = Rect2(0, 0, 72, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nltf5"]
+atlas = ExtResource("1_i0hbe")
+region = Rect2(72, 0, 72, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pa3s4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifski")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nltf5")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpw6t"]
+atlas = ExtResource("1_agv2f")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84fee"]
+atlas = ExtResource("1_agv2f")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyt3r"]
+atlas = ExtResource("1_agv2f")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0acb"]
+atlas = ExtResource("1_agv2f")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ymnk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpw6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpw6t")
+}],
+"loop": false,
+"name": &"Down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84fee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84fee")
+}],
+"loop": false,
+"name": &"Left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyt3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyt3r")
+}],
+"loop": false,
+"name": &"Right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0acb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0acb")
+}],
+"loop": false,
+"name": &"Up",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o58ba"]
+
+[sub_resource type="Resource" id="Resource_ayxgf"]
+script = ExtResource("1_ljah1")
+animation_body_sprite_frames = SubResource("SpriteFrames_1ymnk")
+animation_attack_sprite_frames = SubResource("SpriteFrames_pa3s4")
+shape = SubResource("RectangleShape2D_o58ba")
+hit_frame = -1
+
+[resource]
+script = ExtResource("1_7kyrp")
+attack_animation = SubResource("Resource_ayxgf")
+type_attack = 0
+evolution_array = []
+cooldown = 3.0
+name = "Cravate enchantée"
+description = "Enchantée par le démon, cette cravate permet de réduire la distance avec sa proie."

@@ -10,6 +10,7 @@ class_name AttackBehaviour
 @export var attack_data_special1 : AttackData = null
 @export var attack_data_special2 : AttackData = null
 
+
 @onready var type_attack = {
 	"AttackPrincipal": attack_data_principal,
 	"AttackSecondaire": attack_data_secondaire,
@@ -85,20 +86,30 @@ func _create_attack(attack: String) -> void:
 		a.set_attack_data(type_attack[attack])
 		_create_attack_signal(attack)
 
-func _update_attack(_type_attack: String, _new_attack: String) -> void:
-	#TODO: suppresion de l'ancienne attaque
-	pass
+func _update_attack(type_old_attack: String, new_attack: String) -> void:
+	find_child(type_old_attack).free() #delete old attack
+	_create_attack(new_attack) #create new attack
+	_create_attack_signal(type_old_attack) #create new attack signal
 
 func _create_attack_signal(attack: String) -> void:
-	match attack:
+	_find_node_name(attack).connect("attack_finished", Callable(self, "_on_AttackSpecial2_attack_finished"))
+
+func _find_node_name(node_name: String):
+	var node_ref = null
+	match node_name:
 		"AttackPrincipal":
-			$AttackPrincipal.connect("attack_finished", Callable(self, "_on_AttackPrincipal_attack_finished"))
+			node_ref = $AttackPrincipal
 		"AttackSecondaire": 
-			$AttackSecondaire.connect("attack_finished", Callable(self, "_on_AttackSecondaire_attack_finished"))
+			node_ref = $AttackSecondaire
 		"AttackSpecial1": 
-			$AttackSpecial1.connect("attack_finished", Callable(self, "_on_AttackSpecial1_attack_finished"))
+			node_ref = $AttackSpecial1
 		"AttackSpecial2":
-			$AttackSpecial2.connect("attack_finished", Callable(self, "_on_AttackSpecial2_attack_finished"))
+			node_ref = $AttackSpecial2
+	
+	if node_ref == null:
+		push_error("Node reference not found, node_name : %s" % node_name)
+	else:
+		return node_ref
 
 
 #### INPUTS ####
@@ -108,8 +119,8 @@ func _create_attack_signal(attack: String) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_attack_data_changed(type_attack: String, new_attack: String) -> void:
-	_update_attack(type_attack, new_attack)
+func _on_attack_data_changed(type_attack_name: String, new_attack: String) -> void:
+	_update_attack(type_attack_name, new_attack)
 
 func _on_AttackPrincipal_attack_finished(attack: Object) -> void:
 	emit_signal("attack_finished", attack)

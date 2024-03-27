@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdbr22tksnoat"
-path="res://.godot/imported/L'homme_d'affaire_Move_Principal_SpriteSheet.png-3033967dd5a32cf51b7fcdb7cccedf6f.ctex"
+uid="uid://biw2p464vd6g8"
+path="res://.godot/imported/L'homme_d'affaire_cravate_SpriteSheet.png-c9248823220e0a00d4fe844d1f42cdb4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png"
-dest_files=["res://.godot/imported/L'homme_d'affaire_Move_Principal_SpriteSheet.png-3033967dd5a32cf51b7fcdb7cccedf6f.ctex"]
+source_file="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_cravate_SpriteSheet.png"
+dest_files=["res://.godot/imported/L'homme_d'affaire_cravate_SpriteSheet.png-c9248823220e0a00d4fe844d1f42cdb4.ctex"]
 
 [params]
 

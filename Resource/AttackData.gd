@@ -8,7 +8,7 @@ enum TYPE_ATTACK {
 	CHARGED
 }
 
-@export var type_attack : TYPE_ATTACK = TYPE_ATTACK.NORMAL
+@export var type_attack : TYPE_ATTACK
 
 @export var evolution_array : Array = []
 

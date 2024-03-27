@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://diryhf05ebh51"]
 
-[ext_resource type="Texture2D" uid="uid://de55throhfh4j" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png" id="1_xbd1h"]
+[ext_resource type="Texture2D" uid="uid://cdbr22tksnoat" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png" id="1_xbd1h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_na6eh"]
 atlas = ExtResource("1_xbd1h")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcqgi85erd4p3"]
+[gd_scene load_steps=7 format=3 uid="uid://dcqgi85erd4p3"]
 
 [ext_resource type="PackedScene" uid="uid://dqkmyvvmo4itf" path="res://Scene/Actor/Character/Character.tscn" id="1_p7yas"]
 [ext_resource type="Resource" uid="uid://cxrbo6ash7ym8" path="res://Resource/AttackData/coup_de_poing.tres" id="3_0jn1e"]
 [ext_resource type="SpriteFrames" uid="uid://diryhf05ebh51" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire_sprite_frame.tres" id="3_jui7e"]
+[ext_resource type="Resource" uid="uid://dxrq50s2oeily" path="res://Resource/AttackData/cravate_enchantee.tres" id="4_din1h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ei04p"]
 radius = 6.32456
@@ -21,6 +22,7 @@ shape = SubResource("CircleShape2D_ei04p")
 
 [node name="AttackBehaviour" parent="." index="2"]
 attack_data_principal = ExtResource("3_0jn1e")
+attack_data_secondaire = ExtResource("4_din1h")
 
 [node name="CollisionShape2D" parent="InteractionArea" index="0"]
 shape = SubResource("CircleShape2D_qjih7")
