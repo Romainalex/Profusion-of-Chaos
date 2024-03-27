@@ -8,10 +8,19 @@
 [ext_resource type="Script" path="res://Scene/Actor/Character/AttackSecondaireState.gd" id="5_r4fuq"]
 
 [node name="Character" instance=ExtResource("1_m5txu")]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("2_n5pxn")
+
+[node name="CollisionShape2D" parent="." index="1"]
+light_mask = 3
+visibility_layer = 3
 
 [node name="AttackBehaviour" type="Node2D" parent="." index="2"]
 script = ExtResource("3_xrrth")
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+visibility_layer = 3
 
 [node name="AttackPrincipal" type="Node" parent="StateMachine" index="4"]
 script = ExtResource("3_g40v1")
