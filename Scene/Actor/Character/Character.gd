@@ -111,4 +111,5 @@ func _on_Attack_attack_finished(_attack: PackedScene,_action: String="") -> void
 	state_machine.set_state("Idle")
 
 func _on_AttackBehaviour_attack_finished(_attack: Object) -> void:
+	animated_sprite.set_visible(true)
 	state_machine.set_state("Idle")

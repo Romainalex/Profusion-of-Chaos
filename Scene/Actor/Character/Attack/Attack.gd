@@ -6,6 +6,7 @@ class_name Attack
 
 @onready var animated_sprite_body = $AnimatedSpriteBody
 @onready var animated_sprite_attack = $AnimatedSpriteAttack
+@onready var cooldown = $Cooldown
 
 @export var normalized_name_attack : String = "Attack"
 @export var normalized_name_hitbox : String =  "Hitbox"
@@ -30,6 +31,7 @@ func set_attack_data(data: Resource) -> void:
 func _ready() -> void:
 	animated_sprite_attack.connect("animation_finished", Callable(self, "_on_AnimatedSprite_animation_finished"))
 	animated_sprite_attack.connect("frame_changed", Callable(self, "_on_AnimatedSprite_frame_changed"))
+	cooldown.connect("timeout", Callable(self, "_on_Cooldown_timeout"))
 	connect("attack_data_changed", Callable(self, "_on_attack_data_changed"))
 
 
@@ -46,14 +48,20 @@ func _init_animation() -> void:
 	for facing_dir in attack_animation.animation_body_sprite_frames.get_animation_names():
 		animation_name = normalized_name_attack+facing_dir
 		_add_animation(animated_sprite_body, animation_name, attack_animation.animation_body_sprite_frames, facing_dir)
-	if attack_animation.shape != null:
-		var area = Area2D.new()
-		var collision_shape = CollisionShape2D.new()
-		collision_shape.set_shape(attack_animation.shape)
-		collision_shape.set_position(attack_animation.position)
-		area.set_name(normalized_name_hitbox)
-		area.add_child(collision_shape)
-		add_child(area)
+	
+	if attack_animation.shape_array != null:
+		for shape in attack_animation.shape_array:
+			if shape != null:
+				_add_hitbox(shape, normalized_name_hitbox)
+
+func _add_hitbox(shape_resource: ShapeData, hitbox_name: String) -> void:
+	var area = Area2D.new()
+	var collision_shape = CollisionShape2D.new()
+	collision_shape.set_shape(shape_resource.shape)
+	collision_shape.set_position(shape_resource.position)
+	area.set_name(hitbox_name+"_"+str(shape_resource.hit_frame))
+	area.add_child(collision_shape)
+	add_child(area)
 
 func _add_animation(animated_sprite_to_change: AnimatedSprite2D, animated_sprite_name: String, sprite_frames_to_add: SpriteFrames, sprite_frames_name: String) -> void:
 	animated_sprite_to_change.sprite_frames.add_animation(animated_sprite_name)
@@ -61,24 +69,28 @@ func _add_animation(animated_sprite_to_change: AnimatedSprite2D, animated_sprite
 	animated_sprite_to_change.sprite_frames.set_animation_speed(animated_sprite_name, sprite_frames_to_add.get_animation_speed(sprite_frames_name))
 	_set_animation(animated_sprite_to_change, animated_sprite_name, sprite_frames_to_add, sprite_frames_name)
 
-# start the attack's behaviour
+##Start the attack's behaviour
 func start_attack_behaviour(facing_direction: Vector2) -> void:
-	_update_hitbox_and_attack_direction(facing_direction)
-	_start_attack_animation(facing_direction)
+	if cooldown.is_stopped():
+		_update_hitbox_and_attack_direction(facing_direction)
+		_start_attack_animation(facing_direction)
+	else:
+		emit_signal("attack_finished", self)
 
-func _start_attack_animation(facing_direction: Vector2) -> void:
+##Start the attack's animation
+func _start_attack_animation(_facing_direction: Vector2) -> void:
 	animated_sprite_body.set_visible(true)
 	animated_sprite_attack.set_visible(true)
-	animated_sprite_body.play(normalized_name_attack+Util.find_direction_name(facing_direction))
+	animated_sprite_body.play(normalized_name_attack+Util.find_direction_name_8_dir(get_global_mouse_position() - global_position))
 	animated_sprite_attack.play(normalized_name_attack)
 	
 
-# set frames from frames in animation named name 
+##Set frames named [param sprite_frames_name] from frames [param sprite_frames_to_add] in animated_sprite [param animated_sprite_to_change] named [param animated_sprite_name]
 func _set_animation(animated_sprite_to_change: AnimatedSprite2D, animated_sprite_name: String, sprite_frames_to_add: SpriteFrames, sprite_frames_name: String) -> void:
 	for i in range(sprite_frames_to_add.get_frame_count(sprite_frames_name)):
 		animated_sprite_to_change.sprite_frames.add_frame(animated_sprite_name, sprite_frames_to_add.get_frame_texture(sprite_frames_name,i),sprite_frames_to_add.get_frame_duration(sprite_frames_name, i))
 
-# start attack attemption with every bodies in the area hitbox at the attack_index
+##Start attack attemption with every bodies in the area hitbox named [param hitbox_name]
 func _attack_attempt(hitbox_name: String, attack_anim: AttackAnimationData) -> void:
 	var area = find_child(hitbox_name,false, false)
 	var bodies_array = area.get_overlapping_bodies()
@@ -86,13 +98,13 @@ func _attack_attempt(hitbox_name: String, attack_anim: AttackAnimationData) -> v
 		if body.has_method("hurt"):
 			body.hurt(attack_anim.damage_data)
 
-# update hitbox_direction based on facing_direction
-func _update_hitbox_and_attack_direction(facing_direction: Vector2) -> void:
-	var angle = facing_direction.angle()
+##Update [member Attack.hitbox_direction] and [member Attack.animated_sprite_attack] based on [param facing_direction]
+func _update_hitbox_and_attack_direction(_facing_direction: Vector2) -> void:
+	var angle = (get_global_mouse_position() - global_position).normalized().angle() # (get_global_mouse_position() - parent.global_position).normalized().angle()
 	var children = get_children()
 	for child in children:
 		if normalized_name_hitbox.is_subsequence_of(child.name):
-			child.set_rotation_degrees(rad_to_deg(angle) - 90)
+			child.set_rotation_degrees(rad_to_deg(angle) - 90) 
 	animated_sprite_attack.set_rotation_degrees(rad_to_deg(angle) - 90)
 
 #### INPUTS ####
@@ -105,11 +117,17 @@ func _update_hitbox_and_attack_direction(facing_direction: Vector2) -> void:
 func _on_AnimatedSprite_animation_finished() -> void:
 	animated_sprite_body.set_visible(false)
 	animated_sprite_attack.set_visible(false)
+	if attack_data.cooldown > 0.0:
+		cooldown.start(attack_data.cooldown)
 	emit_signal("attack_finished", self)
 
-func _on_AnimatedSprite_frame_finished() -> void:
-	if attack_data.sprite_frames.hit_frame == animated_sprite_attack.get_frame():
-		_attack_attempt(normalized_name_hitbox, attack_data.attack_animation)
+func _on_AnimatedSprite_frame_changed() -> void:
+	for shape in attack_data.attack_animation.shape_array:
+		if shape.hit_frame == animated_sprite_attack.get_frame():
+			_attack_attempt(normalized_name_hitbox+"_"+str(shape.hit_frame), attack_data.attack_animation)
+
+func _on_Cooldown_timeout() ->  void:
+	pass
 
 func _on_attack_data_changed() -> void:
 	_init_animation()

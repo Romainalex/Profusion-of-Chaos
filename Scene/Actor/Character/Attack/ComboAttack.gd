@@ -36,13 +36,10 @@ func _init_animation() -> void:
 		for facing_dir in animation.animation_body_sprite_frames.get_animation_names():
 			animation_name = normalized_name_attack+facing_dir+str(i)
 			_add_animation(animated_sprite_body, animation_name, animation.animation_body_sprite_frames, facing_dir)
-		if animation.shape != null:
-			var area = Area2D.new()
-			var collision_shape = CollisionShape2D.new()
-			collision_shape.set_shape(animation.shape)
-			area.set_name(normalized_name_hitbox+str(i))
-			area.add_child(collision_shape)
-			add_child(area)
+		if animation.shape_array != null:
+			for shape in animation.shape_array:
+				if shape != null:
+					_add_hitbox(shape, normalized_name_hitbox+str(i))
 		
 	# Update the number of attack animations in the combo attack
 	attacks_count = animation_array.size()
@@ -55,10 +52,10 @@ func start_attack_behaviour(facing_direction: Vector2) -> void:
 	super.start_attack_behaviour(facing_direction)
 
 
-func _start_attack_animation(facing_direction: Vector2) -> void:
+func _start_attack_animation(_facing_direction: Vector2) -> void:
 	animated_sprite_body.set_visible(true)
 	animated_sprite_attack.set_visible(true)
-	animated_sprite_body.play(normalized_name_attack+Util.find_direction_name(facing_direction)+str(attack_index))
+	animated_sprite_body.play(normalized_name_attack+Util.find_direction_name_8_dir(get_global_mouse_position() - global_position)+str(attack_index))
 	animated_sprite_attack.play(normalized_name_attack+str(attack_index))
 
 ##Get attack_animation in index [param idx] in attack_animation_array
@@ -78,7 +75,8 @@ func _on_AnimatedSprite_animation_finished() -> void:
 	timer.start(attack_data.time_to_restart)
 	super._on_AnimatedSprite_animation_finished()
 
-func _on_AnimatedSprite_frame_finished() -> void:
-	if str(attack_index).is_subsequence_of(animated_sprite_attack.get_animation):
-		if _get_attack_animation(attack_index).hit_frame == animated_sprite_attack.get_frame():
-			_attack_attempt(normalized_name_hitbox+str(attack_index), attack_data.attack_animation_array[attack_index])
+func _on_AnimatedSprite_frame_changed() -> void:
+	if str(attack_index).is_subsequence_of(animated_sprite_attack.get_animation()):
+		for shape in _get_attack_animation(attack_index).shape_array:
+			if shape.hit_frame == animated_sprite_attack.get_frame():
+				_attack_attempt(normalized_name_hitbox+str(attack_index)+"_"+str(shape.hit_frame), _get_attack_animation(attack_index))

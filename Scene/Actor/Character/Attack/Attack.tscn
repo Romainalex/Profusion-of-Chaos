@@ -14,3 +14,6 @@ sprite_frames = SubResource("SpriteFrames_7w187")
 
 [node name="AnimatedSpriteAttack" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7r0mv")
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true

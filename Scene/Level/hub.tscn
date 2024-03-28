@@ -51,3 +51,5 @@ position = Vector2(112, 192)
 position = Vector2(352, 120)
 
 [node name="enemy" parent="." instance=ExtResource("7_me4y2")]
+speed = 300.0
+max_pv = 100

@@ -80,6 +80,8 @@ func _create_attack(attack: String) -> void:
 				a = combo_attack_scene.instantiate()
 			2: # CHARGED attack
 				a = charged_attack_scene.instantiate()
+			_: # default
+				push_error("Error : No type_attack determined for attack %s" % attack)
 	if a != null:
 		add_child(a)
 		a.set_name(attack)
@@ -107,7 +109,7 @@ func _find_node_name(node_name: String):
 			node_ref = $AttackSpecial2
 	
 	if node_ref == null:
-		push_error("Node reference not found, node_name : %s" % node_name)
+		push_error("Error : Node reference not found, node_name : %s" % node_name)
 	else:
 		return node_ref
 

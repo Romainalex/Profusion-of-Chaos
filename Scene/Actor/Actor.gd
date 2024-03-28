@@ -71,20 +71,20 @@ func _ready() -> void:
 
 
 
-# update animation based on current state and facing_direction
+##Update animation based on [member state_machine.current_state] and [member Actor.facing_direction]
 func _update_animation() -> void:
 	var direction_name = Util.find_direction_name(facing_direction)
 	var state_name = state_machine.get_state_name()
 	
 	animated_sprite.play(state_name + direction_name)
 
-# update interaction_area_direction based on facing_direction
+##Update interaction_area_direction based on [member Actor.facing_direction]
 func _update_interaction_area_direction() -> void:
 	var angle = facing_direction.angle()
 	
 	interaction_area.set_rotation_degrees(rad_to_deg(angle) - 90)
 
-# start the hurt actions
+##Start the hurt actions
 func hurt(damage_data: DamageData) -> void:
 	state_machine.set_state("Hurt")
 	set_pv(pv - damage_data.min_damage)
