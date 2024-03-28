@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://2bd6ryf16qeo"]
+
+[ext_resource type="PackedScene" uid="uid://cswyylwaj4a33" path="res://Scene/Actor/Actor.tscn" id="1_cs6xx"]
+
+[node name="Hieroglyphe_Gardien" instance=ExtResource("1_cs6xx")]
