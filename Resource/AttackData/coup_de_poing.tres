@@ -22,9 +22,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kh1mv")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uonxr"]
@@ -95,7 +95,7 @@ script = ExtResource("2_qsijh")
 crit_rate = 0.0
 min_damage = 0
 max_damage = 0
-effect_array = []
+effect_array = Array[Resource("res://Resource/EffectData.gd")]([])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_suu3m"]
 
@@ -104,6 +104,7 @@ script = ExtResource("1_k15rn")
 animation_body_sprite_frames = SubResource("SpriteFrames_7h7lp")
 animation_attack_sprite_frames = SubResource("SpriteFrames_j2pvx")
 shape = SubResource("CircleShape2D_suu3m")
+position = Vector2(inf, inf)
 hit_frame = -1
 damage_data = SubResource("Resource_ftohf")
 
@@ -199,6 +200,7 @@ script = ExtResource("1_k15rn")
 animation_body_sprite_frames = SubResource("SpriteFrames_itkqq")
 animation_attack_sprite_frames = SubResource("SpriteFrames_xcsfj")
 shape = SubResource("CircleShape2D_wvmxx")
+position = Vector2(inf, inf)
 hit_frame = -1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fano"]
@@ -293,14 +295,15 @@ script = ExtResource("1_k15rn")
 animation_body_sprite_frames = SubResource("SpriteFrames_5qyqd")
 animation_attack_sprite_frames = SubResource("SpriteFrames_ak36v")
 shape = SubResource("CircleShape2D_rorf2")
+position = Vector2(inf, inf)
 hit_frame = -1
 
 [resource]
 script = ExtResource("1_077d5")
-attack_animation_array = [SubResource("Resource_ebte6"), SubResource("Resource_3crsu"), SubResource("Resource_cm3c8")]
+attack_animation_array = Array[ExtResource("1_k15rn")]([SubResource("Resource_ebte6"), SubResource("Resource_3crsu"), SubResource("Resource_cm3c8")])
 time_to_restart = 1.0
 type_attack = 1
-evolution_array = []
+evolution_array = Array[Resource("res://Resource/AttackData.gd")]([])
 cooldown = 0.0
 name = "Coup de poing"
 description = "Un enchaînement de coup de poing"

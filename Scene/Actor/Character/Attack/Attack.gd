@@ -26,6 +26,7 @@ func set_attack_data(data: Resource) -> void:
 
 #### BUILT-IN ####
 
+
 func _ready() -> void:
 	animated_sprite_attack.connect("animation_finished", Callable(self, "_on_AnimatedSprite_animation_finished"))
 	animated_sprite_attack.connect("frame_changed", Callable(self, "_on_AnimatedSprite_frame_changed"))
@@ -35,7 +36,7 @@ func _ready() -> void:
 
 #### LOGICS ####
 
-# init the animation and add Area2D and ColisionShape
+## init the animation and also add Area2D and ColisionShape
 func _init_animation() -> void:
 	var attack_animation = attack_data.attack_animation
 	animated_sprite_attack.sprite_frames.clear_all()
@@ -49,6 +50,7 @@ func _init_animation() -> void:
 		var area = Area2D.new()
 		var collision_shape = CollisionShape2D.new()
 		collision_shape.set_shape(attack_animation.shape)
+		collision_shape.set_position(attack_animation.position)
 		area.set_name(normalized_name_hitbox)
 		area.add_child(collision_shape)
 		add_child(area)
@@ -91,7 +93,7 @@ func _update_hitbox_and_attack_direction(facing_direction: Vector2) -> void:
 	for child in children:
 		if normalized_name_hitbox.is_subsequence_of(child.name):
 			child.set_rotation_degrees(rad_to_deg(angle) - 90)
-	animated_sprite_attack.set_rotation_degrees(rad_to_deg(angle)+90)
+	animated_sprite_attack.set_rotation_degrees(rad_to_deg(angle) - 90)
 
 #### INPUTS ####
 

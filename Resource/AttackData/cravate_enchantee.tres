@@ -1,26 +1,28 @@
-[gd_resource type="Resource" script_class="SimpleAttackData" load_steps=15 format=3 uid="uid://dxrq50s2oeily"]
+[gd_resource type="Resource" script_class="SimpleAttackData" load_steps=19 format=3 uid="uid://dxrq50s2oeily"]
 
 [ext_resource type="Script" path="res://Resource/SimpleAttackData.gd" id="1_7kyrp"]
 [ext_resource type="Texture2D" uid="uid://cdbr22tksnoat" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png" id="1_agv2f"]
 [ext_resource type="Texture2D" uid="uid://biw2p464vd6g8" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_cravate_SpriteSheet.png" id="1_i0hbe"]
 [ext_resource type="Script" path="res://Resource/AttackAnimationData.gd" id="1_ljah1"]
+[ext_resource type="Script" path="res://Resource/EffectData.gd" id="3_uwe3e"]
+[ext_resource type="Script" path="res://Resource/DamageData.gd" id="4_0uorj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ifski"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo8vy"]
 atlas = ExtResource("1_i0hbe")
-region = Rect2(0, 0, 72, 256)
+region = Rect2(0, 0, 320, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nltf5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cufp8"]
 atlas = ExtResource("1_i0hbe")
-region = Rect2(72, 0, 72, 256)
+region = Rect2(320, 0, 320, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pa3s4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ifski")
+"texture": SubResource("AtlasTexture_uo8vy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nltf5")
+"texture": SubResource("AtlasTexture_cufp8")
 }],
 "loop": false,
 "name": &"Attack",
@@ -90,20 +92,36 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Resource" id="Resource_41y74"]
+script = ExtResource("3_uwe3e")
+effect_type = 7
+damage_effect = 0
+hit_chance = 100.0
+
+[sub_resource type="Resource" id="Resource_837qu"]
+script = ExtResource("4_0uorj")
+crit_rate = 0.0
+min_damage = 10
+max_damage = 50
+effect_array = Array[ExtResource("3_uwe3e")]([SubResource("Resource_41y74")])
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o58ba"]
+size = Vector2(10, 130)
 
 [sub_resource type="Resource" id="Resource_ayxgf"]
 script = ExtResource("1_ljah1")
 animation_body_sprite_frames = SubResource("SpriteFrames_1ymnk")
 animation_attack_sprite_frames = SubResource("SpriteFrames_pa3s4")
 shape = SubResource("RectangleShape2D_o58ba")
-hit_frame = -1
+position = Vector2(0, 80)
+hit_frame = 1
+damage_data = SubResource("Resource_837qu")
 
 [resource]
 script = ExtResource("1_7kyrp")
 attack_animation = SubResource("Resource_ayxgf")
 type_attack = 0
-evolution_array = []
+evolution_array = Array[Resource("res://Resource/AttackData.gd")]([])
 cooldown = 3.0
 name = "Cravate enchantée"
 description = "Enchantée par le démon, cette cravate permet de réduire la distance avec sa proie."

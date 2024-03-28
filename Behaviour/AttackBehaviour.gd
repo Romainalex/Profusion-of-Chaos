@@ -92,7 +92,7 @@ func _update_attack(type_old_attack: String, new_attack: String) -> void:
 	_create_attack_signal(type_old_attack) #create new attack signal
 
 func _create_attack_signal(attack: String) -> void:
-	_find_node_name(attack).connect("attack_finished", Callable(self, "_on_AttackSpecial2_attack_finished"))
+	_find_node_name(attack).connect("attack_finished", Callable(self, "_on_"+attack+"_attack_finished"))
 
 func _find_node_name(node_name: String):
 	var node_ref = null

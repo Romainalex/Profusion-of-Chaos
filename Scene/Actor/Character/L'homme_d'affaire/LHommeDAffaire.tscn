@@ -18,7 +18,6 @@ sprite_frames = ExtResource("3_jui7e")
 animation = &"IdleDown"
 
 [node name="CollisionShape2D" parent="." index="1"]
-visibility_layer = 1
 shape = SubResource("CircleShape2D_ei04p")
 
 [node name="AttackBehaviour" parent="." index="2"]
