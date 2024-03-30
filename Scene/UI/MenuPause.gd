@@ -25,6 +25,7 @@ func _input(event: InputEvent) -> void:
 
 func _animation(appear: bool) -> void:
 	set_visible(appear)
+	$VBoxContainer/ContinueButton.grab_focus()
 
 
 

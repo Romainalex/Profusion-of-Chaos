@@ -3,7 +3,6 @@ class_name MainMenu
 
 
 
-
 #### ACCESSORS ####
 
 
@@ -18,17 +17,19 @@ func _ready() -> void:
 	$VBoxContainer/OptionsButton.connect("pressed", Callable(self, "_on_OptionsButton_pressed"))
 	$VBoxContainer/CreditsButton.connect("pressed", Callable(self, "_on_CreditsButton_pressed"))
 	$VBoxContainer/QuitButton.connect("pressed", Callable(self, "_on_QuitButton_pressed"))
+	
+	$VBoxContainer/ContinueButton.grab_focus()
+	
 
 
 
 #### LOGICS ####
 
 
-
-
 #### INPUTS ####
 
-
+func _input(_event: InputEvent) -> void:
+	pass
 
 
 #### SIGNAL RESPONSES ####
@@ -47,3 +48,5 @@ func _on_CreditsButton_pressed() -> void:
 
 func _on_QuitButton_pressed() -> void:
 	get_tree().quit()
+
+

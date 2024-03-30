@@ -33,7 +33,7 @@ func _input(_event: InputEvent) -> void:
 	if hidden_menu:
 		return
 	
-	if Input.is_action_just_pressed("Back_action"):
+	if Input.is_action_just_pressed("ui_cancel"):
 		set_hidden_menu(true)
 
 
