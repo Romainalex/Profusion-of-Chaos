@@ -1,5 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://2bd6ryf16qeo"]
+[gd_scene load_steps=4 format=3 uid="uid://2bd6ryf16qeo"]
 
-[ext_resource type="PackedScene" uid="uid://cswyylwaj4a33" path="res://Scene/Actor/Actor.tscn" id="1_cs6xx"]
+[ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="1_oplay"]
+[ext_resource type="Texture2D" uid="uid://dw1hx781jnu1b" path="res://icon.svg" id="2_ei4ju"]
 
-[node name="Hieroglyphe_Gardien" instance=ExtResource("1_cs6xx")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2tnjg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ei4ju")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Hieroglyphe_Gardien" instance=ExtResource("1_oplay")]
+
+[node name="AnimatedSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_2tnjg")
