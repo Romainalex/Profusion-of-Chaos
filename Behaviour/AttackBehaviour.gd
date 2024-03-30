@@ -1,4 +1,4 @@
-extends Node2D
+extends Behaviour
 class_name AttackBehaviour
 
 @onready var attack_scene = preload("res://Scene/Actor/Character/Attack/Attack.tscn")
@@ -9,6 +9,7 @@ class_name AttackBehaviour
 @export var attack_data_secondaire : AttackData = null
 @export var attack_data_special1 : AttackData = null
 @export var attack_data_special2 : AttackData = null
+@export var consommable_data : ConsommableData = null
 
 
 @onready var type_attack = {
@@ -61,13 +62,13 @@ func _ready() -> void:
 func start_attack_behaviour(attack: int, facing_direction) -> void:
 	match attack:
 		0: # Attack principal
-			$AttackPrincipal.start_attack_behaviour(facing_direction)
+			$AttackPrincipal.start_attack_behaviour(facing_direction, owner.actor_data.crit_rate)
 		1: # Attack secondaire
-			$AttackSecondaire.start_attack_behaviour(facing_direction)
+			$AttackSecondaire.start_attack_behaviour(facing_direction, owner.actor_data.crit_rate)
 		2: # Attack special1
-			$AttackSpecial1.start_attack_behaviour(facing_direction)
+			$AttackSpecial1.start_attack_behaviour(facing_direction, owner.actor_data.crit_rate)
 		3: # Attack special2
-			$AttackSpecial2.start_attack_behaviour(facing_direction)
+			$AttackSpecial2.start_attack_behaviour(facing_direction, owner.actor_data.crit_rate)
 
 func _create_attack(attack: String) -> void:
 	var a = null

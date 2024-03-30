@@ -19,8 +19,8 @@ var tween : Tween
 #### BUILT-IN ####
 
 func _ready() -> void:
-	upgrade_weapon.connect("hidden_upgrade_weapon_changed", Callable(self, "_on_UpgradeWeapon_hidden_upgrade_weapon_changed"))
-	change_spell.connect("hidden_change_spell_changed", Callable(self, "_on_ChangeSpell_hidden_change_spell_changed"))
+	upgrade_weapon.connect("hidden_menu_changed", Callable(self, "_on_UpgradeWeapon_hidden_menu_changed"))
+	change_spell.connect("hidden_menu_changed", Callable(self, "_on_ChangeSpell_hidden_menu_changed"))
 
 
 #### LOGICS ####
@@ -40,8 +40,8 @@ func fade(fade_in: bool) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_UpgradeWeapon_hidden_upgrade_weapon_changed(val: bool) -> void:
+func _on_UpgradeWeapon_hidden_menu_changed(val: bool) -> void:
 	fade(!val)
 
-func _on_ChangeSpell_hidden_change_spell_changed(val: bool) -> void:
+func _on_ChangeSpell_hidden_menu_changed(val: bool) -> void:
 	fade(!val)

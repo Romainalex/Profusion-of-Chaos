@@ -4,6 +4,8 @@ class_name Character
 
 @onready var attack_behaviour = $AttackBehaviour
 
+@export var dodge_data : DodgeData = null
+
 var attack_array = ["AttackPrincipal", "AttackSecondaire", "AttackSpecial1", "AttackSpecial2"]
 
 enum ATTACK {
@@ -29,7 +31,7 @@ func _ready() -> void:
 
 #### INPUT ####
 
-# Gère les inputs du jeu
+## Gère les inputs du jeu
 func _input(_event: InputEvent) -> void:
 	var dir = Vector2(
 		int(Input.is_action_pressed("Right_action")) - int(Input.is_action_pressed("Left_action")),
@@ -71,7 +73,7 @@ func _update_animation() -> void:
 	if not (state_machine.get_state_name() in attack_array):
 		super._update_animation()
 
-# Lance une tentative d'intéraction et retourne vrai si l'intéraction a été effectué, faux sinon
+##Lance une tentative d'intéraction et retourne vrai si l'intéraction a été effectué, faux sinon
 func _interacting_attempt() -> bool:
 	var bodies_array = interaction_area.get_overlapping_bodies()
 	var interaction_success : bool = false
@@ -81,9 +83,9 @@ func _interacting_attempt() -> bool:
 			interaction_success = true
 	return interaction_success
 
-func hurt(damage_data: DamageData) -> void:
+func hurt(damage_data: DamageData, crit: float) -> void:
 	if state_machine.get_state_name() != "Esquive":
-		super.hurt(damage_data)
+		super.hurt(damage_data, crit)
 
 
 

@@ -11,6 +11,7 @@ class_name Attack
 @export var normalized_name_attack : String = "Attack"
 @export var normalized_name_hitbox : String =  "Hitbox"
 
+var crit : float = 0.0
 
 signal attack_finished(attack)
 signal attack_data_changed()
@@ -70,8 +71,9 @@ func _add_animation(animated_sprite_to_change: AnimatedSprite2D, animated_sprite
 	_set_animation(animated_sprite_to_change, animated_sprite_name, sprite_frames_to_add, sprite_frames_name)
 
 ##Start the attack's behaviour
-func start_attack_behaviour(facing_direction: Vector2) -> void:
+func start_attack_behaviour(facing_direction: Vector2, crit_rate: float) -> void:
 	if cooldown.is_stopped():
+		crit = crit_rate
 		_update_hitbox_and_attack_direction(facing_direction)
 		_start_attack_animation(facing_direction)
 	else:
@@ -95,12 +97,12 @@ func _attack_attempt(hitbox_name: String, attack_anim: AttackAnimationData) -> v
 	var area = find_child(hitbox_name,false, false)
 	var bodies_array = area.get_overlapping_bodies()
 	for body in bodies_array:
-		if body.has_method("hurt"):
-			body.hurt(attack_anim.damage_data)
+		if body.has_method("hurt") and (body in get_tree().get_nodes_in_group("Ennemy")):
+			body.hurt(attack_anim.damage_data, crit)
 
 ##Update [member Attack.hitbox_direction] and [member Attack.animated_sprite_attack] based on [param facing_direction]
 func _update_hitbox_and_attack_direction(_facing_direction: Vector2) -> void:
-	var angle = (get_global_mouse_position() - global_position).normalized().angle() # (get_global_mouse_position() - parent.global_position).normalized().angle()
+	var angle = (get_global_mouse_position() - global_position).normalized().angle()
 	var children = get_children()
 	for child in children:
 		if normalized_name_hitbox.is_subsequence_of(child.name):

@@ -11,10 +11,13 @@ class_name Actor
 @onready var interaction_area = $InteractionArea
 @onready var tween
 
+@export var actor_data : ActorData = null
+
 @export var speed = 300.0
 
 var moving_direction  := Vector2.ZERO # créer un vecteur x-y dont x et y sont initialisé à 0
 var facing_direction := Vector2.DOWN
+
 
 @export var max_pv : int = 100
 @onready var pv : int = max_pv
@@ -25,6 +28,7 @@ signal facing_direction_changed
 signal moving_direction_changed
 signal pv_changed
 signal death_feedback_finished
+signal grabed(location)
 
 
 #### ACCESSEUR ####
@@ -70,7 +74,6 @@ func _ready() -> void:
 #### LOGICS ####
 
 
-
 ##Update animation based on [member state_machine.current_state] and [member Actor.facing_direction]
 func _update_animation() -> void:
 	var direction_name = Util.find_direction_name(facing_direction)
@@ -84,11 +87,32 @@ func _update_interaction_area_direction() -> void:
 	
 	interaction_area.set_rotation_degrees(rad_to_deg(angle) - 90)
 
-##Start the hurt actions
-func hurt(damage_data: DamageData) -> void:
-	state_machine.set_state("Hurt")
-	set_pv(pv - damage_data.min_damage)
+##Start the hurt actions based on a [param damage_data]
+func hurt(damage_data: DamageData, crit: float) -> void:
+	var dam : int = 0
+	for effect in damage_data.effect_array:
+		match effect.effect_type:
+			effect.EFFECT_TYPE.GRAB:
+				emit_signal("grabed", global_position)
+				state_machine.set_state("Freeze")
+			_: #default
+				state_machine.set_state("Hurt")
+				dam = effect.damage_effect
+				if randf_range(0.0,100.0) < effect.hit_chance:
+					dam *= 2
+				set_pv(pv - dam)
+	dam = damage_data.damage
+	if randf_range(0.0,100.0) < crit:
+		dam *= 2
+	set_pv(pv - dam)
 	_hurt_feedback()
+
+
+func _hurt_feedback() -> void:
+	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+	#tween.tween_property(animated_sprite, "material:shader_parameter/opacity", 1.0, 0.1).from(0.0)
+	#tween.tween_property(animated_sprite, "material:shader_parameter/opacity", 0.0, 0.1).from(1.0)
+
 
 func die() -> void:
 	EVENTS.emit_signal("actor_died", self)
@@ -96,11 +120,6 @@ func die() -> void:
 	_death_feedback()
 	$CollisionShape2D.set_disabled(true)
 	
-
-func _hurt_feedback() -> void:
-	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(animated_sprite, "material:shader_parameter/opacity", 1.0, 0.1).from(0.0)
-	tween.tween_property(animated_sprite, "material:shader_parameter/opacity", 0.0, 0.1).from(1.0)
 
 func _death_feedback() -> void:
 	tween = create_tween()

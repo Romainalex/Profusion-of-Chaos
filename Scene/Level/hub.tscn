@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://740xgis2sqf5"]
+[gd_scene load_steps=9 format=3 uid="uid://740xgis2sqf5"]
 
 [ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="1_y2e7b"]
 [ext_resource type="PackedScene" uid="uid://c6iodv62becyt" path="res://Scene/Actor/PNJ/Hephaistos/Hephaistos.tscn" id="2_50giu"]
 [ext_resource type="Script" path="res://Scene/UI/Blackwell.gd" id="3_3onsu"]
+[ext_resource type="PackedScene" uid="uid://dnpsajap57a67" path="res://Scene/UI/MenuPause.tscn" id="4_0i8dl"]
 [ext_resource type="PackedScene" uid="uid://u64o5fe8tipg" path="res://Scene/UI/Commerce/UpgradeWeapon.tscn" id="4_sxwtc"]
 [ext_resource type="PackedScene" uid="uid://c3u0g3tyno108" path="res://Scene/UI/Commerce/ChangeSpell.tscn" id="5_n336u"]
 [ext_resource type="PackedScene" uid="uid://dr3r7hkoehfmr" path="res://Scene/Actor/PNJ/Tezcatlipoca/Tezcatlipoca.tscn" id="6_wuvbb"]
@@ -14,8 +15,18 @@
 position = Vector2(102, 52)
 collision_layer = 3
 
-[node name="Hephaistos" parent="." instance=ExtResource("2_50giu")]
+[node name="Hephaistos" parent="." groups=["PNJ"] instance=ExtResource("2_50giu")]
 position = Vector2(555, 77)
+
+[node name="Tezcatlipoca" parent="." instance=ExtResource("6_wuvbb")]
+position = Vector2(112, 192)
+
+[node name="Tezcatlipoca2" parent="." instance=ExtResource("6_wuvbb")]
+position = Vector2(352, 120)
+
+[node name="enemy" parent="." instance=ExtResource("7_me4y2")]
+speed = 300.0
+max_pv = 100
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -44,12 +55,6 @@ layout_mode = 1
 [node name="ChangeSpell" parent="CanvasLayer/UI" instance=ExtResource("5_n336u")]
 layout_mode = 1
 
-[node name="Tezcatlipoca" parent="." instance=ExtResource("6_wuvbb")]
-position = Vector2(112, 192)
-
-[node name="Tezcatlipoca2" parent="." instance=ExtResource("6_wuvbb")]
-position = Vector2(352, 120)
-
-[node name="enemy" parent="." instance=ExtResource("7_me4y2")]
-speed = 300.0
-max_pv = 100
+[node name="MenuPause" parent="CanvasLayer/UI" instance=ExtResource("4_0i8dl")]
+visible = false
+layout_mode = 1

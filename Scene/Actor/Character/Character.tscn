@@ -9,23 +9,27 @@
 
 [node name="Character" instance=ExtResource("1_m5txu")]
 script = ExtResource("2_n5pxn")
+dodge_data = null
 
 [node name="AttackBehaviour" type="Node2D" parent="." index="2"]
 script = ExtResource("3_xrrth")
 
-[node name="AttackPrincipal" type="Node" parent="StateMachine" index="4"]
+[node name="Go_to_grab" type="Node" parent="StateMachine" index="4"]
+script = ExtResource("3_kshho")
+
+[node name="AttackPrincipal" type="Node" parent="StateMachine" index="5"]
 script = ExtResource("3_g40v1")
 
-[node name="AttackSecondaire" type="Node" parent="StateMachine" index="5"]
+[node name="AttackSecondaire" type="Node" parent="StateMachine" index="6"]
 script = ExtResource("5_r4fuq")
 
-[node name="AttackSpecial1" type="Node" parent="StateMachine" index="6"]
+[node name="AttackSpecial1" type="Node" parent="StateMachine" index="7"]
 script = ExtResource("3_kshho")
 
-[node name="AttackSpecial2" type="Node" parent="StateMachine" index="7"]
+[node name="AttackSpecial2" type="Node" parent="StateMachine" index="8"]
 script = ExtResource("3_kshho")
 
-[node name="Esquive" type="Node" parent="StateMachine" index="8"]
+[node name="Esquive" type="Node" parent="StateMachine" index="9"]
 script = ExtResource("3_kshho")
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]

@@ -1,9 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcqgi85erd4p3"]
+[gd_scene load_steps=9 format=3 uid="uid://dcqgi85erd4p3"]
 
 [ext_resource type="PackedScene" uid="uid://dqkmyvvmo4itf" path="res://Scene/Actor/Character/Character.tscn" id="1_p7yas"]
+[ext_resource type="Script" path="res://Resource/CharacterData.gd" id="2_jvg1b"]
 [ext_resource type="Resource" uid="uid://cxrbo6ash7ym8" path="res://Resource/AttackData/coup_de_poing.tres" id="3_0jn1e"]
 [ext_resource type="SpriteFrames" uid="uid://diryhf05ebh51" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire_sprite_frame.tres" id="3_jui7e"]
 [ext_resource type="Resource" uid="uid://dxrq50s2oeily" path="res://Resource/AttackData/cravate_enchantee.tres" id="4_din1h"]
+
+[sub_resource type="Resource" id="Resource_m0g2b"]
+script = ExtResource("2_jvg1b")
+crit_rate = 25.0
+name = "L'homme d'affaire"
+description = "C'est Calum !!!"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ei04p"]
 radius = 6.32456
@@ -11,7 +18,8 @@ radius = 6.32456
 [sub_resource type="CircleShape2D" id="CircleShape2D_qjih7"]
 radius = 15.0333
 
-[node name="LHommeDAffaire" instance=ExtResource("1_p7yas")]
+[node name="LHommeDAffaire" groups=["Character"] instance=ExtResource("1_p7yas")]
+actor_data = SubResource("Resource_m0g2b")
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = ExtResource("3_jui7e")

@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_3tcc6")
-pnj_name = "Hephaistos"
+crit_rate = 0.0
+name = "Héphaistos"
+description = ""

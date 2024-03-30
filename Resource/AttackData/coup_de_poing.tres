@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="ComboAttackData" load_steps=52 format=3 uid="uid://cxrbo6ash7ym8"]
+[gd_resource type="Resource" script_class="ComboAttackData" load_steps=56 format=3 uid="uid://cxrbo6ash7ym8"]
 
 [ext_resource type="Script" path="res://Resource/ComboAttackData.gd" id="1_077d5"]
 [ext_resource type="Script" path="res://Resource/AttackAnimationData.gd" id="1_k15rn"]
 [ext_resource type="Script" path="res://Resource/DamageData.gd" id="2_qsijh"]
 [ext_resource type="Texture2D" uid="uid://cdbr22tksnoat" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png" id="2_vlfqe"]
 [ext_resource type="Script" path="res://Resource/ShapeData.gd" id="4_xupl6"]
+[ext_resource type="Script" path="res://Resource/EffectData.gd" id="5_idmjm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4apdx"]
 atlas = ExtResource("2_vlfqe")
@@ -153,10 +154,8 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_ftohf"]
 script = ExtResource("2_qsijh")
-crit_rate = 0.0
-min_damage = 0
-max_damage = 0
-effect_array = Array[Resource("res://Resource/EffectData.gd")]([])
+damage = 25
+effect_array = Array[ExtResource("5_idmjm")]([])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7ipk"]
 radius = 8.0
@@ -165,7 +164,7 @@ radius = 8.0
 script = ExtResource("4_xupl6")
 shape = SubResource("CircleShape2D_b7ipk")
 position = Vector2(0, 20)
-hit_frame = -1
+hit_frame = 1
 
 [sub_resource type="Resource" id="Resource_ebte6"]
 script = ExtResource("1_k15rn")
@@ -319,19 +318,25 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Resource" id="Resource_j78us"]
+script = ExtResource("2_qsijh")
+damage = 25
+effect_array = Array[ExtResource("5_idmjm")]([])
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvw2e"]
 
 [sub_resource type="Resource" id="Resource_c6e6x"]
 script = ExtResource("4_xupl6")
 shape = SubResource("CircleShape2D_wvw2e")
 position = Vector2(0, 20)
-hit_frame = -1
+hit_frame = 1
 
 [sub_resource type="Resource" id="Resource_3crsu"]
 script = ExtResource("1_k15rn")
 animation_body_sprite_frames = SubResource("SpriteFrames_itkqq")
 animation_attack_sprite_frames = SubResource("SpriteFrames_xcsfj")
 shape_array = Array[ExtResource("4_xupl6")]([SubResource("Resource_c6e6x")])
+damage_data = SubResource("Resource_j78us")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fano"]
 atlas = ExtResource("2_vlfqe")
@@ -478,6 +483,17 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Resource" id="Resource_bhy7q"]
+script = ExtResource("5_idmjm")
+effect_type = 6
+damage_effect = 0
+hit_chance = 100.0
+
+[sub_resource type="Resource" id="Resource_80f6l"]
+script = ExtResource("2_qsijh")
+damage = 50
+effect_array = Array[ExtResource("5_idmjm")]([SubResource("Resource_bhy7q")])
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5qhw"]
 size = Vector2(20, 30)
 
@@ -485,13 +501,14 @@ size = Vector2(20, 30)
 script = ExtResource("4_xupl6")
 shape = SubResource("RectangleShape2D_x5qhw")
 position = Vector2(0, 20)
-hit_frame = -1
+hit_frame = 1
 
 [sub_resource type="Resource" id="Resource_cm3c8"]
 script = ExtResource("1_k15rn")
 animation_body_sprite_frames = SubResource("SpriteFrames_5qyqd")
 animation_attack_sprite_frames = SubResource("SpriteFrames_ak36v")
 shape_array = Array[ExtResource("4_xupl6")]([SubResource("Resource_hily7")])
+damage_data = SubResource("Resource_80f6l")
 
 [resource]
 script = ExtResource("1_077d5")

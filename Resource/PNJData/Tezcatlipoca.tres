@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PNJData" load_steps=2 format=3 uid="uid://dwnn1l3rntn07"]
+
+[ext_resource type="Script" path="res://Resource/PNJData.gd" id="1_8o0y1"]
+
+[resource]
+script = ExtResource("1_8o0y1")
+crit_rate = 0.0
+name = "Tezcatlipoca"
+description = ""

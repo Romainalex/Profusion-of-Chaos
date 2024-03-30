@@ -1,5 +1,7 @@
-extends State
-class_name TraidPNJState
+extends Node
+class_name Behaviour
+
+@onready var object = owner
 
 
 
@@ -19,8 +21,7 @@ func _ready() -> void:
 
 #### LOGICS ####
 
-func enter_state() -> void:
-	EVENTS.emit_signal("pnj_traid_started", owner.pnj_data.name)
+
 
 
 #### INPUTS ####

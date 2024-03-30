@@ -15,4 +15,5 @@ signal actor_died(target)
 signal pnj_traid_started(pnj)
 signal pnj_traid_finished(pnj)
 
+
 signal room_finished

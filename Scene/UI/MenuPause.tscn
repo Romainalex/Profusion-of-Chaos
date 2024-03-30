@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnpsajap57a67"]
+
+[ext_resource type="Script" path="res://Scene/UI/MenuPause.gd" id="1_skh26"]
+
+[node name="MenuPause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_skh26")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MENU_CONTINUE"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MENU_OPTIONS"
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MENU_MAIN_MENU"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MENU_QUIT"

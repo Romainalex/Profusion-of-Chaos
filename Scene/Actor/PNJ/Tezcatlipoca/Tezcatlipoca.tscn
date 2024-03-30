@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr3r7hkoehfmr"]
+[gd_scene load_steps=10 format=3 uid="uid://dr3r7hkoehfmr"]
 
 [ext_resource type="PackedScene" uid="uid://cmtia6edn0hwa" path="res://Scene/Actor/PNJ/PNJ.tscn" id="1_a0lwj"]
-[ext_resource type="Resource" uid="uid://bx01bno46rfht" path="res://Scene/Actor/PNJ/Tezcatlipoca/TezcatlipocaPNJData.tres" id="2_j4ti3"]
+[ext_resource type="Resource" uid="uid://dwnn1l3rntn07" path="res://Resource/PNJData/Tezcatlipoca.tres" id="2_044bl"]
 [ext_resource type="Texture2D" uid="uid://7osy8dubn2p1" path="res://Scene/Actor/PNJ/Sprite/PNJ.png" id="3_w1vyr"]
-[ext_resource type="Texture2D" uid="uid://pn41ig6cokj4" path="res://Scene/UI/keyboard_e.png" id="4_ctmsm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvx37"]
 atlas = ExtResource("3_w1vyr")
@@ -50,8 +49,8 @@ radius = 32.0156
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxdfw"]
 radius = 46.0109
 
-[node name="Tezcatlipoca" instance=ExtResource("1_a0lwj")]
-pnj_data = ExtResource("2_j4ti3")
+[node name="Tezcatlipoca" groups=["PNJ"] instance=ExtResource("1_a0lwj")]
+pnj_data = ExtResource("2_044bl")
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ftikl")
@@ -62,7 +61,3 @@ shape = SubResource("CircleShape2D_tma8h")
 
 [node name="CollisionShape2D" parent="InteractionArea" index="0"]
 shape = SubResource("CircleShape2D_cxdfw")
-
-[node name="InteractingSprite" parent="." index="4"]
-visible = false
-texture = ExtResource("4_ctmsm")
