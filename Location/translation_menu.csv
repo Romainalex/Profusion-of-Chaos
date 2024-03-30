@@ -1,5 +1,7 @@
 key,fr,en
 MENU_CONTINUE,Continuer,Continue
+MENU_NEW_GAME,Nouvelle Partie,New game
 MENU_OPTIONS,Options,Options
+MENU_CREDITS,Crédits,Credits
 MENU_MAIN_MENU,Retour à l'écran titre,Return to main title
 MENU_QUIT,Quitter le jeu,Quit the game

@@ -60,15 +60,26 @@ func _ready() -> void:
 #### LOGICS ####
 
 func start_attack_behaviour(attack: int, facing_direction) -> void:
+	var face_direction = facing_direction
+	if GAME.INPUT_SCHEME in [GAME.INPUT_SCHEMES.XBOX, GAME.INPUT_SCHEMES.DUALSHOCK]:
+		var attack_direction = Input.get_vector("Attack_direction_Left","Attack_direction_Right","Attack_direction_Up","Attack_direction_Down")
+		var move_direction = Input.get_vector("Left_action","Right_action","Up_action","Down_action")
+		if attack_direction != Vector2.ZERO:
+			face_direction = attack_direction
+		elif move_direction != Vector2.ZERO:
+			face_direction = move_direction
+	elif GAME.INPUT_SCHEME == GAME.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
+		face_direction = object.get_global_mouse_position() - object.global_position
+	
 	match attack:
 		0: # Attack principal
-			$AttackPrincipal.start_attack_behaviour(facing_direction, owner.actor_data.crit_rate)
+			$AttackPrincipal.start_attack_behaviour(face_direction, owner.actor_data.crit_rate)
 		1: # Attack secondaire
-			$AttackSecondaire.start_attack_behaviour(facing_direction, owner.actor_data.crit_rate)
+			$AttackSecondaire.start_attack_behaviour(face_direction, owner.actor_data.crit_rate)
 		2: # Attack special1
-			$AttackSpecial1.start_attack_behaviour(facing_direction, owner.actor_data.crit_rate)
+			$AttackSpecial1.start_attack_behaviour(face_direction, owner.actor_data.crit_rate)
 		3: # Attack special2
-			$AttackSpecial2.start_attack_behaviour(facing_direction, owner.actor_data.crit_rate)
+			$AttackSpecial2.start_attack_behaviour(face_direction, owner.actor_data.crit_rate)
 
 func _create_attack(attack: String) -> void:
 	var a = null

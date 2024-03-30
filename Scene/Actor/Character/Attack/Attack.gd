@@ -80,10 +80,10 @@ func start_attack_behaviour(facing_direction: Vector2, crit_rate: float) -> void
 		emit_signal("attack_finished", self)
 
 ##Start the attack's animation
-func _start_attack_animation(_facing_direction: Vector2) -> void:
+func _start_attack_animation(facing_direction: Vector2) -> void:
 	animated_sprite_body.set_visible(true)
 	animated_sprite_attack.set_visible(true)
-	animated_sprite_body.play(normalized_name_attack+Util.find_direction_name_8_dir(get_global_mouse_position() - global_position))
+	animated_sprite_body.play(normalized_name_attack+Util.find_direction_name_8_dir(facing_direction))
 	animated_sprite_attack.play(normalized_name_attack)
 	
 
@@ -101,8 +101,8 @@ func _attack_attempt(hitbox_name: String, attack_anim: AttackAnimationData) -> v
 			body.hurt(attack_anim.damage_data, crit)
 
 ##Update [member Attack.hitbox_direction] and [member Attack.animated_sprite_attack] based on [param facing_direction]
-func _update_hitbox_and_attack_direction(_facing_direction: Vector2) -> void:
-	var angle = (get_global_mouse_position() - global_position).normalized().angle()
+func _update_hitbox_and_attack_direction(facing_direction: Vector2) -> void:
+	var angle = facing_direction.normalized().angle()
 	var children = get_children()
 	for child in children:
 		if normalized_name_hitbox.is_subsequence_of(child.name):

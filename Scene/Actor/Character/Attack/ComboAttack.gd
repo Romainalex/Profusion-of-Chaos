@@ -44,7 +44,7 @@ func _init_animation() -> void:
 	# Update the number of attack animations in the combo attack
 	attacks_count = animation_array.size()
 
-func start_attack_behaviour(facing_direction: Vector2, _crit: float) -> void:
+func start_attack_behaviour(facing_direction: Vector2, crit: float) -> void:
 	if timer.is_stopped():
 		attack_index = 0
 	else:
@@ -52,10 +52,10 @@ func start_attack_behaviour(facing_direction: Vector2, _crit: float) -> void:
 	super.start_attack_behaviour(facing_direction, crit)
 
 
-func _start_attack_animation(_facing_direction: Vector2) -> void:
+func _start_attack_animation(facing_direction: Vector2) -> void:
 	animated_sprite_body.set_visible(true)
 	animated_sprite_attack.set_visible(true)
-	animated_sprite_body.play(normalized_name_attack+Util.find_direction_name_8_dir(get_global_mouse_position() - global_position)+str(attack_index))
+	animated_sprite_body.play(normalized_name_attack+Util.find_direction_name_8_dir(facing_direction)+str(attack_index))
 	animated_sprite_attack.play(normalized_name_attack+str(attack_index))
 
 ##Get attack_animation in index [param idx] in attack_animation_array
