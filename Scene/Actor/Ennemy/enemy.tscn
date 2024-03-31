@@ -1,48 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://j52h3qadapdb"]
+[gd_scene load_steps=3 format=3 uid="uid://j52h3qadapdb"]
 
 [ext_resource type="PackedScene" uid="uid://cswyylwaj4a33" path="res://Scene/Actor/Actor.tscn" id="1_jac0c"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/enemy.gd" id="1_yjmos"]
-[ext_resource type="Texture2D" uid="uid://dw1hx781jnu1b" path="res://icon.svg" id="3_yy7yx"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5q3bi"]
-atlas = ExtResource("3_yy7yx")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_a76b0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5q3bi")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_thty4"]
-radius = 18.1108
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_egye1"]
-radius = 77.07
 
 [node name="Ennemy" instance=ExtResource("1_jac0c")]
 script = ExtResource("1_yjmos")
-speed = null
-max_pv = null
 
 [node name="AnimatedSprite" parent="." index="0"]
-sprite_frames = SubResource("SpriteFrames_a76b0")
 animation = &"default"
-
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_thty4")
-debug_color = Color(0.513726, 0, 0.121569, 0.419608)
-
-[node name="InteractionArea" parent="." index="2"]
-light_mask = 2
-visibility_layer = 2
-
-[node name="CollisionShape2D" parent="InteractionArea" index="0"]
-light_mask = 2
-visibility_layer = 2
-shape = SubResource("CircleShape2D_egye1")

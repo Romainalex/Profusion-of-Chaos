@@ -1,5 +1,5 @@
 extends Actor
-class_name ennemy
+class_name Ennemy
 
 var player_chase = false
 var player = null
