@@ -10,6 +10,7 @@
 [node name="Character" instance=ExtResource("1_m5txu")]
 script = ExtResource("2_n5pxn")
 dodge_data = null
+speed = 200.0
 
 [node name="AttackBehaviour" type="Node2D" parent="." index="2"]
 script = ExtResource("3_xrrth")

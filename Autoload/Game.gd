@@ -28,23 +28,32 @@ func set_nb_coins(val : int) -> void:
 func get_nb_coins() -> int:
 	return nb_coins
 
+func set_input_scheme(input: INPUT_SCHEMES) -> void:
+	if input != INPUT_SCHEME:
+		INPUT_SCHEME = input
+		EVENTS.emit_signal("input_scheme_changed")
+
 #### BUILT-IN ####
 
 func _ready() -> void:
 	randomize()
 	EVENTS.connect("object_collected", Callable(self,"_on_EVENTS_object_collected"))
-	Input.connect("joy_connection_changed", Callable(self, "_on_Input_joy_connection_changed"))
 	
 
-func _update_input_scheme():
-	if Input.get_connected_joypads().size() > 0:
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		match Input.get_joy_name(Input.get_connected_joypads()[0]):
 			var n when "XInput".is_subsequence_of(n):
-				INPUT_SCHEME = INPUT_SCHEMES.XBOX
+				set_input_scheme(INPUT_SCHEMES.XBOX)
 			var n when "PS".is_subsequence_of(n):
-				INPUT_SCHEME = INPUT_SCHEMES.DUALSHOCK
-	else:
-		INPUT_SCHEME = INPUT_SCHEMES.KEYBOARD_AND_MOUSE
+				set_input_scheme(INPUT_SCHEMES.DUALSHOCK)
+			_:
+				set_input_scheme(INPUT_SCHEMES.XBOX)
+	elif event is InputEventKey or event is InputEventMouseMotion:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		set_input_scheme(INPUT_SCHEMES.KEYBOARD_AND_MOUSE)
 
 #### SIGNAL RESPONSES ####
 
@@ -52,5 +61,3 @@ func _update_input_scheme():
 	#if object is Coin:
 		#set_nb_coins(nb_coins + 1)
 
-func _on_Input_joy_connection_changed(_device: int, _connected: bool) -> void:
-	_update_input_scheme()

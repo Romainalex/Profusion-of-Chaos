@@ -1,0 +1,516 @@
+[gd_scene load_steps=41 format=3 uid="uid://5vsi6tcbajlq"]
+
+[ext_resource type="Script" path="res://Scene/UI/OptionsMenu.gd" id="1_ptdoq"]
+[ext_resource type="Texture2D" uid="uid://0yxgpo00jro4" path="res://Scene/UI/Image/move_gamepad_input.png" id="2_1vme6"]
+[ext_resource type="Texture2D" uid="uid://k2lgq3tnl6uf" path="res://Scene/UI/Image/up_input.png" id="2_7wcwt"]
+[ext_resource type="Texture2D" uid="uid://b26wlxoyj1r2t" path="res://Scene/UI/Image/back_input.png" id="2_xply8"]
+[ext_resource type="Script" path="res://Scene/UI/ControllerEchapTexture.gd" id="3_6et8v"]
+[ext_resource type="Texture2D" uid="uid://d0uvuy0c7csi1" path="res://Scene/UI/Image/down_input.png" id="3_gq3ya"]
+[ext_resource type="Texture2D" uid="uid://2eqekgymh5vp" path="res://Scene/UI/Image/aim_input.png" id="3_l7hc5"]
+[ext_resource type="Texture2D" uid="uid://bn6hcljaioqwt" path="res://Scene/UI/Image/dodge_input.png" id="3_msv7b"]
+[ext_resource type="Texture2D" uid="uid://dor4hvl0rm2p1" path="res://Scene/UI/Image/right_input.png" id="4_8ty12"]
+[ext_resource type="Texture2D" uid="uid://c4y031m48w8xt" path="res://Scene/UI/Image/attack_principal_input.png" id="5_7q5qo"]
+[ext_resource type="Texture2D" uid="uid://bmkpifilaytdk" path="res://Scene/UI/Image/use_object_input.png" id="5_kot80"]
+[ext_resource type="Texture2D" uid="uid://eunco611nxcj" path="res://Scene/UI/Image/left_input.png" id="5_wf8iq"]
+[ext_resource type="Texture2D" uid="uid://cg4ahn37cpnlw" path="res://Scene/UI/Image/attack_secondaire_input.png" id="6_2e4au"]
+[ext_resource type="Texture2D" uid="uid://c8pj80k7bmhhh" path="res://Scene/UI/Image/interaction_input.png" id="6_4uthi"]
+[ext_resource type="Texture2D" uid="uid://ch6kcp5n2lwck" path="res://Scene/UI/Image/attack_special1_input.png" id="10_pidgk"]
+[ext_resource type="Texture2D" uid="uid://dj0wocdex5p4a" path="res://Scene/UI/Image/attack_special2_input.png" id="11_lxyot"]
+[ext_resource type="Texture2D" uid="uid://c5h0m35akmsm0" path="res://Scene/UI/Image/menu_input.png" id="12_kkglk"]
+[ext_resource type="Texture2D" uid="uid://b5fxktwt0a3pg" path="res://Scene/UI/Image/inventory_input.png" id="13_fuysd"]
+
+[sub_resource type="Gradient" id="Gradient_3ddxv"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.208556, 1)
+colors = PackedColorArray(0, 0, 0.101961, 1, 0.568627, 0.266667, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c1i6d"]
+gradient = SubResource("Gradient_3ddxv")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44fbl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x128p"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncyat"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojrxb"]
+atlas = ExtResource("2_7wcwt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8nwt"]
+atlas = ExtResource("3_gq3ya")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7oni"]
+atlas = ExtResource("4_8ty12")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n15m"]
+atlas = ExtResource("5_wf8iq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhm2t"]
+atlas = ExtResource("3_l7hc5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogxwq"]
+atlas = ExtResource("3_msv7b")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2lol"]
+atlas = ExtResource("5_kot80")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv5vj"]
+atlas = ExtResource("6_4uthi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa4tt"]
+atlas = ExtResource("2_xply8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7x3i"]
+atlas = ExtResource("5_7q5qo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4x0p"]
+atlas = ExtResource("6_2e4au")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kah6i"]
+atlas = ExtResource("10_pidgk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7pmu"]
+atlas = ExtResource("11_lxyot")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2sij"]
+atlas = ExtResource("12_kkglk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvuxm"]
+atlas = ExtResource("13_fuysd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0k3t"]
+atlas = ExtResource("2_1vme6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbsoy"]
+atlas = ExtResource("2_xply8")
+region = Rect2(0, 0, 64, 64)
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ptdoq")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_c1i6d")
+
+[node name="MainPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_44fbl")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/ScrollContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LanguageOptionButton" type="OptionButton" parent="MainPanel/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../../ControllerButton")
+item_count = 2
+popup/item_0/text = "Français"
+popup/item_0/id = 0
+popup/item_1/text = "English"
+popup/item_1/id = 1
+
+[node name="LanguageLabel" type="Label" parent="MainPanel/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "OPTIONS_LANGUAGE"
+
+[node name="ControllerButton" type="Button" parent="MainPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../HBoxContainer/LanguageOptionButton")
+text = "OPTIONS_CONTROLS"
+
+[node name="ControllerPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_x128p")
+metadata/_edit_lock_ = true
+
+[node name="InputSchemePanel" type="Panel" parent="ControllerPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 40.0
+offset_right = -20.0
+offset_bottom = 43.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ncyat")
+
+[node name="ButtonInputSchemesContainer" type="HBoxContainer" parent="ControllerPanel/InputSchemePanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="KeyboardMouseScheme" type="Button" parent="ControllerPanel/InputSchemePanel/ButtonInputSchemesContainer"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../XboxScheme")
+focus_next = NodePath("../XboxScheme")
+text = "INPUT_KEYMOUSE_SCHEMES"
+
+[node name="XboxScheme" type="Button" parent="ControllerPanel/InputSchemePanel/ButtonInputSchemesContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../KeyboardMouseScheme")
+focus_neighbor_right = NodePath("../DualshockScheme")
+focus_next = NodePath("../DualshockScheme")
+focus_previous = NodePath("../KeyboardMouseScheme")
+text = "INPUT_XINPUT"
+
+[node name="DualshockScheme" type="Button" parent="ControllerPanel/InputSchemePanel/ButtonInputSchemesContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../XboxScheme")
+focus_previous = NodePath("../XboxScheme")
+text = "INPUT_DUALSHOCK"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControllerPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="ControllerPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 50.0
+offset_right = -20.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="KeyMouseScrollContainer" type="ScrollContainer" parent="ControllerPanel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="ControllerPanel/Panel/KeyMouseScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="MoveUpLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_MOVE_UP"
+
+[node name="MoveUpTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ojrxb")
+
+[node name="MoveDownLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_MOVE_DOWN"
+
+[node name="MoveDownTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_g8nwt")
+
+[node name="MoveRightLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_MOVE_RIGHT"
+
+[node name="MoveRightTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_s7oni")
+
+[node name="MoveLeftLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_MOVE_LEFT"
+
+[node name="MoveLeftTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_1n15m")
+
+[node name="AimLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_AIM_GAMEPAD"
+
+[node name="AimTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_yhm2t")
+
+[node name="DodgeLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_DODGE"
+
+[node name="DodgeTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ogxwq")
+
+[node name="UseObjectLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_USE_OBJECT"
+
+[node name="UseObjectTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_k2lol")
+
+[node name="InteractionLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_INTERACTION"
+
+[node name="InteractionTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_pv5vj")
+
+[node name="BackLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_BACK"
+
+[node name="BackTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_sa4tt")
+
+[node name="AttackPrincipalLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_ATTACK_PRINCIPAL"
+
+[node name="AttackPrincipalTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_m7x3i")
+
+[node name="AttackSecondaireLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_ATTACK_SECONDAIRE"
+
+[node name="AttackSecondaireTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_r4x0p")
+
+[node name="AttackSpecial1Label" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_ATTACK_SPECIAL1"
+
+[node name="AttackSpecial1TextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kah6i")
+
+[node name="AttackSpecial2Label" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_ATTACK_SPECIAL2"
+
+[node name="AttackSpecial2TextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_o7pmu")
+
+[node name="MenuLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_MENU"
+
+[node name="MenuTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_l2sij")
+
+[node name="InventoryLabel" type="Label" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_INVENTORY"
+
+[node name="InventoryTextureRect" type="TextureRect" parent="ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lvuxm")
+
+[node name="GamepadScrollContainer" type="ScrollContainer" parent="ControllerPanel/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_vertical_custom_step = 10.0
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="ControllerPanel/Panel/GamepadScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="MoveLabel" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_MOVE_GAMEPAD"
+
+[node name="MoveTextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_b0k3t")
+
+[node name="AimLabel" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_AIM_GAMEPAD"
+
+[node name="AimTextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_yhm2t")
+
+[node name="DodgeLabel" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_DODGE"
+
+[node name="DodgeTextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ogxwq")
+
+[node name="UseObjectLabel" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_USE_OBJECT"
+
+[node name="UseObjectTextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_k2lol")
+
+[node name="InteractionLabel" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_INTERACTION"
+
+[node name="InteractionTextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_pv5vj")
+
+[node name="BackLabel" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_BACK"
+
+[node name="BackTextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_sa4tt")
+
+[node name="AttackPrincipalLabel" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_ATTACK_PRINCIPAL"
+
+[node name="AttackPrincipalTextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_m7x3i")
+
+[node name="AttackSecondaireLabel" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_ATTACK_SECONDAIRE"
+
+[node name="AttackSecondaireTextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_r4x0p")
+
+[node name="AttackSpecial1Label" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_ATTACK_SPECIAL1"
+
+[node name="AttackSpecial1TextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kah6i")
+
+[node name="AttackSpecial2Label" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_ATTACK_SPECIAL2"
+
+[node name="AttackSpecial2TextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_o7pmu")
+
+[node name="MenuLabel" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_MENU"
+
+[node name="MenuTextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_l2sij")
+
+[node name="InventoryLabel" type="Label" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+text = "INPUT_INVENTORY"
+
+[node name="InventoryTextureRect" type="TextureRect" parent="ControllerPanel/Panel/GamepadScrollContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lvuxm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -23.0
+offset_right = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "MENU_BACK"
+
+[node name="BackControllerTexture" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_dbsoy")
+expand_mode = 3
+script = ExtResource("3_6et8v")

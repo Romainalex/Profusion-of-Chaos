@@ -5,3 +5,27 @@ MENU_OPTIONS,Options,Options
 MENU_CREDITS,Crédits,Credits
 MENU_MAIN_MENU,Retour à l'écran titre,Return to main title
 MENU_QUIT,Quitter le jeu,Quit the game
+MENU_BACK,Retour,Back
+CREDITS_MEMBERS,Membres,Members
+CREDITS_THANKS,Remerciements,Thanks
+OPTIONS_LANGUAGE,Langue,Language
+OPTIONS_CONTROLS,Les commandes,Controls
+INPUT_KEYMOUSE_SCHEMES,Clavier & Souris, Keyboard & Mouse
+INPUT_XINPUT,XBOX,XBOX
+INPUT_DUALSHOCK,PS4/PS5,PS4/PS5
+INPUT_MOVE_GAMEPAD,Se déplacer,Move
+INPUT_AIM_GAMEPAD,Viser pour l'attaque,Aim for attack
+INPUT_DODGE,Esquive,Dodge
+INPUT_ATTACK_PRINCIPAL,Attaque principal,Principal attack 
+INPUT_ATTACK_SECONDAIRE,Attaque secondaire,Secondary attack
+INPUT_ATTACK_SPECIAL1,Attaque special principal,Principal special attack
+INPUT_ATTACK_SPECIAL2,Attaque special secondaire,Secondary special attack
+INPUT_MENU,Ouvir le menu pause,Open pause menu
+INPUT_INVENTORY,Ouvrir l'inventaire,Open Inventory
+INPUT_INTERACTION,Intéragir,Interact
+INPUT_BACK,Retour (dans le menu),Back (in menu)
+INPUT_USE_OBJECT,Utiliser l'objet,Use object
+INPUT_MOVE_UP,Aller en haut,Go to up
+INPUT_MOVE_DOWN,Aller en bas,Go to down
+INPUT_MOVE_LEFT,Aller à gauche,Go to left
+INPUT_MOVE_RIGHT,Aller à droite,Go to right

@@ -17,3 +17,5 @@ signal pnj_traid_finished(pnj)
 
 
 signal room_finished
+
+signal input_scheme_changed()

@@ -14,6 +14,7 @@
 [node name="LHommeDAffaire" parent="." instance=ExtResource("1_y2e7b")]
 position = Vector2(102, 52)
 collision_layer = 3
+speed = 300.0
 
 [node name="Hephaistos" parent="." groups=["PNJ"] instance=ExtResource("2_50giu")]
 position = Vector2(555, 77)
@@ -49,12 +50,12 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0)
 script = ExtResource("3_3onsu")
 
+[node name="MenuPause" parent="CanvasLayer/UI" instance=ExtResource("4_0i8dl")]
+visible = false
+layout_mode = 1
+
 [node name="UpgradeWeapon" parent="CanvasLayer/UI" instance=ExtResource("4_sxwtc")]
 layout_mode = 1
 
 [node name="ChangeSpell" parent="CanvasLayer/UI" instance=ExtResource("5_n336u")]
-layout_mode = 1
-
-[node name="MenuPause" parent="CanvasLayer/UI" instance=ExtResource("4_0i8dl")]
-visible = false
 layout_mode = 1

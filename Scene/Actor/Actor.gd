@@ -13,7 +13,7 @@ class_name Actor
 
 @export var actor_data : ActorData = null
 
-@export var speed = 300.0
+@export_range(0.0, 100.0, 0.25) var speed = 300.0
 
 var moving_direction  := Vector2.ZERO # créer un vecteur x-y dont x et y sont initialisé à 0
 var facing_direction := Vector2.DOWN

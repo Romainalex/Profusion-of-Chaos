@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://vbl6pamnom28"]
+[gd_scene load_steps=8 format=3 uid="uid://vbl6pamnom28"]
 
 [ext_resource type="Script" path="res://Scene/UI/MainMenu.gd" id="1_0whei"]
 [ext_resource type="Texture2D" uid="uid://1of1ejo0mlt7" path="res://BTM_logo.png" id="2_6ugtj"]
+[ext_resource type="Script" path="res://Scene/UI/Credits.gd" id="3_maypj"]
+[ext_resource type="Script" path="res://Scene/UI/ControllerEchapTexture.gd" id="4_6nwie"]
+[ext_resource type="Texture2D" uid="uid://b26wlxoyj1r2t" path="res://Scene/UI/Image/back_input.png" id="4_jlrvn"]
+[ext_resource type="PackedScene" uid="uid://5vsi6tcbajlq" path="res://Scene/UI/OptionsMenu.tscn" id="6_5sq18"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh41v"]
+atlas = ExtResource("4_jlrvn")
+region = Rect2(0, 0, 64, 64)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,7 +32,7 @@ texture = ExtResource("2_6ugtj")
 expand_mode = 3
 metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ButtonsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -34,28 +42,92 @@ offset_right = 8.0
 offset_bottom = 16.0
 grow_vertical = 2
 
-[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../NewGameButton")
 text = "MENU_CONTINUE"
 
-[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+[node name="NewGameButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../ContinueButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
 text = "MENU_NEW_GAME"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../NewGameButton")
 focus_neighbor_bottom = NodePath("../CreditsButton")
 text = "MENU_OPTIONS"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
 text = "MENU_CREDITS"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../CreditsButton")
 text = "MENU_QUIT"
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_maypj")
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="Credits"]
+
+[node name="ColorRect" type="ColorRect" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.0392157, 1)
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = 200.0
+offset_right = 71.5
+offset_bottom = 301.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Credits/HBoxContainer"]
+layout_mode = 2
+text = "MENU_BACK"
+
+[node name="BackControllerTexture" type="TextureRect" parent="Credits/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_yh41v")
+expand_mode = 3
+script = ExtResource("4_6nwie")
+
+[node name="OptionsMenu" parent="." instance=ExtResource("6_5sq18")]
+layout_mode = 1
+
+[editable path="OptionsMenu"]

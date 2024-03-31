@@ -21,7 +21,9 @@ func _ready() -> void:
 	interaction_area.connect("body_entered", Callable(self, "_on_InteractionArea_body_entered"))
 	interaction_area.connect("body_exited", Callable(self, "_on_InteractionArea_body_exited"))
 	EVENTS.connect("pnj_traid_finished", Callable(self, "_on_EVENTS_pnj_traid_finished"))
+	EVENTS.connect("input_scheme_changed", Callable(self, "_on_EVENTS_input_scheme_changed"))
 	
+	interaction_sprite.set_frame(GAME.INPUT_SCHEME)
 	interaction_sprite.set_visible(false)
 
 
@@ -43,7 +45,6 @@ func _on_StateMachine_state_changed(_new_state: Object) -> void:
 
 func _on_InteractionArea_body_entered(body) -> void:
 	if body is Character:
-		interaction_sprite.set_frame(GAME.INPUT_SCHEME)
 		interaction_sprite.set_visible(true)
 
 func _on_InteractionArea_body_exited(body) -> void:
@@ -54,3 +55,5 @@ func _on_EVENTS_pnj_traid_finished(pnj_name: String) -> void:
 	if pnj_name == pnj_data.name:
 		state_machine.set_state("Work")
 
+func _on_EVENTS_input_scheme_changed() -> void:
+	interaction_sprite.set_frame(GAME.INPUT_SCHEME)
