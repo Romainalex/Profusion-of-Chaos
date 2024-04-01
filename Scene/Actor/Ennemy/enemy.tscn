@@ -6,5 +6,8 @@
 [node name="Ennemy" instance=ExtResource("1_jac0c")]
 script = ExtResource("1_yjmos")
 
-[node name="AnimatedSprite" parent="." index="0"]
-animation = &"default"
+[node name="ChaseArea" type="Area2D" parent="." index="4"]
+
+[node name="AttackArea" type="Area2D" parent="." index="5"]
+
+[node name="AttackHitbox" type="Area2D" parent="." index="6"]

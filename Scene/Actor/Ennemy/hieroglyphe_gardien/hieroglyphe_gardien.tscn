@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://2bd6ryf16qeo"]
+[gd_scene load_steps=12 format=3 uid="uid://2bd6ryf16qeo"]
 
 [ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="1_oplay"]
 [ext_resource type="Texture2D" uid="uid://dw1hx781jnu1b" path="res://icon.svg" id="2_ei4ju"]
+[ext_resource type="Script" path="res://StateMachine/State.gd" id="3_2nqgv"]
+[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="3_uqfg0"]
+[ext_resource type="Script" path="res://StateMachine/StateLabel.gd" id="5_qt8et"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2tnjg"]
 animations = [{
@@ -14,7 +17,63 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3lakp"]
+radius = 62.1289
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_of0xv"]
+radius = 28.3019
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ifbde"]
+radius = 180.003
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kucxw"]
+radius = 88.0909
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eupfo"]
+size = Vector2(114.25, 48)
+
 [node name="Hieroglyphe_Gardien" instance=ExtResource("1_oplay")]
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_2tnjg")
+animation = &"default"
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_3lakp")
+debug_color = Color(0.984314, 0, 0.341176, 0.419608)
+
+[node name="InteractionArea" parent="." index="2"]
+visible = false
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+visible = false
+shape = SubResource("CircleShape2D_of0xv")
+
+[node name="BehaviorTree" type="Node2D" parent="." index="4"]
+script = ExtResource("3_uqfg0")
+
+[node name="Wander" type="Node" parent="BehaviorTree" index="0"]
+script = ExtResource("3_2nqgv")
+
+[node name="Chase" type="Node" parent="BehaviorTree" index="1"]
+script = ExtResource("3_2nqgv")
+
+[node name="Attack" type="Node" parent="BehaviorTree" index="2"]
+script = ExtResource("3_2nqgv")
+
+[node name="Label" type="Label" parent="BehaviorTree" index="3"]
+offset_left = -37.0
+offset_top = -89.0
+offset_right = 40.0
+offset_bottom = -66.0
+script = ExtResource("5_qt8et")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea" index="0"]
+shape = SubResource("CircleShape2D_ifbde")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_kucxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" index="0"]
+position = Vector2(-0.125, 72)
+shape = SubResource("RectangleShape2D_eupfo")
