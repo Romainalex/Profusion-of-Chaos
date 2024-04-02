@@ -6,19 +6,27 @@
 
 [node name="Ennemy" instance=ExtResource("1_jac0c")]
 script = ExtResource("1_yjmos")
+metadata/_edit_lock_ = true
 
-[node name="BehaviorTree" type="Node" parent="." index="3"]
+[node name="StateMachine" parent="." index="2"]
+metadata/_edit_lock_ = true
+
+[node name="BehaviorTree" type="Node2D" parent="." index="3"]
 script = ExtResource("3_nv5xs")
+metadata/_edit_lock_ = true
 
 [node name="ChaseArea" type="Area2D" parent="." index="4"]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea" index="0"]
 
 [node name="AttackArea" type="Area2D" parent="." index="5"]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
 
 [node name="AttackHitbox" type="Area2D" parent="." index="6"]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" index="0"]
 position = Vector2(-0.125, 72)

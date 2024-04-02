@@ -27,12 +27,12 @@ func set_target_in_attack_area(value: bool) -> void:
 		emit_signal("target_in_attack_area_changed", target_in_attack_area)
 
 func _ready() -> void :
-	var __ = chase_area.connect("body_entered", Callable(self, "_on_ChaseArea_body_entered"))
-	__ = chase_area.connect("body_exited", Callable(self, "_on_ChaseArea_body-exited"))
-	__ = attack_area.connect("body_entered",  Callable(self, "_on_AttackArea_body_entered"))
-	__ = attack_area.connect("body_exited",  Callable(self, "_on_AttackArea_body-exited"))
-	__ = connect("target_in_chase_area_changed", Callable(self, "_on_target_in_chase_area_changed"))
-	#__ = connect("target_in_chase_area_changed", Callable(self, "_on_target_in_chase_area_changed"))
+	chase_area.connect("body_entered", Callable(self, "_on_ChaseArea_body_entered"))
+	chase_area.connect("body_exited", Callable(self, "_on_ChaseArea_body-exited"))
+	attack_area.connect("body_entered",  Callable(self, "_on_AttackArea_body_entered"))
+	attack_area.connect("body_exited",  Callable(self, "_on_AttackArea_body-exited"))
+	connect("target_in_chase_area_changed", Callable(self, "_on_target_in_chase_area_changed"))
+	connect("target_in_attack_area_changed", Callable(self, "_on_target_in_attack_area_changed"))
 
 func _update_target() -> void:
 	if !target_in_attack_area && !target_in_chase_area:
@@ -68,11 +68,11 @@ func _on_AttackArea_body_exited(body : Node2D) -> void:
 	if body is Character:
 		set_target_in_attack_area(false)
 
-func _on_target_in_ChaseArea_changed(value: bool) -> void:
+func _on_target_in_chase_area_changed(value: bool) -> void:
 	_update_target()
 	_update_behavior_state()
 
-func _on_target_in_AttackArea_changed(value: bool) -> void:
+func _on_target_in_attack_area_changed(value: bool) -> void:
 	_update_target()
 	_update_behavior_state()
 

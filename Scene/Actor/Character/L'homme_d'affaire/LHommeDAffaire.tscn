@@ -17,7 +17,6 @@ radius = 15.0
 
 [node name="LHommeDAffaire" groups=["Character"] instance=ExtResource("1_p7yas")]
 actor_data = SubResource("Resource_m0g2b")
-max_pv = 100
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = ExtResource("3_jui7e")
@@ -27,6 +26,6 @@ animation = &"IdleDown"
 shape = SubResource("CircleShape2D_yjkd8")
 metadata/_edit_lock_ = true
 
-[node name="AttackBehaviour" parent="." index="3"]
+[node name="AttackBehaviour" parent="." index="4"]
 attack_data_principal = ExtResource("3_0jn1e")
 attack_data_secondaire = ExtResource("4_din1h")

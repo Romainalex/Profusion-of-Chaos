@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://2bd6ryf16qeo"]
+[gd_scene load_steps=11 format=3 uid="uid://2bd6ryf16qeo"]
 
 [ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="1_oplay"]
 [ext_resource type="Texture2D" uid="uid://dw1hx781jnu1b" path="res://icon.svg" id="2_ei4ju"]
+[ext_resource type="Script" path="res://StateMachine/StateLabel.gd" id="4_7efai"]
 [ext_resource type="Script" path="res://StateMachine/State.gd" id="5_qt8et"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2tnjg"]
@@ -60,6 +61,7 @@ offset_left = -50.0
 offset_top = -100.0
 offset_right = 50.0
 offset_bottom = -70.0
+script = ExtResource("4_7efai")
 
 [node name="CollisionShape2D" parent="ChaseArea" index="0"]
 shape = SubResource("CircleShape2D_5uqw7")
