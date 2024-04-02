@@ -24,16 +24,14 @@ func _ready() -> void:
 #### INPUTS ####
 
 func _input(event: InputEvent) -> void:
+	
+	
 	super._input(event)
 
 
 #### SIGNAL RESPONSES ####
 
-func _on_EVENTS_pnj_traid_started(pnj: String) -> void:
-	if pnj == "Tezcatlipoca":
-		set_hidden_menu(false)
-
-func _on_hidden_menu_changed(val: bool):
-	super._on_hidden_menu_changed(val)
-	if hidden_menu:
+func _on_visibility_changed() -> void:
+	super._on_visibility_changed()
+	if !visible:
 		EVENTS.emit_signal("pnj_traid_finished", "Tezcatlipoca")

@@ -14,6 +14,7 @@ signal character_pv_changed(pv)
 signal actor_died(target)
 signal pnj_traid_started(pnj)
 signal pnj_traid_finished(pnj)
+signal start_blackvell_animation(show: bool)
 
 
 signal room_finished

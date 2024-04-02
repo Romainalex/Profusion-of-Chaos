@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://u64o5fe8tipg"]
 
 [ext_resource type="Script" path="res://Scene/UI/Commerce/UpgradeWeapon.gd" id="1_pbs8t"]
-[ext_resource type="Script" path="res://Scene/UI/Commerce/UpgradeWeaponManager.gd" id="2_tk7pr"]
+[ext_resource type="Script" path="res://Scene/UI/Commerce/SellObjectManager.gd" id="2_tk7pr"]
 
 [node name="UgradeWeapon" type="Control"]
 layout_mode = 3

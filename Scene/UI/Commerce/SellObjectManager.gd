@@ -1,13 +1,10 @@
 extends Node
-class_name UpgradeWeaponManager
+class_name SellObjectManager
 
 
 
 
 
-signal capacity_buyed
-signal capacty_selected
-signal perso_changed
 
 #### ACCESSORS ####
 

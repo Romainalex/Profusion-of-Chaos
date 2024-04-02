@@ -2,10 +2,6 @@ extends ColorRect
 class_name BlackVell
 
 @onready var parent_path = get_parent().get_path()
-@onready var upgrade_weapon = get_node(str(parent_path) + "/UpgradeWeapon")
-#@onready var glossaire = get_node(str(parent_path) + "/Glossaire")
-@onready var change_spell = get_node(str(parent_path) + "/ChangeSpell")
-#@onready var cook = get_node(str(parent_path) + "/Cook")
 
 var tween : Tween
 
@@ -19,18 +15,23 @@ var tween : Tween
 #### BUILT-IN ####
 
 func _ready() -> void:
-	upgrade_weapon.connect("hidden_menu_changed", Callable(self, "_on_UpgradeWeapon_hidden_menu_changed"))
-	change_spell.connect("hidden_menu_changed", Callable(self, "_on_ChangeSpell_hidden_menu_changed"))
+	EVENTS.connect("start_blackvell_animation", Callable(self, "_on_EVENTS_start_blackvell_animation"))
+	
+	visible = false
 
 
 #### LOGICS ####
 
 
 func fade(fade_in: bool) -> void:
+	if fade_in:
+		visible = fade_in
 	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	var to = Color(0.0, 0.0, 0.0, 0.5) if fade_in else Color(0.0, 0.0, 0.0, 0.0)
 	
 	tween.tween_property(self, "color", to, 0.5).from(color)
+	if !fade_in:
+		visible = fade_in
 
 
 #### INPUTS ####
@@ -40,8 +41,5 @@ func fade(fade_in: bool) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_UpgradeWeapon_hidden_menu_changed(val: bool) -> void:
-	fade(!val)
-
-func _on_ChangeSpell_hidden_menu_changed(val: bool) -> void:
-	fade(!val)
+func start_blackvell_animation(show: bool) -> void:
+	fade(show)

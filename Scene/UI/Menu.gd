@@ -5,36 +5,34 @@ var hidden_menu : bool = true
 
 var tween : Tween
 
-signal hidden_menu_changed(val)
 
 #### SET-GET ####
 
-func set_hidden_menu(val: bool) -> void:
-	if val != hidden_menu:
-		hidden_menu = val
-		emit_signal("hidden_menu_changed", hidden_menu)
-func get_hidden_menu() -> bool: return hidden_menu
+
 
 
 #### BUILT-IN ####
 
 func _ready() -> void:
-	connect("hidden_menu_changed", Callable(self, "_on_hidden_menu_changed"))
+	connect("visibility_changed", Callable(self, "_on_visibility_changed"))
+	
 
 #### INPUTS ####
 
 func _input(_event: InputEvent) -> void:
 	
-	
-	
-	if Input.is_action_just_pressed("Menu_action"):
-		set_hidden_menu(!hidden_menu)
-	
-	if hidden_menu:
+	if !visible:
 		return
 	
+	if Input.is_action_just_pressed("Menu_action"):
+		_animation(false)
+		await get_tree().create_timer(1).timeout
+		set_visible(false)
+
 	if Input.is_action_just_pressed("ui_cancel"):
-		set_hidden_menu(true)
+		_animation(false)
+		await get_tree().create_timer(1).timeout
+		set_visible(true)
 
 
 
@@ -47,8 +45,8 @@ func _animation(_appear: bool) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_hidden_menu_changed(_val: bool) -> void:
-	_animation(!hidden_menu)
-	get_tree().paused = !hidden_menu
+func _on_visibility_changed() -> void:
+	_animation(visible)
+	get_tree().paused = visible
 
 

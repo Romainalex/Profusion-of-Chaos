@@ -17,7 +17,6 @@ func _ready() -> void:
 	options_button.connect("pressed", Callable(self, "_on_OptionsButton_pressed"))
 	main_menu_button.connect("pressed", Callable(self, "_on_MainMenuButton_pressed"))
 	quit_button.connect("pressed", Callable(self, "_on_QuitButton_pressed"))
-	connect("visibility_changed", Callable(self, "_on_visibility_changed"))
 	buttons_container.connect("visibility_changed", Callable(self, "_on_ButtonContainer_visibility_changed"))
 	options.connect("return_menu", Callable(self, "_on_return_menu"))
 	
@@ -28,8 +27,12 @@ func _ready() -> void:
 #### INPUTS ####
 
 func _input(event: InputEvent) -> void:
-	super._input(event)
 	
+	if !visible:
+		return
+	
+	if Input.is_action_just_pressed("Menu_action"):
+		set_visible(false)
 
 	
 
@@ -38,17 +41,16 @@ func _input(event: InputEvent) -> void:
 #### LOGICS ####
 
 func _animation(appear: bool) -> void:
-	set_visible(appear)
+	pass
 
 
 
 #### SIGNAL RESPONSES ####
 
-func _on_hidden_menu_changed(val: bool) -> void:
-	super._on_hidden_menu_changed(val)
+
 
 func _on_ContinueButton_pressed() -> void:
-	set_hidden_menu(!hidden_menu)
+	set_visible(false)
 
 func _on_OptionsButton_pressed() -> void:
 	buttons_container.set_visible(false)
@@ -62,6 +64,7 @@ func _on_QuitButton_pressed() -> void:
 	get_tree().quit()
 
 func _on_visibility_changed() -> void:
+	get_tree().paused = visible
 	if visible:
 		buttons_container.set_visible(true)
 

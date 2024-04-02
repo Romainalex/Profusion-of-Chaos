@@ -47,16 +47,13 @@ metadata/_edit_lock_ = true
 shape = SubResource("CircleShape2D_t1qu8")
 debug_color = Color(1, 0.00784314, 0.0392157, 0.419608)
 
-[node name="Wander" type="Node" parent="BehaviorTree" index="0"]
+[node name="Chase" type="Node" parent="BehaviorTree" index="0"]
 script = ExtResource("5_qt8et")
 
-[node name="Chase" type="Node" parent="BehaviorTree" index="1"]
+[node name="Attack" type="Node" parent="BehaviorTree" index="1"]
 script = ExtResource("5_qt8et")
 
-[node name="Attack" type="Node" parent="BehaviorTree" index="2"]
-script = ExtResource("5_qt8et")
-
-[node name="Label" type="Label" parent="BehaviorTree" index="3"]
+[node name="Label" type="Label" parent="BehaviorTree" index="2"]
 offset_left = -50.0
 offset_top = -100.0
 offset_right = 50.0

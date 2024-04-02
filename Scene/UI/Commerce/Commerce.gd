@@ -17,15 +17,14 @@ class_name Commerce
 
 func _ready() -> void:
 	super._ready()
-	EVENTS.connect("pnj_traid_started", Callable(self, "_on_EVENTS_pnj_traid_started"))
+	
+	visible = false
+	
 
 
 #### INPUTS ####
 
 func _input(event: InputEvent) -> void:
-	
-	if hidden_menu:
-		return
 	
 	super._input(event)
 
@@ -43,6 +42,8 @@ func _animation(appear: bool) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_EVENTS_pnj_traid_started(_pnj: String) -> void:
-	pass
-
+func _on_visibility_changed() -> void:
+	super._on_visibility_changed()
+	if visible:
+		EVENTS.emit_signal("start_blackvell_animation", true)
+		_animation(true)
