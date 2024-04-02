@@ -10,5 +10,3 @@ position = Vector2(-1, -2)
 
 [node name="Hieroglyphe_Gardien" parent="." instance=ExtResource("2_ch6sq")]
 position = Vector2(200, -4)
-speed = 300.0
-max_pv = 100
