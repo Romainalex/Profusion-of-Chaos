@@ -170,6 +170,7 @@ text = "OPTIONS_CONTROLS"
 
 [node name="ControllerPanel" type="Panel" parent="."]
 visible = false
+top_level = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

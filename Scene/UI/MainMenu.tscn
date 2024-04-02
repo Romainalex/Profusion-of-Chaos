@@ -128,6 +128,7 @@ expand_mode = 3
 script = ExtResource("4_6nwie")
 
 [node name="OptionsMenu" parent="." instance=ExtResource("6_5sq18")]
+visible = false
 layout_mode = 1
 
 [editable path="OptionsMenu"]

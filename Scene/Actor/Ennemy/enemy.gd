@@ -32,7 +32,7 @@ func _ready() -> void :
 	__ = attack_area.connect("body_entered",  Callable(self, "_on_AttackArea_body_entered"))
 	__ = attack_area.connect("body_exited",  Callable(self, "_on_AttackArea_body-exited"))
 	__ = connect("target_in_chase_area_changed", Callable(self, "_on_target_in_chase_area_changed"))
-	__ = connect("target_in_chase_area_changed", Callable(self, "_on_target_in_chase_area_changed"))
+	#__ = connect("target_in_chase_area_changed", Callable(self, "_on_target_in_chase_area_changed"))
 
 func _update_target() -> void:
 	if !target_in_attack_area && !target_in_chase_area:

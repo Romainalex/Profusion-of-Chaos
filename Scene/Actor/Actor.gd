@@ -8,7 +8,6 @@ class_name Actor
 
 @onready var state_machine = $StateMachine
 @onready var animated_sprite = $AnimatedSprite
-@onready var interaction_area = $InteractionArea
 @onready var tween
 
 @export var actor_data : ActorData = null
@@ -81,11 +80,7 @@ func _update_animation() -> void:
 	
 	animated_sprite.play(state_name + direction_name)
 
-##Update interaction_area_direction based on [member Actor.facing_direction]
-func _update_interaction_area_direction() -> void:
-	var angle = facing_direction.angle()
-	
-	interaction_area.set_rotation_degrees(rad_to_deg(angle) - 90)
+
 
 ##Start the hurt actions based on a [param damage_data]
 func hurt(damage_data: DamageData, crit: float) -> void:
@@ -157,7 +152,7 @@ func _on_AnimatedSprite_animation_finished() -> void:
 
 func _on_facing_direction_changed() -> void:
 	_update_animation()
-	_update_interaction_area_direction()
+	
 
 func _on_moving_direction_changed() -> void:
 	if moving_direction == Vector2.ZERO or moving_direction == facing_direction:

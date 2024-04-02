@@ -18,8 +18,6 @@ class_name PNJ
 
 func _ready() -> void:
 	state_machine.connect("state_changed", Callable(self, "_on_StateMachine_state_changed"))
-	interaction_area.connect("body_entered", Callable(self, "_on_InteractionArea_body_entered"))
-	interaction_area.connect("body_exited", Callable(self, "_on_InteractionArea_body_exited"))
 	EVENTS.connect("pnj_traid_finished", Callable(self, "_on_EVENTS_pnj_traid_finished"))
 	EVENTS.connect("input_scheme_changed", Callable(self, "_on_EVENTS_input_scheme_changed"))
 	

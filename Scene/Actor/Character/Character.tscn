@@ -12,7 +12,13 @@ script = ExtResource("2_n5pxn")
 dodge_data = null
 speed = 200.0
 
-[node name="AttackBehaviour" type="Node2D" parent="." index="2"]
+[node name="InteractionArea" type="Area2D" parent="." index="2"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="AttackBehaviour" type="Node2D" parent="." index="3"]
 script = ExtResource("3_xrrth")
 
 [node name="Go_to_grab" type="Node" parent="StateMachine" index="4"]

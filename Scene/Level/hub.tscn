@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="7_me4y2"]
 
 [node name="Hub" type="Node2D"]
+y_sort_enabled = true
 
 [node name="LHommeDAffaire" parent="." instance=ExtResource("1_y2e7b")]
 position = Vector2(102, 52)
@@ -26,8 +27,6 @@ position = Vector2(112, 192)
 position = Vector2(352, 120)
 
 [node name="enemy" parent="." instance=ExtResource("7_me4y2")]
-speed = 300.0
-max_pv = 100
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

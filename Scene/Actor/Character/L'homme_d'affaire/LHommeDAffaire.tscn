@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcqgi85erd4p3"]
+[gd_scene load_steps=8 format=3 uid="uid://dcqgi85erd4p3"]
 
 [ext_resource type="PackedScene" uid="uid://dqkmyvvmo4itf" path="res://Scene/Actor/Character/Character.tscn" id="1_p7yas"]
 [ext_resource type="Script" path="res://Resource/CharacterData.gd" id="2_jvg1b"]
@@ -12,25 +12,21 @@ crit_rate = 25.0
 name = "L'homme d'affaire"
 description = "C'est Calum !!!"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ei04p"]
-radius = 6.32456
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qjih7"]
-radius = 15.0333
+[sub_resource type="CircleShape2D" id="CircleShape2D_yjkd8"]
+radius = 15.0
 
 [node name="LHommeDAffaire" groups=["Character"] instance=ExtResource("1_p7yas")]
 actor_data = SubResource("Resource_m0g2b")
+max_pv = 100
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = ExtResource("3_jui7e")
 animation = &"IdleDown"
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_ei04p")
+[node name="InteractionArea2#CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_yjkd8")
+metadata/_edit_lock_ = true
 
-[node name="AttackBehaviour" parent="." index="2"]
+[node name="AttackBehaviour" parent="." index="3"]
 attack_data_principal = ExtResource("3_0jn1e")
 attack_data_secondaire = ExtResource("4_din1h")
-
-[node name="CollisionShape2D" parent="InteractionArea" index="0"]
-shape = SubResource("CircleShape2D_qjih7")

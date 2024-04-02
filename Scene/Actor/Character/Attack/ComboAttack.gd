@@ -44,12 +44,12 @@ func _init_animation() -> void:
 	# Update the number of attack animations in the combo attack
 	attacks_count = animation_array.size()
 
-func start_attack_behaviour(facing_direction: Vector2, crit: float) -> void:
+func start_attack_behaviour(facing_direction: Vector2, crit_rate: float) -> void:
 	if timer.is_stopped():
 		attack_index = 0
 	else:
 		attack_index = (attack_index + 1) % attacks_count
-	super.start_attack_behaviour(facing_direction, crit)
+	super.start_attack_behaviour(facing_direction, crit_rate)
 
 
 func _start_attack_animation(facing_direction: Vector2) -> void:

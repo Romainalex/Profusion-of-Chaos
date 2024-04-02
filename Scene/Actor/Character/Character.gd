@@ -3,6 +3,7 @@ class_name Character
 
 
 @onready var attack_behaviour = $AttackBehaviour
+@onready var interaction_area = $InteractionArea
 
 @export var dodge_data : DodgeData = null
 
@@ -26,6 +27,8 @@ enum ATTACK {
 func _ready() -> void:
 	super._ready()
 	attack_behaviour.connect("attack_finished", Callable(self, "_on_AttackBehaviour_attack_finished"))
+	interaction_area.connect("body_entered", Callable(self, "_on_InteractionArea_body_entered"))
+	interaction_area.connect("body_exited", Callable(self, "_on_InteractionArea_body_exited"))
 	
 
 
@@ -68,6 +71,11 @@ func _update_state() -> void:
 		else:
 			state_machine.set_state("Move")
 
+##Update interaction_area_direction based on [member Actor.facing_direction]
+func _update_interaction_area_direction() -> void:
+	var angle = facing_direction.angle()
+	
+	interaction_area.set_rotation_degrees(rad_to_deg(angle) - 90)
 
 func _update_animation() -> void:
 	if not (state_machine.get_state_name() in attack_array):
@@ -91,6 +99,10 @@ func hurt(damage_data: DamageData, crit: float) -> void:
 
 
 #### SIGNAL RESPONSES ####
+
+func _on_facing_direction_changed() -> void:
+	super._on_facing_direction_changed()
+	_update_interaction_area_direction()
 
 func _on_state_changed(_new_state: Object) -> void:
 	if state_machine.get_previous_state_name() in attack_array:

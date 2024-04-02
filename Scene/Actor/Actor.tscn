@@ -15,12 +15,6 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="InteractionArea" type="Area2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-metadata/_edit_lock_ = true
-
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("1_qnkym")
 
