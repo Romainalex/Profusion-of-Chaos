@@ -1,13 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://j52h3qadapdb"]
+[gd_scene load_steps=4 format=3 uid="uid://j52h3qadapdb"]
 
 [ext_resource type="PackedScene" uid="uid://cswyylwaj4a33" path="res://Scene/Actor/Actor.tscn" id="1_jac0c"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/enemy.gd" id="1_yjmos"]
+[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="3_nv5xs"]
 
 [node name="Ennemy" instance=ExtResource("1_jac0c")]
 script = ExtResource("1_yjmos")
 
-[node name="ChaseArea" type="Area2D" parent="." index="3"]
+[node name="BehaviorTree" type="Node" parent="." index="3"]
+script = ExtResource("3_nv5xs")
 
-[node name="AttackArea" type="Area2D" parent="." index="4"]
+[node name="ChaseArea" type="Area2D" parent="." index="4"]
 
-[node name="AttackHitbox" type="Area2D" parent="." index="5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea" index="0"]
+
+[node name="AttackArea" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
+
+[node name="AttackHitbox" type="Area2D" parent="." index="6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" index="0"]
+position = Vector2(-0.125, 72)
