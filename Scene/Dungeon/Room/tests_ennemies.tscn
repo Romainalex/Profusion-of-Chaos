@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://b02qj4hjdoup"]
 
-[ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="2_3cbtt"]
-[ext_resource type="PackedScene" uid="uid://2bd6ryf16qeo" path="res://Scene/Actor/Ennemy/hieroglyphe_gardien/hieroglyphe_gardien.tscn" id="2_ch6sq"]
+[ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="1_g8k83"]
+[ext_resource type="PackedScene" uid="uid://2bd6ryf16qeo" path="res://Scene/Actor/Ennemy/hieroglyphe_gardien/hieroglyphe_gardien.tscn" id="2_fjjit"]
 
 [node name="TestsEnnemies" type="Node2D"]
 
-[node name="LHommeDAffaire" parent="." instance=ExtResource("2_3cbtt")]
+[node name="LHommeDAffaire" parent="." instance=ExtResource("1_g8k83")]
 position = Vector2(-1, -2)
 
-[node name="Hieroglyphe_Gardien" parent="." instance=ExtResource("2_ch6sq")]
+[node name="Hieroglyphe_Gardien" parent="." instance=ExtResource("2_fjjit")]
 position = Vector2(200, -4)
-speed = 0.5
+speed = 1.0
