@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://740xgis2sqf5"]
+[gd_scene load_steps=12 format=3 uid="uid://740xgis2sqf5"]
 
+[ext_resource type="TileSet" uid="uid://cr40xnvmsurgv" path="res://Scene/Level/Tilemap/Pyramide.tres" id="1_6225a"]
 [ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="1_y2e7b"]
 [ext_resource type="PackedScene" uid="uid://c6iodv62becyt" path="res://Scene/Actor/PNJ/Hephaistos/Hephaistos.tscn" id="2_50giu"]
 [ext_resource type="Script" path="res://Scene/UI/Blackwell.gd" id="3_3onsu"]
@@ -9,11 +10,25 @@
 [ext_resource type="PackedScene" uid="uid://c3u0g3tyno108" path="res://Scene/UI/Commerce/ChangeSpell.tscn" id="5_n336u"]
 [ext_resource type="PackedScene" uid="uid://dr3r7hkoehfmr" path="res://Scene/Actor/PNJ/Tezcatlipoca/Tezcatlipoca.tscn" id="6_wuvbb"]
 [ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="7_me4y2"]
+[ext_resource type="PackedScene" uid="uid://3u5ru68ope1e" path="res://Scene/InteractiveObject/BreakableObject/LittleJarre.tscn" id="10_wcsxf"]
 
 [node name="Hub" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(0, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_6225a")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, 0, 65537, 3, 1, 65537, 3, 2, 65537, 3, 3, 65537, 3, 4, 65537, 3, 5, 65537, 0, 6, 65537, 0, 7, 65537, 0, 8, 65537, 0, 9, 65537, 0, 10, 65537, 0, 65546, 65537, 3, 65545, 65537, 3, 65544, 65537, 0, 65543, 65537, 0, 65542, 65537, 0, 65541, 65537, 0, 65540, 65537, 0, 65539, 65537, 0, 65538, 65537, 3, 65537, 65537, 3, 65536, 65537, 3, 131072, 65537, 3, 131073, 65537, 3, 131074, 65537, 0, 131075, 65537, 0, 131076, 65537, 0, 131077, 65537, 0, 131078, 65537, 0, 131079, 65537, 0, 131080, 65537, 0, 131081, 65537, 3, 131082, 65537, 3, 196618, 65537, 0, 196617, 65537, 0, 196616, 65537, 0, 196615, 65537, 0, 196614, 65537, 0, 196613, 65537, 0, 196612, 65537, 0, 196611, 65537, 0, 196610, 65537, 0, 196609, 65537, 0, 196608, 65537, 3, 262144, 65537, 0, 262145, 65537, 0, 262146, 65537, 0, 262147, 65537, 0, 262148, 65537, 0, 262149, 65537, 0, 262150, 65537, 0, 262151, 65537, 0, 262152, 65537, 0, 262153, 65537, 0, 262154, 65537, 0, 11, 65537, 3, 65547, 65537, 3, 131083, 65537, 0, 196619, 65537, 0, 262155, 65537, 0, 327691, 65537, 0, 327690, 65537, 0, 327689, 65537, 0, 327688, 65537, 0, 327687, 65537, 0, 327686, 65537, 0, 327685, 65537, 0, 327684, 65537, 0, 327683, 65537, 0, 327682, 65537, 0, 327681, 65537, 0, 327680, 65537, 0, -65525, 0, 0)
+
+[node name="ObstacleTilemap" type="TileMap" parent="."]
+tile_set = ExtResource("1_6225a")
+format = 2
+layer_0/name = "hitbox"
+layer_0/tile_data = PackedInt32Array(-65534, 2, 11, -65533, 65538, 11, -65530, 131074, 11, -65531, 196610, 11, -65532, 327682, 11)
 
 [node name="LHommeDAffaire" parent="." instance=ExtResource("1_y2e7b")]
+y_sort_enabled = false
 position = Vector2(102, 52)
 collision_layer = 3
 speed = 300.0
@@ -28,6 +43,7 @@ position = Vector2(112, 192)
 position = Vector2(352, 120)
 
 [node name="enemy" parent="." instance=ExtResource("7_me4y2")]
+y_sort_enabled = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -42,6 +58,7 @@ grow_vertical = 2
 script = ExtResource("5_edh76")
 
 [node name="BlackVell" type="ColorRect" parent="CanvasLayer/MenuManager"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +73,24 @@ visible = false
 layout_mode = 1
 
 [node name="SellObject" parent="CanvasLayer/MenuManager" instance=ExtResource("4_sxwtc")]
+visible = false
 layout_mode = 1
 
 [node name="ChangeSpell" parent="CanvasLayer/MenuManager" instance=ExtResource("5_n336u")]
+visible = false
 layout_mode = 1
+
+[node name="LittleJarre" parent="." instance=ExtResource("10_wcsxf")]
+position = Vector2(384, 256)
+
+[node name="LittleJarre2" parent="." instance=ExtResource("10_wcsxf")]
+position = Vector2(224, 256)
+
+[node name="LittleJarre3" parent="." instance=ExtResource("10_wcsxf")]
+position = Vector2(352, 256)
+
+[node name="LittleJarre4" parent="." instance=ExtResource("10_wcsxf")]
+position = Vector2(448, 160)
+
+[node name="LittleJarre5" parent="." instance=ExtResource("10_wcsxf")]
+position = Vector2(480, 224)

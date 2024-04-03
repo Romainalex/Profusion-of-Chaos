@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://xuhsluflgomh"]
+
+[ext_resource type="Script" path="res://Behaviour/DropperBehaviour.gd" id="1_41415"]
+
+[node name="DropperBehaviour" type="Node"]
+script = ExtResource("1_41415")

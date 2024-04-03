@@ -26,7 +26,7 @@ func _ready() -> void:
 
 #### INPUTS ####
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	
 	if !visible:
 		return
@@ -40,7 +40,7 @@ func _input(event: InputEvent) -> void:
 
 #### LOGICS ####
 
-func _animation(appear: bool) -> void:
+func _animation(_appear: bool) -> void:
 	pass
 
 

@@ -41,5 +41,5 @@ func fade(fade_in: bool) -> void:
 
 #### SIGNAL RESPONSES ####
 
-func start_blackvell_animation(show: bool) -> void:
-	fade(show)
+func start_blackvell_animation(show_blackvell: bool) -> void:
+	fade(show_blackvell)

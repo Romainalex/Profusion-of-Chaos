@@ -99,6 +99,8 @@ func _attack_attempt(hitbox_name: String, attack_anim: AttackAnimationData) -> v
 	for body in bodies_array:
 		if body.has_method("hurt") and (body in get_tree().get_nodes_in_group("Ennemy")):
 			body.hurt(attack_anim.damage_data, crit)
+		if body.has_method("destroy"):
+			body.destroy()
 
 ##Update [member Attack.hitbox_direction] and [member Attack.animated_sprite_attack] based on [param facing_direction]
 func _update_hitbox_and_attack_direction(facing_direction: Vector2) -> void:

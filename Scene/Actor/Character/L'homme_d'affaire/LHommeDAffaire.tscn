@@ -19,6 +19,7 @@ radius = 7.0
 radius = 16.0
 
 [node name="LHommeDAffaire" groups=["Character"] instance=ExtResource("1_p7yas")]
+y_sort_enabled = false
 actor_data = SubResource("Resource_m0g2b")
 
 [node name="AnimatedSprite" parent="." index="0"]

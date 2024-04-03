@@ -42,7 +42,7 @@ func _all_is_hide() -> bool:
 
 #### INPUTS ####
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("Menu_action"):
 		if _all_is_hide():

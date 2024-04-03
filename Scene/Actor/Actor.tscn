@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scene/Actor/State/ActorMoveState.gd" id="3_4wlnk"]
 
 [node name="Actor" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_b3uf1")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
