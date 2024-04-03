@@ -39,6 +39,8 @@ func _ready() -> void:
 	randomize()
 	EVENTS.connect("object_collected", Callable(self,"_on_EVENTS_object_collected"))
 	
+	
+	
 
 
 func _input(event: InputEvent) -> void:

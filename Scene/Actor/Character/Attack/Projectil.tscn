@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdg3aqdqegpt"]
+
+[ext_resource type="Script" path="res://Scene/Actor/Character/Attack/Projectil.gd" id="1_iggt4"]
+
+[node name="Projectil" type="Area2D"]
+script = ExtResource("1_iggt4")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]

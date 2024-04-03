@@ -166,6 +166,7 @@ text = "OPTIONS_LANGUAGE"
 [node name="ControllerButton" type="Button" parent="MainPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../HBoxContainer/LanguageOptionButton")
+action_mode = 0
 text = "OPTIONS_CONTROLS"
 
 [node name="ControllerPanel" type="Panel" parent="."]

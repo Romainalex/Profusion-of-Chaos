@@ -12,6 +12,7 @@ class_name Attack
 @export var normalized_name_hitbox : String =  "Hitbox"
 
 var crit : float = 0.0
+var direction : Vector2 = Vector2.ZERO
 
 signal attack_finished(attack)
 signal attack_data_changed()
@@ -74,6 +75,7 @@ func _add_animation(animated_sprite_to_change: AnimatedSprite2D, animated_sprite
 func start_attack_behaviour(facing_direction: Vector2, crit_rate: float) -> void:
 	if cooldown.is_stopped():
 		crit = crit_rate
+		direction = facing_direction
 		_update_hitbox_and_attack_direction(facing_direction)
 		_start_attack_animation(facing_direction)
 	else:
@@ -111,6 +113,11 @@ func _update_hitbox_and_attack_direction(facing_direction: Vector2) -> void:
 			child.set_rotation_degrees(rad_to_deg(angle) - 90) 
 	animated_sprite_attack.set_rotation_degrees(rad_to_deg(angle) - 90)
 
+func _throw_projectil() -> void:
+	var projectil = attack_data.attack_animation.projectil.scene.instantiate()
+	get_tree().current_scene.add_child(projectil)
+	projectil.rotation = direction.angle() - 90
+
 #### INPUTS ####
 
 
@@ -129,6 +136,9 @@ func _on_AnimatedSprite_frame_changed() -> void:
 	for shape in attack_data.attack_animation.shape_array:
 		if shape.hit_frame == animated_sprite_attack.get_frame():
 			_attack_attempt(normalized_name_hitbox+"_"+str(shape.hit_frame), attack_data.attack_animation)
+	if attack_data.attack_animation.projectil != null:
+		if animated_sprite_attack.get_frame() == attack_data.attack_animation.projectil.frame_to_start:
+			_throw_projectil()
 
 func _on_Cooldown_timeout() ->  void:
 	pass

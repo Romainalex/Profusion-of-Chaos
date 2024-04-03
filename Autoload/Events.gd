@@ -17,6 +17,6 @@ signal pnj_traid_finished(pnj)
 signal start_blackvell_animation(show: bool)
 
 
-signal room_finished
+signal room_finished()
 
 signal input_scheme_changed()

@@ -32,7 +32,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		_animation(false)
 		await get_tree().create_timer(1).timeout
-		set_visible(true)
+		set_visible(false)
 
 
 

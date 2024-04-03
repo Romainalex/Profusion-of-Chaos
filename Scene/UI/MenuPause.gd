@@ -58,7 +58,6 @@ func _on_OptionsButton_pressed() -> void:
 
 func _on_MainMenuButton_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scene/UI/MainMenu.tscn")
-	queue_free()
 
 func _on_QuitButton_pressed() -> void:
 	get_tree().quit()

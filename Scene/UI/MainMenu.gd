@@ -30,7 +30,7 @@ func _ready() -> void:
 	credits.connect("return_menu", Callable(self, "_on_return_menu"))
 	options.connect("return_menu", Callable(self, "_on_return_menu"))
 	
-	continue_button.grab_focus()
+	buttons_container.set_visible(true)
 	
 
 
@@ -46,6 +46,7 @@ func _input(_event: InputEvent) -> void:
 	
 	if !visible:
 		return
+	
 	
 	
 
@@ -76,3 +77,4 @@ func _on_ButtonsContainer_visibility_changed() -> void:
 func _on_return_menu(previous_menu: Control) -> void:
 	buttons_container.set_visible(true)
 	previous_menu.set_visible(false)
+
