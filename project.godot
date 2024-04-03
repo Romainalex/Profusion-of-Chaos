@@ -28,6 +28,21 @@ window/size/mode=3
 window/size/borderless=true
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://Autoload/": "teal",
+"res://Behaviour/": "gray",
+"res://Localization/": "green",
+"res://Resource/": "green",
+"res://Scene/Actor/": "purple",
+"res://Scene/Dungeon/": "yellow",
+"res://Scene/Dungeon/Room/": "yellow",
+"res://Scene/UI/": "green",
+"res://StateMachine/": "gray",
+"res://Static/": "teal"
+}
+
 [input]
 
 ui_accept={

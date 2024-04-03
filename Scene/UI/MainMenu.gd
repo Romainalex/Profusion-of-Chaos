@@ -45,15 +45,17 @@ func _input(_event: InputEvent) -> void:
 	
 	if !visible:
 		return
+	
+	
 
 
 #### SIGNAL RESPONSES ####
 
 func _on_ContinueButton_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scene/Level/hub.tscn")
+	get_tree().change_scene_to_file("res://Scene/Dungeon/Prototype.tscn")
 
 func _on_NewGameButton_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scene/Level/hub.tscn")
+	get_tree().change_scene_to_file("res://Scene/Dungeon/Prototype.tscn")
 
 func _on_OptionsButton_pressed() -> void:
 	buttons_container.set_visible(false)

@@ -1,5 +1,5 @@
 extends Commerce
-class_name UpgradeWeapon
+class_name SellObject
 
 
 

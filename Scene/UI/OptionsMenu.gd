@@ -53,7 +53,12 @@ func _ready() -> void:
 #### LOGICS ####
 
 func _update_image_gamepad(input_scheme: int) -> void:
-	var node_array = $ControllerPanel/Panel/GamepadScrollContainer/GridContainer.get_children()
+	var node_array
+	if input_scheme != GAME.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
+		node_array = $ControllerPanel/Panel/GamepadScrollContainer/GridContainer.get_children()
+	else:
+		node_array = $ControllerPanel/Panel/KeyMouseScrollContainer/GridContainer.get_children()
+	
 	for node in node_array:
 		if node is TextureRect:
 			node.texture.set_region(Rect2(64*input_scheme, 0,64,64))
@@ -111,16 +116,17 @@ func _on_ControllerPanel_visibility_changed() -> void:
 				gamepad_scheme.set_visible(true)
 
 func _on_KeyboardMouseSchemeButton_focus_entered() -> void:
+	_update_image_gamepad(GAME.INPUT_SCHEMES.KEYBOARD_AND_MOUSE)
 	keyboard_mouse_scheme.set_visible(true)
 	scrollbar = keyboard_mouse_scheme.get_v_scroll_bar()
 
 func _on_XboxSchemeButton_focus_entered() -> void:
-	_update_image_gamepad(1)
+	_update_image_gamepad(GAME.INPUT_SCHEMES.XBOX)
 	gamepad_scheme.set_visible(true)
 	scrollbar = gamepad_scheme.get_v_scroll_bar()
 
 func _on_DualshockSchemeButton_focus_entered() -> void:
-	_update_image_gamepad(2)
+	_update_image_gamepad(GAME.INPUT_SCHEMES.DUALSHOCK)
 	gamepad_scheme.set_visible(true)
 	scrollbar = gamepad_scheme.get_v_scroll_bar()
 
