@@ -43,6 +43,7 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	
+	
 	if !visible:
 		return
 	
