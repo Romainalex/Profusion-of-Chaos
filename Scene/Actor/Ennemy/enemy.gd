@@ -76,7 +76,7 @@ func move_along_path(delta : float) -> void:
 		path.remove_at(0)
 	else:
 		# On va vers le prochain point
-		move_and_collide(direction * distance * speed)
+		move_and_collide(direction * distance * speed * delta)
 
 #### SIGNAL RESPONSE ####
 

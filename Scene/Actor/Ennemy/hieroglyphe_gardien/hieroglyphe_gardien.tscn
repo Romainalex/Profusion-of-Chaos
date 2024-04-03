@@ -52,6 +52,11 @@ debug_color = Color(1, 0.00784314, 0.0392157, 0.419608)
 [node name="Move" parent="StateMachine" index="1"]
 script = ExtResource("3_4stwo")
 
+[node name="StateLabel" type="Label" parent="StateMachine" index="6"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("4_7efai")
+
 [node name="Chase" type="Node" parent="BehaviorTree" index="1"]
 script = ExtResource("4_mw78t")
 
