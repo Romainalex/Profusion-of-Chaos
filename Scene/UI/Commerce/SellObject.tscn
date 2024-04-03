@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scene/UI/Commerce/UpgradeWeapon.gd" id="1_pbs8t"]
 [ext_resource type="Script" path="res://Scene/UI/Commerce/SellObjectManager.gd" id="2_tk7pr"]
 
-[node name="UgradeWeapon" type="Control"]
+[node name="SellObject" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
