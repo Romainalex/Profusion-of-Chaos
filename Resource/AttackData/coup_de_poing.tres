@@ -171,6 +171,7 @@ script = ExtResource("1_k15rn")
 animation_body_sprite_frames = SubResource("SpriteFrames_7h7lp")
 animation_attack_sprite_frames = SubResource("SpriteFrames_j2pvx")
 shape_array = Array[ExtResource("4_xupl6")]([SubResource("Resource_5041c")])
+projectil_array = Array[Resource("res://Resource/ProjectilData.gd")]([])
 damage_data = SubResource("Resource_ftohf")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iw8h8"]
@@ -336,6 +337,7 @@ script = ExtResource("1_k15rn")
 animation_body_sprite_frames = SubResource("SpriteFrames_itkqq")
 animation_attack_sprite_frames = SubResource("SpriteFrames_xcsfj")
 shape_array = Array[ExtResource("4_xupl6")]([SubResource("Resource_c6e6x")])
+projectil_array = Array[Resource("res://Resource/ProjectilData.gd")]([])
 damage_data = SubResource("Resource_j78us")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fano"]
@@ -508,6 +510,7 @@ script = ExtResource("1_k15rn")
 animation_body_sprite_frames = SubResource("SpriteFrames_5qyqd")
 animation_attack_sprite_frames = SubResource("SpriteFrames_ak36v")
 shape_array = Array[ExtResource("4_xupl6")]([SubResource("Resource_hily7")])
+projectil_array = Array[Resource("res://Resource/ProjectilData.gd")]([])
 damage_data = SubResource("Resource_80f6l")
 
 [resource]

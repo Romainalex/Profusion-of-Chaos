@@ -8,3 +8,5 @@ script = ExtResource("1_iggt4")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

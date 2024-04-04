@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://bivwrbv0ud1l2"]
+
+[ext_resource type="PackedScene" uid="uid://bdg3aqdqegpt" path="res://Scene/Actor/Character/Attack/Projectil.tscn" id="1_aqnxf"]
+[ext_resource type="Script" path="res://Resource/DamageData.gd" id="2_dkwit"]
+[ext_resource type="Texture2D" uid="uid://cop85mmrc5k1c" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/boule_de_feu.png" id="3_4q431"]
+
+[sub_resource type="Resource" id="Resource_boil5"]
+script = ExtResource("2_dkwit")
+damage = 50
+effect_array = Array[Resource("res://Resource/EffectData.gd")]([])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0h08"]
+atlas = ExtResource("3_4q431")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhv37"]
+atlas = ExtResource("3_4q431")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q18cl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0h08")
+}],
+"loop": true,
+"name": &"Throw",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhv37")
+}],
+"loop": false,
+"name": &"Touch",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nl4v4"]
+
+[node name="BouleDeFeu" instance=ExtResource("1_aqnxf")]
+speed = 500
+damage_data = SubResource("Resource_boil5")
+
+[node name="AnimatedSprite" parent="." index="0"]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_q18cl")
+animation = &"Touch"
+
+[node name="CollisionShape" parent="." index="1"]
+position = Vector2(4.5, 0.5)
+shape = SubResource("CircleShape2D_nl4v4")

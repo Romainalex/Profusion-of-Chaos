@@ -187,6 +187,7 @@ script = ExtResource("1_ljah1")
 animation_body_sprite_frames = SubResource("SpriteFrames_08g21")
 animation_attack_sprite_frames = SubResource("SpriteFrames_q2gjo")
 shape_array = Array[ExtResource("6_culcm")]([SubResource("Resource_2q1vh"), SubResource("Resource_p8ijp")])
+projectil_array = Array[Resource("res://Resource/ProjectilData.gd")]([])
 damage_data = SubResource("Resource_8pyc0")
 
 [resource]
