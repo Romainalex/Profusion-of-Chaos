@@ -18,9 +18,8 @@ class_name Projectil
 #### BUILT-IN ####
 
 func _ready() -> void:
-	connect("body_shape_entered", Callable(self, "_on_bidy_shape_entered"))
+	connect("body_shape_entered", Callable(self, "_on_body_shape_entered"))
 	animated_sprite.connect("animation_finished", Callable(self, "_on_AnimatedSprite_animation_finished"))
-	$VisibleOnScreenNotifier2D.connect("screen_exited", Callable(self, "_on_VisibleOnScreenNotifier_screen_exited"))
 	animated_sprite.play("Throw")
 
 func _physics_process(delta: float) -> void:
@@ -46,7 +45,7 @@ func _touch() -> void:
 
 
 
-func _on_bidy_shape_entered(body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+func _on_body_shape_entered(body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body in get_tree().get_nodes_in_group("Ennemy") or body in get_tree().get_nodes_in_group("InteractiveObject"):
 		if body.has_method("hurt"):
 			body.hurt(damage_data, 1.0)
@@ -64,5 +63,4 @@ func _on_bidy_shape_entered(body_rid: RID, body: Node2D, _body_shape_index: int,
 func _on_AnimatedSprite_animation_finished() -> void:
 	queue_free()
 
-func _on_VisibleOnScreenNotifier_screen_exited() -> void:
-	queue_free()
+

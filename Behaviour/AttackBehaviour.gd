@@ -113,6 +113,7 @@ func _create_attack(attack: String) -> void:
 		add_child(a)
 		a.set_name(attack)
 		a.set_attack_data(type_attack[attack])
+		EVENTS.emit_signal("attack_create", type_attack.keys().find(attack), type_attack[attack].texture_inventory)
 		_create_attack_signal(attack)
 
 func _update_attack(type_old_attack: String, new_attack: String) -> void:
@@ -151,14 +152,22 @@ func _find_node_name(node_name: String):
 func _on_attack_data_changed(type_attack_name: String, new_attack: String) -> void:
 	_update_attack(type_attack_name, new_attack)
 
-func _on_AttackPrincipal_attack_finished(attack: Object) -> void:
+func _on_AttackPrincipal_attack_finished(attack: Object, cooldown: float) -> void:
+	if cooldown > 0.0:
+		EVENTS.emit_signal("attack_cooldown_start", 0, cooldown)
 	emit_signal("attack_finished", attack)
 
-func _on_AttackSecondaire_attack_finished(attack: Object) -> void:
+func _on_AttackSecondaire_attack_finished(attack: Object, cooldown: float) -> void:
+	if cooldown > 0.0:
+		EVENTS.emit_signal("attack_cooldown_start", 1, cooldown)
 	emit_signal("attack_finished", attack)
 
-func _on_AttackSpecial1_attack_finished(attack: Object) -> void:
+func _on_AttackSpecial1_attack_finished(attack: Object, cooldown: float) -> void:
+	if cooldown > 0.0:
+		EVENTS.emit_signal("attack_cooldown_start", 2, cooldown)
 	emit_signal("attack_finished", attack)
 
-func _on_AttackSpecial2_attack_finished(attack: Object) -> void:
+func _on_AttackSpecial2_attack_finished(attack: Object, cooldown: float) -> void:
+	if cooldown > 0.0:
+		EVENTS.emit_signal("attack_cooldown_start", 3, cooldown)
 	emit_signal("attack_finished", attack)

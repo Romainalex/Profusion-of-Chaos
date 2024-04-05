@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SimpleAttackData" load_steps=27 format=3 uid="uid://dxrq50s2oeily"]
+[gd_resource type="Resource" script_class="SimpleAttackData" load_steps=29 format=3 uid="uid://dxrq50s2oeily"]
 
 [ext_resource type="Script" path="res://Resource/SimpleAttackData.gd" id="1_7kyrp"]
 [ext_resource type="Texture2D" uid="uid://cdbr22tksnoat" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png" id="1_agv2f"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Resource/EffectData.gd" id="3_uwe3e"]
 [ext_resource type="Script" path="res://Resource/DamageData.gd" id="4_0uorj"]
 [ext_resource type="Script" path="res://Resource/ShapeData.gd" id="6_culcm"]
+[ext_resource type="Texture2D" uid="uid://dqs6p0x1jfnvj" path="res://Scene/UI/Image/icon_HUD_sprite_sheet.png" id="8_uq347"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjqle"]
 atlas = ExtResource("1_i0hbe")
@@ -190,11 +191,16 @@ shape_array = Array[ExtResource("6_culcm")]([SubResource("Resource_2q1vh"), SubR
 projectil_array = Array[Resource("res://Resource/ProjectilData.gd")]([])
 damage_data = SubResource("Resource_8pyc0")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj3ai"]
+atlas = ExtResource("8_uq347")
+region = Rect2(64, 0, 32, 32)
+
 [resource]
 script = ExtResource("1_7kyrp")
 attack_animation = SubResource("Resource_op41s")
 type_attack = 0
 evolution_array = Array[Resource("res://Resource/AttackData.gd")]([])
 cooldown = 3.0
+texture_inventory = SubResource("AtlasTexture_pj3ai")
 name = "Cravate enchantée"
 description = "Enchantée par le démon, cette cravate permet de réduire la distance avec sa proie."

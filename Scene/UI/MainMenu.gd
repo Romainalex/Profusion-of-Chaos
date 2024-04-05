@@ -32,6 +32,7 @@ func _ready() -> void:
 	
 	buttons_container.set_visible(true)
 	
+	
 
 
 

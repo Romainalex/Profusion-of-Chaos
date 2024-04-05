@@ -1,21 +1,18 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2wxmstdkbhme"]
 
 [ext_resource type="PackedScene" uid="uid://dlxgplis04r6a" path="res://Scene/Dungeon/Dungeon.tscn" id="1_aee4b"]
-[ext_resource type="TileSet" uid="uid://cr40xnvmsurgv" path="res://Scene/Dungeon/Tilemap/Pyramide.tres" id="2_ceg57"]
+[ext_resource type="PackedScene" uid="uid://cf5o2l1w6t83p" path="res://Scene/Dungeon/Room/OpenRoom/pyramyde_room.tscn" id="2_gcp00"]
+[ext_resource type="Script" path="res://Scene/UI/HUD/HUD.gd" id="3_q8lf5"]
 [ext_resource type="PackedScene" uid="uid://dijtg8c5kwati" path="res://Scene/UI/Commerce/UpgradeSpell.tscn" id="3_xx5ka"]
 [ext_resource type="PackedScene" uid="uid://u64o5fe8tipg" path="res://Scene/UI/Commerce/SellObject.tscn" id="4_j43nv"]
 [ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="5_b3la2"]
-[ext_resource type="PackedScene" uid="uid://3u5ru68ope1e" path="res://Scene/InteractiveObject/BreakableObject/LittleJarre.tscn" id="6_7hsgd"]
 
 [node name="Dungeon" instance=ExtResource("1_aee4b")]
 
-[node name="TileMap" parent="." index="0"]
-tile_set = ExtResource("2_ceg57")
-layer_0/tile_data = PackedInt32Array(-65536, 65536, 1, -65535, 65536, 1, -65534, 65536, 1, -65533, 65536, 1, -65532, 65536, 1, -65531, 65536, 1, -65530, 65536, 1, -65529, 65536, 1, -65528, 65536, 1, -65527, 65536, 1, -65526, 65536, 1, -65525, 65536, 1, -65524, 65536, 1, -131059, 131072, 0, -65537, 0, 0, -131072, 65536, 0, -131071, 65536, 0, -131070, 65536, 0, -131069, 65536, 0, -131068, 65536, 0, -131067, 65536, 0, -131066, 65536, 0, -131065, 65536, 0, -131064, 65536, 0, -131063, 65536, 0, -131062, 65536, 0, -131061, 65536, 0, -131060, 65536, 0, -65523, 131072, 1, 13, 131072, 1, 65549, 131072, 1, 131085, 131072, 1, 196621, 131072, 1, 262157, 131072, 1, 327693, 131072, 1, 393229, 131072, 1, 458765, 131072, 1, 524301, 131072, 1, 589837, 131072, 2, 589836, 65536, 2, 589835, 65536, 2, 589834, 65536, 2, 589833, 65536, 2, 589832, 65536, 2, 589831, 65536, 2, 589830, 65536, 2, 589829, 65536, 2, 589828, 65536, 2, 589827, 65536, 2, 589826, 65536, 2, 589825, 65536, 2, 655359, 0, 2, 589824, 65536, 2, 589823, 0, 1, 524287, 0, 1, 458751, 0, 1, 393215, 0, 1, 327679, 0, 1, 262143, 0, 1, 196607, 0, 1, 131071, 0, 1, 65535, 0, 1, -1, 0, 1, 0, 131073, 3, 1, 131073, 3, 2, 131073, 3, 3, 131073, 3, 4, 131073, 3, 5, 131073, 3, 6, 131073, 3, 7, 131073, 3, 8, 65537, 3, 9, 65537, 3, 10, 65537, 3, 11, 65537, 3, 65548, 65537, 3, 12, 65537, 3, 65536, 131073, 3, 65537, 131073, 3, 65538, 131073, 3, 65539, 131073, 3, 65540, 131073, 3, 65541, 131073, 3, 65542, 131073, 3, 65543, 131073, 3, 65544, 131073, 3, 65545, 131073, 3, 65546, 65537, 3, 65547, 65537, 3, 131072, 131073, 3, 131073, 131073, 3, 131074, 131073, 3, 131075, 131073, 3, 131076, 131073, 3, 131077, 131073, 3, 131078, 131073, 3, 196615, 131073, 3, 196616, 131073, 3, 196617, 131073, 3, 196618, 131073, 3, 196619, 65537, 3, 262155, 65537, 3, 327691, 65537, 3, 196620, 65537, 3, 131084, 65537, 3, 131083, 65537, 3, 131082, 131073, 3, 131081, 131073, 3, 131080, 131073, 3, 131079, 131073, 3, 196614, 131073, 3, 196613, 131073, 3, 196612, 131073, 3, 196611, 131073, 3, 196610, 131073, 3, 196609, 131073, 3, 262145, 131073, 3, 262144, 131073, 3, 327680, 131073, 3, 196608, 131073, 3, 393216, 131073, 3, 393217, 131073, 3, 393218, 131073, 3, 458754, 131073, 3, 458755, 131073, 3, 458756, 131073, 3, 458757, 65537, 3, 458758, 65537, 3, 458759, 65537, 3, 458760, 65537, 3, 458761, 65537, 3, 393226, 65537, 3, 393227, 65537, 3, 327692, 65537, 3, 262156, 65537, 3, 262154, 131073, 3, 262153, 131073, 3, 262152, 131073, 3, 262151, 131073, 3, 262150, 131073, 3, 262149, 131073, 3, 262148, 131073, 3, 262147, 131073, 3, 262146, 131073, 3, 327681, 131073, 3, 327682, 131073, 3, 327683, 131073, 3, 327684, 131073, 3, 327685, 131073, 3, 327686, 131073, 3, 327687, 131073, 3, 327688, 131073, 3, 327689, 131073, 3, 327690, 65537, 3, 393225, 65537, 3, 393224, 65537, 3, 393223, 131073, 3, 393222, 131073, 3, 393221, 131073, 3, 393220, 131073, 3, 393219, 131073, 3, 458752, 131073, 3, 458753, 131073, 3, 524289, 131073, 3, 524288, 131073, 3, 524290, 131073, 3, 524291, 65537, 3, 524292, 65537, 3, 524293, 65537, 3, 524294, 65537, 3, 524295, 65537, 3, 524296, 65537, 3, 524297, 65537, 3, 524298, 65537, 3, 524299, 65537, 3, 524300, 65537, 3, 458764, 65537, 3, 393228, 65537, 3, 458763, 65537, 3, 458762, 65537, 3)
+[node name="Room" parent="." index="0" instance=ExtResource("2_gcp00")]
 
-[node name="ObstacleTileMap" parent="." index="1"]
-tile_set = ExtResource("2_ceg57")
-layer_0/tile_data = PackedInt32Array(-65533, 2, 11, -65532, 327682, 11, -65531, 196610, 11, -65530, 262146, 11, -65529, 131074, 11, -65528, 327682, 11, -65527, 65538, 11, -65524, 196610, 11)
+[node name="HUD" parent="CanvasLayer" index="0"]
+script = ExtResource("3_q8lf5")
 
 [node name="UpgradeSpell" parent="CanvasLayer/MenuManager" index="2" instance=ExtResource("3_xx5ka")]
 layout_mode = 1
@@ -23,20 +20,5 @@ layout_mode = 1
 [node name="SellObject" parent="CanvasLayer/MenuManager" index="3" instance=ExtResource("4_j43nv")]
 layout_mode = 1
 
-[node name="LHommeDAffaire" parent="." index="3" instance=ExtResource("5_b3la2")]
+[node name="LHommeDAffaire" parent="." index="2" instance=ExtResource("5_b3la2")]
 position = Vector2(540, 198)
-
-[node name="LittleJarre" parent="." index="4" instance=ExtResource("6_7hsgd")]
-position = Vector2(32, 32)
-
-[node name="LittleJarre2" parent="." index="5" instance=ExtResource("6_7hsgd")]
-position = Vector2(64, 32)
-
-[node name="LittleJarre3" parent="." index="6" instance=ExtResource("6_7hsgd")]
-position = Vector2(96, 32)
-
-[node name="LittleJarre4" parent="." index="7" instance=ExtResource("6_7hsgd")]
-position = Vector2(49, 12)
-
-[node name="LittleJarre5" parent="." index="8" instance=ExtResource("6_7hsgd")]
-position = Vector2(81, 15)

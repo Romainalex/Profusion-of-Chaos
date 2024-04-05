@@ -51,7 +51,7 @@ func set_pv(val: int) -> void:
 	
 	if val != pv:
 		pv = val
-		emit_signal("pv_changed", val)
+		emit_signal("pv_changed", val, max_pv)
 
 func get_pv() -> int:
 	return pv
