@@ -1,76 +1,52 @@
-[gd_resource type="Resource" script_class="SimpleAttackData" load_steps=29 format=3 uid="uid://dxrq50s2oeily"]
+[gd_resource type="Resource" script_class="HookAttackData" load_steps=19 format=3 uid="uid://5hqeudv5p8ty"]
 
-[ext_resource type="Script" path="res://Resource/SimpleAttackData.gd" id="1_7kyrp"]
 [ext_resource type="Texture2D" uid="uid://cdbr22tksnoat" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png" id="1_agv2f"]
 [ext_resource type="Texture2D" uid="uid://biw2p464vd6g8" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_cravate_SpriteSheet.png" id="1_i0hbe"]
-[ext_resource type="Script" path="res://Resource/AttackAnimationData.gd" id="1_ljah1"]
+[ext_resource type="Script" path="res://Resource/HookAttackData.gd" id="1_rseuh"]
 [ext_resource type="Script" path="res://Resource/EffectData.gd" id="3_uwe3e"]
 [ext_resource type="Script" path="res://Resource/DamageData.gd" id="4_0uorj"]
-[ext_resource type="Script" path="res://Resource/ShapeData.gd" id="6_culcm"]
 [ext_resource type="Texture2D" uid="uid://dqs6p0x1jfnvj" path="res://Scene/UI/Image/icon_HUD_sprite_sheet.png" id="8_uq347"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjqle"]
-atlas = ExtResource("1_i0hbe")
-region = Rect2(0, 0, 320, 320)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12s45"]
-atlas = ExtResource("1_i0hbe")
-region = Rect2(320, 0, 320, 320)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_q2gjo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bjqle")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_12s45")
-}],
-"loop": false,
-"name": &"Attack",
-"speed": 10.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_14ibn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o4q3"]
 atlas = ExtResource("1_agv2f")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1fnm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7chb"]
 atlas = ExtResource("1_agv2f")
 region = Rect2(64, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iqw0h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei3gy"]
 atlas = ExtResource("1_agv2f")
 region = Rect2(128, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qqq6q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i0tb"]
 atlas = ExtResource("1_agv2f")
 region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1uyjm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6id0l"]
 atlas = ExtResource("1_agv2f")
 region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3446a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpjx0"]
 atlas = ExtResource("1_agv2f")
 region = Rect2(0, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ph0m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_caat0"]
 atlas = ExtResource("1_agv2f")
 region = Rect2(64, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iwvuc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7no5d"]
 atlas = ExtResource("1_agv2f")
 region = Rect2(128, 64, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_08g21"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vclkh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_14ibn")
+"texture": SubResource("AtlasTexture_0o4q3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_14ibn")
+"texture": SubResource("AtlasTexture_0o4q3")
 }],
 "loop": false,
 "name": &"Down",
@@ -78,10 +54,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d1fnm")
+"texture": SubResource("AtlasTexture_k7chb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d1fnm")
+"texture": SubResource("AtlasTexture_k7chb")
 }],
 "loop": false,
 "name": &"Down-Left",
@@ -89,10 +65,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iqw0h")
+"texture": SubResource("AtlasTexture_ei3gy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iqw0h")
+"texture": SubResource("AtlasTexture_ei3gy")
 }],
 "loop": false,
 "name": &"Down-Right",
@@ -100,10 +76,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qqq6q")
+"texture": SubResource("AtlasTexture_7i0tb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qqq6q")
+"texture": SubResource("AtlasTexture_7i0tb")
 }],
 "loop": false,
 "name": &"Left",
@@ -111,10 +87,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1uyjm")
+"texture": SubResource("AtlasTexture_6id0l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1uyjm")
+"texture": SubResource("AtlasTexture_6id0l")
 }],
 "loop": false,
 "name": &"Right",
@@ -122,10 +98,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3446a")
+"texture": SubResource("AtlasTexture_fpjx0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3446a")
+"texture": SubResource("AtlasTexture_fpjx0")
 }],
 "loop": false,
 "name": &"Up",
@@ -133,10 +109,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3ph0m")
+"texture": SubResource("AtlasTexture_caat0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3ph0m")
+"texture": SubResource("AtlasTexture_caat0")
 }],
 "loop": false,
 "name": &"Up-Left",
@@ -144,63 +120,43 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iwvuc")
+"texture": SubResource("AtlasTexture_7no5d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iwvuc")
+"texture": SubResource("AtlasTexture_7no5d")
 }],
 "loop": false,
 "name": &"Up-Right",
 "speed": 10.0
 }]
 
-[sub_resource type="Resource" id="Resource_sik8n"]
+[sub_resource type="Resource" id="Resource_rtmxh"]
 script = ExtResource("3_uwe3e")
 effect_type = 7
 damage_effect = 0
 hit_chance = 100.0
 
-[sub_resource type="Resource" id="Resource_8pyc0"]
+[sub_resource type="Resource" id="Resource_lhh6b"]
 script = ExtResource("4_0uorj")
 damage = 10
-effect_array = Array[ExtResource("3_uwe3e")]([SubResource("Resource_sik8n")])
+effect_array = Array[ExtResource("3_uwe3e")]([SubResource("Resource_rtmxh")])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd678"]
-size = Vector2(7, 10)
-
-[sub_resource type="Resource" id="Resource_2q1vh"]
-script = ExtResource("6_culcm")
-shape = SubResource("RectangleShape2D_kd678")
-position = Vector2(-4, 50)
-hit_frame = 0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_skhd4"]
-size = Vector2(7, 10)
-
-[sub_resource type="Resource" id="Resource_p8ijp"]
-script = ExtResource("6_culcm")
-shape = SubResource("RectangleShape2D_skhd4")
-position = Vector2(-8, 135)
-hit_frame = 2
-
-[sub_resource type="Resource" id="Resource_op41s"]
-script = ExtResource("1_ljah1")
-animation_body_sprite_frames = SubResource("SpriteFrames_08g21")
-animation_attack_sprite_frames = SubResource("SpriteFrames_q2gjo")
-shape_array = Array[ExtResource("6_culcm")]([SubResource("Resource_2q1vh"), SubResource("Resource_p8ijp")])
-projectil_array = Array[Resource("res://Resource/ProjectilData.gd")]([])
-damage_data = SubResource("Resource_8pyc0")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pj3ai"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewkfa"]
 atlas = ExtResource("8_uq347")
 region = Rect2(64, 0, 32, 32)
 
 [resource]
-script = ExtResource("1_7kyrp")
-attack_animation = SubResource("Resource_op41s")
-type_attack = 0
+script = ExtResource("1_rseuh")
+animation_body_sprite_frames = SubResource("SpriteFrames_vclkh")
+hook_attack_texture = ExtResource("1_i0hbe")
+frame_to_start_hook = 1
+hook_length = 150
+time_to_throw = 0.2
+time_to_retract = 0.5
+damage_data = SubResource("Resource_lhh6b")
+type_attack = 3
 evolution_array = Array[Resource("res://Resource/AttackData.gd")]([])
 cooldown = 3.0
-texture_inventory = SubResource("AtlasTexture_pj3ai")
+texture_inventory = SubResource("AtlasTexture_ewkfa")
 name = "Cravate enchantée"
-description = "Enchantée par le démon, cette cravate permet de réduire la distance avec sa proie."
+description = "Cravate de l'homme d'affaire, enchantée par le démon."

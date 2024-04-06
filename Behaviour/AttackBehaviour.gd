@@ -4,6 +4,7 @@ class_name AttackBehaviour
 @onready var attack_scene = preload("res://Scene/Actor/Character/Attack/Attack.tscn")
 @onready var combo_attack_scene = preload("res://Scene/Actor/Character/Attack/ComboAttack.tscn")
 @onready var charged_attack_scene = preload("res://Scene/Actor/Character/Attack/ChargedAttack.tscn")
+@onready var hook_attack_scene = preload("res://Scene/Actor/Character/Attack/HookAttack.tscn")
 
 @export var attack_data_principal : AttackData = null
 @export var attack_data_secondaire : AttackData = null
@@ -23,6 +24,7 @@ class_name AttackBehaviour
 
 signal attack_data_changed(attack)
 signal attack_finished(attack)
+signal hooked(hooked_position, time_hooked)
 
 #### ACCESSORS ####
 
@@ -69,7 +71,7 @@ func start_attack_behaviour(attack: int, facing_direction: Vector2) -> void:
 		2: # Attack special1
 			$AttackSpecial1.start_attack_behaviour(face_direction, owner.actor_data)
 		3: # Attack special2
-			$AttackSpecial2.start_attack_behaviour(face_direction, owner.actor_data.crit_rate)
+			$AttackSpecial2.start_attack_behaviour(face_direction, owner.actor_data)
 
 func stop_attack_behaviour(attack: int, facing_direction: Vector2) -> void:
 	var face_direction = _give_attack_direction(facing_direction)
@@ -107,6 +109,8 @@ func _create_attack(attack: String) -> void:
 				a = combo_attack_scene.instantiate()
 			2: # CHARGED attack
 				a = charged_attack_scene.instantiate()
+			3: # HOOK attack
+				a = hook_attack_scene.instantiate()
 			_: # default
 				push_error("Error : No type_attack determined for attack %s" % attack)
 	if a != null:
@@ -123,6 +127,8 @@ func _update_attack(type_old_attack: String, new_attack: String) -> void:
 
 func _create_attack_signal(attack: String) -> void:
 	_find_node_name(attack).connect("attack_finished", Callable(self, "_on_"+attack+"_attack_finished"))
+	if type_attack[attack].type_attack == 3:
+		_find_node_name(attack).connect("hooked", Callable(self, "_on_Attack_hooked"))
 
 func _find_node_name(node_name: String):
 	var node_ref = null
@@ -171,3 +177,8 @@ func _on_AttackSpecial2_attack_finished(attack: Object, cooldown: float) -> void
 	if cooldown > 0.0:
 		EVENTS.emit_signal("attack_cooldown_start", 3, cooldown)
 	emit_signal("attack_finished", attack)
+
+func _on_Attack_hooked(hooked_position: Vector2, time_to_throw: float, time_hooked: float) -> void:
+	emit_signal("hooked", hooked_position, time_to_throw, time_hooked)
+
+

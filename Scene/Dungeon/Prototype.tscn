@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2wxmstdkbhme"]
+[gd_scene load_steps=6 format=3 uid="uid://c2wxmstdkbhme"]
 
 [ext_resource type="PackedScene" uid="uid://dlxgplis04r6a" path="res://Scene/Dungeon/Dungeon.tscn" id="1_aee4b"]
 [ext_resource type="PackedScene" uid="uid://cf5o2l1w6t83p" path="res://Scene/Dungeon/Room/OpenRoom/pyramyde_room.tscn" id="2_gcp00"]
-[ext_resource type="Script" path="res://Scene/UI/HUD/HUD.gd" id="3_q8lf5"]
 [ext_resource type="PackedScene" uid="uid://dijtg8c5kwati" path="res://Scene/UI/Commerce/UpgradeSpell.tscn" id="3_xx5ka"]
 [ext_resource type="PackedScene" uid="uid://u64o5fe8tipg" path="res://Scene/UI/Commerce/SellObject.tscn" id="4_j43nv"]
 [ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="5_b3la2"]
@@ -10,9 +9,6 @@
 [node name="Dungeon" instance=ExtResource("1_aee4b")]
 
 [node name="Room" parent="." index="0" instance=ExtResource("2_gcp00")]
-
-[node name="HUD" parent="CanvasLayer" index="0"]
-script = ExtResource("3_q8lf5")
 
 [node name="UpgradeSpell" parent="CanvasLayer/MenuManager" index="2" instance=ExtResource("3_xx5ka")]
 layout_mode = 1

@@ -21,7 +21,7 @@ metadata/_edit_lock_ = true
 [node name="AttackBehaviour" type="Node2D" parent="." index="3"]
 script = ExtResource("3_xrrth")
 
-[node name="Go_to_grab" type="Node" parent="StateMachine" index="4"]
+[node name="Hooked" type="Node" parent="StateMachine" index="4"]
 script = ExtResource("3_kshho")
 
 [node name="AttackPrincipal" type="Node" parent="StateMachine" index="5"]

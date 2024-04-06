@@ -2,11 +2,11 @@ extends Control
 class_name HUD
 
 @onready var life_progress_bar = $LifeProgressBar
-@onready var principal_texture_rect = $PrincipalTextureRect
-@onready var secondaire_texture_rect = $SecondaireTextureRect
-@onready var special1_texture_rect = $Special1TextureRect
-@onready var special2_texture_rect = $Special2TextureRect
-@onready var object_texture_rect = $ObjectTextureRect
+@onready var principal_texture_rect = $Principal
+@onready var secondaire_texture_rect = $Secondaire
+@onready var special1_texture_rect = $Special1
+@onready var special2_texture_rect = $Special2
+@onready var object_texture_rect = $Object
 
 var tween: Tween
 
@@ -42,12 +42,15 @@ func _find_attack(type: int) -> Node:
 		_:
 			return null
 
+func _get_subnode(node: Node, subnode_name: String) -> Node:
+	return get_node(str(node.get_path())+"/"+subnode_name)
+
 func _update_attack(attack: Node, texture) -> void:
-	attack.set_texture(texture)
+	_get_subnode(attack, "TextureRect").set_texture(texture)
 
 func _update_attack_cooldown(attack: Node, cooldown: float) -> void:
 	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(get_node(str(attack.get_path())+"/ColorRect"), "size", Vector2(32,0), cooldown).from(Vector2(32,32))
+	tween.tween_property(_get_subnode(attack, "ColorRect"), "size", Vector2(32,0), cooldown).from(Vector2(32,32))
 
 
 #### INPUTS ####

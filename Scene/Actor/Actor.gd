@@ -27,7 +27,6 @@ signal facing_direction_changed
 signal moving_direction_changed
 signal pv_changed
 signal death_feedback_finished
-signal grabed(location)
 
 
 #### ACCESSEUR ####
@@ -87,8 +86,7 @@ func hurt(damage_data: DamageData, crit: float) -> void:
 	var dam : int = 0
 	for effect in damage_data.effect_array:
 		match effect.effect_type:
-			effect.EFFECT_TYPE.GRAB:
-				emit_signal("grabed", global_position)
+			effect.EFFECT_TYPE.HOOK:
 				state_machine.set_state("Freeze")
 			_: #default
 				state_machine.set_state("Hurt")

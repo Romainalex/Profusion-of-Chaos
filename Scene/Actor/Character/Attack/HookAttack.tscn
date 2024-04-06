@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0le4ifi0nt4k"]
+
+[ext_resource type="Script" path="res://Scene/Actor/Character/Attack/HookAttack.gd" id="1_2uakr"]
+[ext_resource type="PackedScene" uid="uid://cpss0rrlhkonl" path="res://Scene/Actor/Character/Attack/Attack.tscn" id="1_xsvke"]
+
+[node name="HookAttack" instance=ExtResource("1_xsvke")]
+script = ExtResource("1_2uakr")
+
+[node name="HookSprite" type="Sprite2D" parent="." index="0"]
+texture_repeat = 2
+rotation = 1.5708
+region_enabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="3"]

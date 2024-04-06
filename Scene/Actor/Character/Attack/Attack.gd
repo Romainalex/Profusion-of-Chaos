@@ -79,7 +79,7 @@ func start_attack_behaviour(facing_direction: Vector2, character_data: Character
 		_update_hitbox_and_attack_direction(facing_direction)
 		_start_attack_animation(facing_direction)
 	else:
-		emit_signal("attack_finished", self, attack_data.cooldown)
+		emit_signal("attack_finished", self, 0.0)
 
 func stop_attack_behaviour(_facing_direction: Vector2, _character_data: CharacterData) -> void:
 	pass
