@@ -1,5 +1,4 @@
-extends Node2D
-class_name Room
+extends State
 
 
 
@@ -19,8 +18,13 @@ func _ready() -> void:
 
 #### LOGICS ####
 
+func enter_state() -> void:
+	owner._dodge()
+	
 
-
+#func exit_state() -> void:
+	#owner.collision_shape.set_disable(false)
+	
 
 #### INPUTS ####
 

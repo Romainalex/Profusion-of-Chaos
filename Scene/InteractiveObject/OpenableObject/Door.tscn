@@ -135,31 +135,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra2on"]
 size = Vector2(18.2857, 20.8571)
 
-[node name="Door" type="StaticBody2D"]
+[node name="Door" type="StaticBody2D" groups=["Door"]]
 script = ExtResource("1_hp8w4")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_omv0p")
-animation = &"CloseDown"
-frame = 2
-frame_progress = 1.0
+animation = &"CloseUp"
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
 scale = Vector2(3.5, 3.5)
 shape = SubResource("RectangleShape2D_ra2on")
+disabled = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_ou2bj")
-
-[node name="Opened" type="Node" parent="StateMachine"]
-script = ExtResource("4_hvnix")
 
 [node name="Open" type="Node" parent="StateMachine"]
 script = ExtResource("4_hvnix")
 
 [node name="Close" type="Node" parent="StateMachine"]
-script = ExtResource("4_hvnix")
-
-[node name="Closed" type="Node" parent="StateMachine"]
 script = ExtResource("4_hvnix")

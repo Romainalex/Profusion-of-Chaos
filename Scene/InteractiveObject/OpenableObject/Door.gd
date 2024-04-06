@@ -22,6 +22,8 @@ var dir_name = ["Up", "Right", "Down", "Left"]
 func _ready() -> void:
 	state_machine.connect("state_changed", Callable(self, "_on_StateMachine_state_changed"))
 	animated_sprite.connect("animation_changed", Callable(self, "_on_AnimatedSprite_animation_changed"))
+	
+	
 
 
 #### LOGICS ####
@@ -29,14 +31,17 @@ func _ready() -> void:
 func _update_animation() -> void:
 	animated_sprite.play(state_machine.get_state_name()+dir_name[direction])
 
+func close() -> void:
+	state_machine.set_state("Door")
 
-
+func open() -> void:
+	state_machine.set_state("Open")
 
 
 
 #### SIGNAL RESPONSES ####
 
-func _on_StateMachine_state_changed(state: State) -> void:
+func _on_StateMachine_state_changed(_state: State) -> void:
 	_update_animation()
 
 func _on_AnimatedSprite_animation_changed() -> void:

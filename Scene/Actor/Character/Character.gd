@@ -74,8 +74,8 @@ func _input(_event: InputEvent) -> void:
 
 func _update_state() -> void:
 	if not (state_machine.get_state_name() in attack_array):
-		if Input.is_action_pressed("Esquive_action"):
-			state_machine.set_state("Esquive")
+		if Input.is_action_just_pressed("Esquive_action"):
+			state_machine.set_state("Dodge")
 		elif moving_direction == Vector2.ZERO:
 			state_machine.set_state("Idle")
 		else:
@@ -88,7 +88,7 @@ func _update_interaction_area_direction() -> void:
 	interaction_area.set_rotation_degrees(rad_to_deg(angle) - 90)
 
 func _update_animation() -> void:
-	if not(state_machine.get_state_name() in attack_array) and not(state_machine.get_state_name() == "Hooked"):
+	if not(state_machine.get_state_name() == "Hooked"):
 		super._update_animation()
 
 ##Lance une tentative d'intéraction et retourne vrai si l'intéraction a été effectué, faux sinon
@@ -102,10 +102,17 @@ func _interacting_attempt() -> bool:
 	return interaction_success
 
 func hurt(damage_data: DamageData, crit: float) -> void:
-	if state_machine.get_state_name() != "Esquive":
+	if state_machine.get_state_name() != "Dodge":
 		super.hurt(damage_data, crit)
 
-
+func _dodge() -> void:
+	tween = create_tween()
+	var vector_direction = Util.give_angle_direction(self, facing_direction)
+	
+	tween.tween_property(self, "position", global_position + dodge_data.dodge_distance*vector_direction.normalized(), 0.5)
+	await get_tree().create_timer(0.5).timeout
+	
+	state_machine.set_state("Idle")
 
 
 #### SIGNAL RESPONSES ####
