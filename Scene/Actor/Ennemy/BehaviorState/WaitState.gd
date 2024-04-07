@@ -9,6 +9,8 @@ func _ready() -> void:
 	$Timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
 
 func enter_state() -> void:
+	if owner.state_machine != null:
+		owner.state_machine.set_state("Idle")
 	var wait_time = randf_range(min_wait_time, max_wait_time)
 	$Timer.start(wait_time)
 

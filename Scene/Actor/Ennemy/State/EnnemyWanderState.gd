@@ -5,15 +5,13 @@ class_name WanderState
 @export var max_wander_distance = 70.0
 
 func _ready() -> void:
+	super._ready()
 	$Wait.connect("wait_time_finished", Callable(self, "_on_Wait_wait_time_finished"))
 	owner.connect("move_path_finished", Callable(self, "_on_Ennemy_move_path_finished"))
 
 #### VIRTUAL ####
 
-func enter_state() -> void:
-	if owner.state_machine == null:
-		return
-	owner.state_machine.set_state("Idle")
+
 
 #### LOGIC ####
 

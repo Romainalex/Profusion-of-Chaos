@@ -176,7 +176,7 @@ script = ExtResource("4_7efai")
 [node name="Wander" parent="BehaviorTree" index="0"]
 script = ExtResource("5_cqe0s")
 min_wander_distance = 40.0
-max_wander_distance = 100.0
+max_wander_distance = 70.0
 
 [node name="Wait" type="Node" parent="BehaviorTree/Wander" index="0"]
 script = ExtResource("7_uoybo")

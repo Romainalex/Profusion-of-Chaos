@@ -72,7 +72,7 @@ func move_along_path(delta : float) -> void:
 	if distance <= speed * delta:
 		# On arrive sur le prochain point
 		move_and_collide(direction * distance)
-		path.remove_at(0)
+		path.pop_front()
 		
 		if path.is_empty():
 			emit_signal("move_path_finished")
