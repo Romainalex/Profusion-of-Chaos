@@ -82,9 +82,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nqmxn")
 }],
-"loop": true,
+"loop": false,
 "name": &"MoveDown",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -99,9 +99,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o7052")
 }],
-"loop": true,
+"loop": false,
 "name": &"MoveLeft",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -116,9 +116,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6l2h2")
 }],
-"loop": true,
+"loop": false,
 "name": &"MoveRight",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -133,9 +133,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6l2h2")
 }],
-"loop": true,
+"loop": false,
 "name": &"MoveUp",
-"speed": 15.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1qu8"]
@@ -155,8 +155,7 @@ speed = 60.0
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_2tnjg")
-animation = &"MoveDown"
-frame_progress = 0.335969
+animation = &"MoveUp"
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_t1qu8")
@@ -176,7 +175,7 @@ script = ExtResource("4_7efai")
 [node name="Wander" parent="BehaviorTree" index="0"]
 script = ExtResource("5_cqe0s")
 min_wander_distance = 40.0
-max_wander_distance = 70.0
+max_wander_distance = 100.0
 
 [node name="Wait" type="Node" parent="BehaviorTree/Wander" index="0"]
 script = ExtResource("7_uoybo")

@@ -30,6 +30,7 @@ func set_target_in_attack_area(value: bool) -> void:
 #### BUILT-IN ####
 
 func _ready() -> void :
+	super._ready()
 	chase_area.connect("body_entered", Callable(self, "_on_ChaseArea_body_entered"))
 	chase_area.connect("body_exited", Callable(self, "_on_ChaseArea_body_exited"))
 	attack_area.connect("body_entered",  Callable(self, "_on_AttackArea_body_entered"))
@@ -122,5 +123,5 @@ func _on_target_in_attack_area_changed(value: bool) -> void:
 func _on_StateMachine_state_changed(state) -> void:
 	if state_machine == null:
 		return
-	if state.name == "Idle" && state_machine.previous_state.name == $StateMachine/Attack:
+	if state.name == "Idle" && state_machine.previous_state.name == $StateMachine/Attack.name:
 		_update_behavior_state()
