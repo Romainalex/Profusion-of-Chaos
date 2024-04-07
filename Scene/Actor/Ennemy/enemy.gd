@@ -13,7 +13,7 @@ var target_in_attack_area : bool = false
 
 signal target_in_chase_area_changed
 signal target_in_attack_area_changed
-
+signal move_path_finished
 
 #### ACCESSORS ####
 
@@ -74,6 +74,9 @@ func move_along_path(delta : float) -> void:
 		# On arrive sur le prochain point
 		move_and_collide(direction * distance)
 		path.remove_at(0)
+		
+		if path.is_empty():
+			emit_signal("move_path_finished")
 	else:
 		# On va vers le prochain point
 		move_and_collide(direction * distance * speed * delta)

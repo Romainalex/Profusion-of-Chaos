@@ -24,6 +24,7 @@ func set_state(state) -> void:
 	
 	if current_state != null:
 		current_state.enter_state()
+	
 	emit_signal("state_changed", current_state)
 
 func get_state() -> Node: 
@@ -56,7 +57,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if current_state != null:
 		current_state.update(delta)
-	
 
 #### VIRTUAL ####
 
