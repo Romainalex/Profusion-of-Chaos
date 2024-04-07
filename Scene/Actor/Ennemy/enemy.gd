@@ -37,7 +37,6 @@ func _ready() -> void :
 	connect("target_in_chase_area_changed", Callable(self, "_on_target_in_chase_area_changed"))
 	connect("target_in_attack_area_changed", Callable(self, "_on_target_in_attack_area_changed"))
 
-
 #### LOGIC ####
 
 func _update_target() -> void:

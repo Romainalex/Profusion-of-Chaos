@@ -1,8 +1,8 @@
 extends StateMachine
 class_name WanderState
 
-@export var min_wander_distance = 20.0
-@export var max_wander_distance = 50.0
+@export var min_wander_distance = 40.0
+@export var max_wander_distance = 70.0
 
 func _ready() -> void:
 	$Wait.connect("wait_time_finished", Callable(self, "_on_Wait_wait_time_finished"))
@@ -21,7 +21,7 @@ func enter_state() -> void:
 # correspondant à l'angle puis on va par là sur une distance elle aussi aléatoire
 func _generate_new_destination() -> Vector2:
 	var angle = deg_to_rad(randf_range(0.0, 360.0))
-	var direction = Vector2(sin(angle), cos(angle))
+	var direction = Vector2(cos(angle), sin(angle)) # cos -> abs, sin -> ord
 	var distance = randf_range(min_wander_distance, max_wander_distance)
 	
 	return owner.global_position + direction * distance
