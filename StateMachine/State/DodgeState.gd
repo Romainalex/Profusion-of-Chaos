@@ -19,7 +19,7 @@ func _ready() -> void:
 #### LOGICS ####
 
 func enter_state() -> void:
-	owner._dodge()
+	pass
 	
 
 #func exit_state() -> void:
