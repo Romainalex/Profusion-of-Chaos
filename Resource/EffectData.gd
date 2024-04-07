@@ -9,7 +9,7 @@ enum EFFECT_TYPE {
 	POISON,
 	RALENTISSEMENT,
 	REPOUSSE,
-	GRAB
+	HOOK
 }
 
 @export var effect_type : EFFECT_TYPE = EFFECT_TYPE.NORMAL

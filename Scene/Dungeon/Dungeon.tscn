@@ -1,19 +1,229 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlxgplis04r6a"]
+[gd_scene load_steps=14 format=3 uid="uid://dlxgplis04r6a"]
 
 [ext_resource type="Script" path="res://Scene/UI/MenuManager.gd" id="1_cj8ci"]
+[ext_resource type="Script" path="res://Scene/UI/HUD/HUD.gd" id="1_irc7n"]
 [ext_resource type="Script" path="res://Scene/UI/Blackwell.gd" id="2_i6st8"]
+[ext_resource type="Texture2D" uid="uid://cv7snkwa746w5" path="res://Scene/UI/Image/cadre_HUD.png" id="2_lttx7"]
 [ext_resource type="PackedScene" uid="uid://dnpsajap57a67" path="res://Scene/UI/MenuPause.tscn" id="3_6s4db"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjr2l"]
+bg_color = Color(0.0901961, 0.0901961, 0.0901961, 0.513726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivwxc"]
+bg_color = Color(0.729412, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_r6a6y"]
+ProgressBar/font_sizes/font_size = 10
+ProgressBar/styles/background = SubResource("StyleBoxFlat_bjr2l")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ivwxc")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ov8v8"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qxbfy"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_otslh"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hllsk"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_viaxc"]
 
 [node name="Dungeon" type="Node2D"]
 y_sort_enabled = true
 
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
-
-[node name="ObstacleTileMap" type="TileMap" parent="."]
-format = 2
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 276.0
+offset_bottom = 65.0
+script = ExtResource("1_irc7n")
+
+[node name="LifeProgressBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 36.0
+offset_top = 6.0
+offset_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme = SubResource("Theme_r6a6y")
+step = 0.1
+value = 100.0
+show_percentage = false
+
+[node name="Principal" type="TextureRect" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -32.0
+offset_right = -205.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_lttx7")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/Principal"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_ov8v8")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD/Principal"]
+modulate = Color(1, 1, 1, 0.72549)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+color = Color(0, 0, 0, 1)
+
+[node name="Secondaire" type="TextureRect" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = -32.0
+offset_right = -169.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_lttx7")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/Secondaire"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_qxbfy")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD/Secondaire"]
+modulate = Color(1, 1, 1, 0.72549)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+color = Color(0, 0, 0, 1)
+
+[node name="Special1" type="TextureRect" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 111.0
+offset_top = -32.0
+offset_right = -133.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_lttx7")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/Special1"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_otslh")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD/Special1"]
+modulate = Color(1, 1, 1, 0.72549)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+color = Color(0, 0, 0, 1)
+
+[node name="Special2" type="TextureRect" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 147.0
+offset_top = -32.0
+offset_right = -97.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_lttx7")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/Special2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_hllsk")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD/Special2"]
+modulate = Color(1, 1, 1, 0.890196)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+color = Color(0, 0, 0, 1)
+
+[node name="Object" type="TextureRect" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("2_lttx7")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/Object"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_viaxc")
 
 [node name="MenuManager" type="Control" parent="CanvasLayer"]
 process_mode = 3

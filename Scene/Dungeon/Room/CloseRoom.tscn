@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt028c8nfjpne"]
+
+[ext_resource type="PackedScene" uid="uid://b6dtve5ui1xn0" path="res://Scene/Dungeon/Room/Room.tscn" id="1_uv7i6"]
+[ext_resource type="Script" path="res://Scene/Dungeon/Room/CloseRoom.gd" id="2_i1dj4"]
+
+[node name="CloseRoom" instance=ExtResource("1_uv7i6")]
+script = ExtResource("2_i1dj4")
+
+[node name="ActorDetectionArea" type="Area2D" parent="." index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActorDetectionArea" index="0"]

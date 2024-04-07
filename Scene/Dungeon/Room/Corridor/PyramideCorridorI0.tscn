@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://m2vx0161i5ct"]
+
+[ext_resource type="PackedScene" uid="uid://tdwhxuwkh7d2" path="res://Scene/Dungeon/Room/OpenRoom.tscn" id="1_lytjn"]
+[ext_resource type="TileSet" uid="uid://cr40xnvmsurgv" path="res://Scene/Dungeon/Tilemap/Pyramide.tres" id="2_ogca6"]
+
+[node name="PyramideCorridorI0" instance=ExtResource("1_lytjn")]
+
+[node name="TileMap" parent="." index="0"]
+tile_set = ExtResource("2_ogca6")
+layer_0/tile_data = PackedInt32Array(0, 262144, 0, 65536, 0, 1, 131072, 0, 1, 196608, 262144, 1, 2, 196608, 0, 65538, 131072, 1, 131074, 131072, 1, 196610, 196608, 1, 1, 131073, 3, 65537, 131073, 3, 131073, 131073, 3, 196609, 131073, 3)

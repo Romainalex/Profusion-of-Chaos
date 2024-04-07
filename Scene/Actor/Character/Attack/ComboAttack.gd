@@ -75,10 +75,10 @@ func _on_AnimatedSprite_animation_finished() -> void:
 	super._on_AnimatedSprite_animation_finished()
 
 func _on_AnimatedSprite_frame_changed() -> void:
-	if str(attack_index).is_subsequence_of(animated_sprite_attack.get_animation()):
+	if str(attack_index).is_subsequence_of(animated_sprite_body.get_animation()):
 		for shape in _get_attack_animation(attack_index).shape_array:
-			if shape.hit_frame == animated_sprite_attack.get_frame():
+			if shape.hit_frame == animated_sprite_body.get_frame():
 				_attack_attempt(normalized_name_hitbox+str(attack_index)+"_"+str(shape.hit_frame), _get_attack_animation(attack_index))
 		for projectil in _get_attack_animation(attack_index).projectil_array:
-			if animated_sprite_attack.get_frame() == projectil.frame_to_start:
+			if animated_sprite_body.get_frame() == projectil.frame_to_start:
 				_throw_projectil(projectil)

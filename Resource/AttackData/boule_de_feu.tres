@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SimpleAttackData" load_steps=29 format=3 uid="uid://by55vhwybfm1h"]
+[gd_resource type="Resource" script_class="SimpleAttackData" load_steps=31 format=3 uid="uid://by55vhwybfm1h"]
 
 [ext_resource type="Script" path="res://Resource/SimpleAttackData.gd" id="1_hrt1x"]
 [ext_resource type="Texture2D" uid="uid://cdbr22tksnoat" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png" id="1_ioaay"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bivwrbv0ud1l2" path="res://Scene/Actor/Character/Attack/AttackInstance/BouleDeFeu.tscn" id="2_n3h4x"]
 [ext_resource type="Script" path="res://Resource/AttackAnimationData.gd" id="2_vfljp"]
 [ext_resource type="Script" path="res://Resource/ProjectilData.gd" id="3_kealm"]
+[ext_resource type="Texture2D" uid="uid://dqs6p0x1jfnvj" path="res://Scene/UI/Image/icon_HUD_sprite_sheet.png" id="7_2fjpg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chou3"]
 atlas = ExtResource("1_ioaay")
@@ -198,11 +199,16 @@ shape_array = Array[Resource("res://Resource/ShapeData.gd")]([])
 projectil_array = Array[ExtResource("3_kealm")]([SubResource("Resource_phawv")])
 damage_data = SubResource("Resource_kwcbh")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m6u0"]
+atlas = ExtResource("7_2fjpg")
+region = Rect2(0, 0, 32, 32)
+
 [resource]
 script = ExtResource("1_hrt1x")
 attack_animation = SubResource("Resource_get4a")
 type_attack = 0
 evolution_array = Array[Resource("res://Resource/AttackData.gd")]([])
-cooldown = 0.0
+cooldown = 5.0
+texture_inventory = SubResource("AtlasTexture_5m6u0")
 name = "Boule de feu"
 description = ""

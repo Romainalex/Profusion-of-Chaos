@@ -1,0 +1,158 @@
+[gd_scene load_steps=19 format=3 uid="uid://b2rkt5hfuj4ee"]
+
+[ext_resource type="Script" path="res://Scene/InteractiveObject/OpenableObject/Door.gd" id="1_hp8w4"]
+[ext_resource type="Texture2D" uid="uid://dkjy41x4pc401" path="res://Scene/InteractiveObject/Sprite/pyramide_porte_sprite_sheet.png" id="2_w7c06"]
+[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="3_ou2bj"]
+[ext_resource type="Script" path="res://StateMachine/State.gd" id="4_hvnix"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxp2g"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qndyx"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m123n"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvgby"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(128, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l107q"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(64, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rywno"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(0, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u0fk"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhm0o"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6kbj"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tt44"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(0, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywtxf"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(64, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr6jq"]
+atlas = ExtResource("2_w7c06")
+region = Rect2(128, 80, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_omv0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxp2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qndyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m123n")
+}],
+"loop": false,
+"name": &"CloseDown",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"CloseLeft",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"CloseRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvgby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l107q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rywno")
+}],
+"loop": false,
+"name": &"CloseUp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6u0fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhm0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6kbj")
+}],
+"loop": false,
+"name": &"OpenDown",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"OpenLeft",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"OpenRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tt44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywtxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr6jq")
+}],
+"loop": false,
+"name": &"OpenUp",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra2on"]
+size = Vector2(18.2857, 20.8571)
+
+[node name="Door" type="StaticBody2D" groups=["Door"]]
+script = ExtResource("1_hp8w4")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_omv0p")
+animation = &"CloseUp"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+scale = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_ra2on")
+disabled = true
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_ou2bj")
+
+[node name="Open" type="Node" parent="StateMachine"]
+script = ExtResource("4_hvnix")
+
+[node name="Close" type="Node" parent="StateMachine"]
+script = ExtResource("4_hvnix")

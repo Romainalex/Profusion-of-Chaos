@@ -14,7 +14,7 @@ class_name Attack
 var crit : float = 0.0
 var direction : Vector2 = Vector2.ZERO
 
-signal attack_finished(attack)
+signal attack_finished(attack, cooldown)
 signal attack_data_changed()
 
 #### ACCESSORS ####
@@ -79,7 +79,7 @@ func start_attack_behaviour(facing_direction: Vector2, character_data: Character
 		_update_hitbox_and_attack_direction(facing_direction)
 		_start_attack_animation(facing_direction)
 	else:
-		emit_signal("attack_finished", self)
+		emit_signal("attack_finished", self, 0.0)
 
 func stop_attack_behaviour(_facing_direction: Vector2, _character_data: CharacterData) -> void:
 	pass
@@ -135,7 +135,7 @@ func _on_AnimatedSprite_animation_finished() -> void:
 	_hide(true)
 	if attack_data.cooldown > 0.0:
 		cooldown.start(attack_data.cooldown)
-	emit_signal("attack_finished", self)
+	emit_signal("attack_finished", self, attack_data.cooldown)
 
 func _on_AnimatedSprite_frame_changed() -> void:
 	for shape in attack_data.attack_animation.shape_array:

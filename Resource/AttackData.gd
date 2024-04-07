@@ -5,7 +5,8 @@ class_name AttackData
 enum TYPE_ATTACK {
 	NORMAL,
 	COMBO,
-	CHARGED
+	CHARGED,
+	HOOK
 }
 
 @export var type_attack : TYPE_ATTACK

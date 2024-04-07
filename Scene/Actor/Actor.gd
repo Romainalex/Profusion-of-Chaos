@@ -8,6 +8,7 @@ class_name Actor
 
 @onready var state_machine = $StateMachine
 @onready var animated_sprite = $AnimatedSprite
+@onready var collision_shape = $CollisionShape2D
 @onready var tween
 
 @export var actor_data : ActorData = null
@@ -27,7 +28,6 @@ signal facing_direction_changed
 signal moving_direction_changed
 signal pv_changed
 signal death_feedback_finished
-signal grabed(location)
 
 
 #### ACCESSEUR ####
@@ -51,7 +51,7 @@ func set_pv(val: int) -> void:
 	
 	if val != pv:
 		pv = val
-		emit_signal("pv_changed", val)
+		emit_signal("pv_changed", val, max_pv)
 
 func get_pv() -> int:
 	return pv
@@ -87,8 +87,7 @@ func hurt(damage_data: DamageData, crit: float) -> void:
 	var dam : int = 0
 	for effect in damage_data.effect_array:
 		match effect.effect_type:
-			effect.EFFECT_TYPE.GRAB:
-				emit_signal("grabed", global_position)
+			effect.EFFECT_TYPE.HOOK:
 				state_machine.set_state("Freeze")
 			_: #default
 				state_machine.set_state("Hurt")

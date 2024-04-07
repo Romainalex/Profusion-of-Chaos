@@ -4,6 +4,7 @@ class_name AttackBehaviour
 @onready var attack_scene = preload("res://Scene/Actor/Character/Attack/Attack.tscn")
 @onready var combo_attack_scene = preload("res://Scene/Actor/Character/Attack/ComboAttack.tscn")
 @onready var charged_attack_scene = preload("res://Scene/Actor/Character/Attack/ChargedAttack.tscn")
+@onready var hook_attack_scene = preload("res://Scene/Actor/Character/Attack/HookAttack.tscn")
 
 @export var attack_data_principal : AttackData = null
 @export var attack_data_secondaire : AttackData = null
@@ -23,6 +24,7 @@ class_name AttackBehaviour
 
 signal attack_data_changed(attack)
 signal attack_finished(attack)
+signal hooked(hooked_position, time_hooked)
 
 #### ACCESSORS ####
 
@@ -60,7 +62,7 @@ func _ready() -> void:
 #### LOGICS ####
 
 func start_attack_behaviour(attack: int, facing_direction: Vector2) -> void:
-	var face_direction = _give_attack_direction(facing_direction)
+	var face_direction = Util.give_angle_direction(object, facing_direction)
 	match attack:
 		0: # Attack principal
 			$AttackPrincipal.start_attack_behaviour(face_direction, owner.actor_data)
@@ -69,10 +71,10 @@ func start_attack_behaviour(attack: int, facing_direction: Vector2) -> void:
 		2: # Attack special1
 			$AttackSpecial1.start_attack_behaviour(face_direction, owner.actor_data)
 		3: # Attack special2
-			$AttackSpecial2.start_attack_behaviour(face_direction, owner.actor_data.crit_rate)
+			$AttackSpecial2.start_attack_behaviour(face_direction, owner.actor_data)
 
 func stop_attack_behaviour(attack: int, facing_direction: Vector2) -> void:
-	var face_direction = _give_attack_direction(facing_direction)
+	var face_direction = Util.give_angle_direction(object, facing_direction)
 	match attack:
 		0: # Attack principal
 			$AttackPrincipal.stop_attack_behaviour(face_direction, owner.actor_data)
@@ -82,19 +84,6 @@ func stop_attack_behaviour(attack: int, facing_direction: Vector2) -> void:
 			$AttackSpecial1.stop_attack_behaviour(face_direction, owner.actor_data)
 		3: # Attack special2
 			$AttackSpecial2.stop_attack_behaviour(face_direction, owner.actor_data)
-
-func _give_attack_direction(facing_direction: Vector2) -> Vector2:
-	var face_direction = facing_direction
-	if GAME.INPUT_SCHEME in [GAME.INPUT_SCHEMES.XBOX, GAME.INPUT_SCHEMES.DUALSHOCK]:
-		var attack_direction = Input.get_vector("Attack_direction_Left","Attack_direction_Right","Attack_direction_Up","Attack_direction_Down")
-		var move_direction = Input.get_vector("Left_action","Right_action","Up_action","Down_action")
-		if attack_direction != Vector2.ZERO:
-			face_direction = attack_direction
-		elif move_direction != Vector2.ZERO:
-			face_direction = move_direction
-	elif GAME.INPUT_SCHEME == GAME.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
-		face_direction = object.get_global_mouse_position() - object.global_position
-	return face_direction
 
 func _create_attack(attack: String) -> void:
 	var a = null
@@ -107,12 +96,15 @@ func _create_attack(attack: String) -> void:
 				a = combo_attack_scene.instantiate()
 			2: # CHARGED attack
 				a = charged_attack_scene.instantiate()
+			3: # HOOK attack
+				a = hook_attack_scene.instantiate()
 			_: # default
 				push_error("Error : No type_attack determined for attack %s" % attack)
 	if a != null:
 		add_child(a)
 		a.set_name(attack)
 		a.set_attack_data(type_attack[attack])
+		EVENTS.emit_signal("attack_create", type_attack.keys().find(attack), type_attack[attack].texture_inventory)
 		_create_attack_signal(attack)
 
 func _update_attack(type_old_attack: String, new_attack: String) -> void:
@@ -122,6 +114,8 @@ func _update_attack(type_old_attack: String, new_attack: String) -> void:
 
 func _create_attack_signal(attack: String) -> void:
 	_find_node_name(attack).connect("attack_finished", Callable(self, "_on_"+attack+"_attack_finished"))
+	if type_attack[attack].type_attack == 3:
+		_find_node_name(attack).connect("hooked", Callable(self, "_on_Attack_hooked"))
 
 func _find_node_name(node_name: String):
 	var node_ref = null
@@ -151,14 +145,27 @@ func _find_node_name(node_name: String):
 func _on_attack_data_changed(type_attack_name: String, new_attack: String) -> void:
 	_update_attack(type_attack_name, new_attack)
 
-func _on_AttackPrincipal_attack_finished(attack: Object) -> void:
+func _on_AttackPrincipal_attack_finished(attack: Object, cooldown: float) -> void:
+	if cooldown > 0.0:
+		EVENTS.emit_signal("attack_cooldown_start", 0, cooldown)
 	emit_signal("attack_finished", attack)
 
-func _on_AttackSecondaire_attack_finished(attack: Object) -> void:
+func _on_AttackSecondaire_attack_finished(attack: Object, cooldown: float) -> void:
+	if cooldown > 0.0:
+		EVENTS.emit_signal("attack_cooldown_start", 1, cooldown)
 	emit_signal("attack_finished", attack)
 
-func _on_AttackSpecial1_attack_finished(attack: Object) -> void:
+func _on_AttackSpecial1_attack_finished(attack: Object, cooldown: float) -> void:
+	if cooldown > 0.0:
+		EVENTS.emit_signal("attack_cooldown_start", 2, cooldown)
 	emit_signal("attack_finished", attack)
 
-func _on_AttackSpecial2_attack_finished(attack: Object) -> void:
+func _on_AttackSpecial2_attack_finished(attack: Object, cooldown: float) -> void:
+	if cooldown > 0.0:
+		EVENTS.emit_signal("attack_cooldown_start", 3, cooldown)
 	emit_signal("attack_finished", attack)
+
+func _on_Attack_hooked(hooked_position: Vector2, time_to_throw: float, time_hooked: float) -> void:
+	emit_signal("hooked", hooked_position, time_to_throw, time_hooked)
+
+
