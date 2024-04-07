@@ -73,7 +73,7 @@ func _check_collision() -> float:
 		collision_point = ray_cast.get_collision_point()
 		distance = (global_position - collision_point).length()
 		if collider in get_tree().get_nodes_in_group("Ennemy"):
-			collider.hurt(attack_data.damage_data)
+			collider.hurt(attack_data.damage_data, 100.0)
 			emit_signal("hooked",collision_point, attack_data.time_to_throw, attack_data.time_to_retract)
 	return distance
 
