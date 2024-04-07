@@ -24,6 +24,7 @@ func set_state(state) -> void:
 	
 	if current_state != null:
 		current_state.enter_state()
+	
 	emit_signal("state_changed", current_state)
 
 func get_state() -> Node: 
@@ -56,7 +57,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if current_state != null:
 		current_state.update(delta)
-	
 
 #### VIRTUAL ####
 
@@ -65,6 +65,9 @@ func _ready_state() -> void:
 
 func exit_state() -> void:
 	set_state(null)
+
+func enter_state() -> void:
+	set_to_default_state()
 
 #### LOGICS ####
 
@@ -76,5 +79,6 @@ func _on_state_changed(_state: Node) -> void:
 
 func _on_State_state_changed_recursive(_state: Node) -> void:
 	emit_signal("state_changed_recursive", current_state)
+
 
 

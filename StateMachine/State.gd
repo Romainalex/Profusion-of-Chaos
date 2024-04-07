@@ -12,5 +12,7 @@ func exit_state() -> void:
 func update(_delta : float) -> void:
 	pass
 
+#### LOGIC ####
+
 func is_current_state() -> bool:
 	return state_machine.get_state() == self
