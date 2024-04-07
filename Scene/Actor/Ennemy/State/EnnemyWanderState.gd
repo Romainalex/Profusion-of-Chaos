@@ -1,4 +1,4 @@
-extends State
+extends StateMachine
 class_name WanderState
 
 func enter_state() -> void:

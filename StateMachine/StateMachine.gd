@@ -66,6 +66,9 @@ func _ready_state() -> void:
 func exit_state() -> void:
 	set_state(null)
 
+func enter_state() -> void:
+	set_to_default_state()
+
 #### LOGICS ####
 
 func set_to_default_state() -> void:
@@ -76,5 +79,6 @@ func _on_state_changed(_state: Node) -> void:
 
 func _on_State_state_changed_recursive(_state: Node) -> void:
 	emit_signal("state_changed_recursive", current_state)
+
 
 
