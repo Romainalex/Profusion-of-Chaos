@@ -3,6 +3,7 @@ extends State
 
 
 
+
 #### ACCESSORS ####
 
 
@@ -19,12 +20,10 @@ func _ready() -> void:
 #### LOGICS ####
 
 func enter_state() -> void:
-	pass
+	owner._dodge()
 	
 
-#func exit_state() -> void:
-	#owner.collision_shape.set_disable(false)
-	
+
 
 #### INPUTS ####
 

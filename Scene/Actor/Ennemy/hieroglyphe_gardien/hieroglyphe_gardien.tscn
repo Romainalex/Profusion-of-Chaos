@@ -142,21 +142,21 @@ animations = [{
 radius = 30.1496
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uqw7"]
-radius = 124.004
+radius = 900.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5xae"]
-radius = 65.0
+radius = 74.23
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tgtj"]
 size = Vector2(98, 36.525)
 
 [node name="Hieroglyphe_Gardien" groups=["Ennemy"] instance=ExtResource("1_oplay")]
+scale = Vector2(0.25, 0.25)
 speed = 60.0
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_2tnjg")
-animation = &"MoveDown"
-frame_progress = 0.335969
+animation = &"MoveUp"
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_t1qu8")
@@ -169,6 +169,7 @@ script = ExtResource("3_4stwo")
 script = ExtResource("5_qt8et")
 
 [node name="StateLabel" type="Label" parent="StateMachine" index="7"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("4_7efai")
@@ -197,6 +198,7 @@ script = ExtResource("7_wg0j8")
 one_shot = true
 
 [node name="Label" type="Label" parent="BehaviorTree" index="3"]
+visible = false
 offset_left = -50.0
 offset_top = -100.0
 offset_right = 50.0

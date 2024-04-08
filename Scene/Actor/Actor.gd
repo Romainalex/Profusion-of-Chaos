@@ -9,7 +9,7 @@ class_name Actor
 @onready var state_machine = $StateMachine
 @onready var animated_sprite = $AnimatedSprite
 @onready var collision_shape = $CollisionShape2D
-@onready var tween
+@onready var tween : Tween
 
 @export var actor_data : ActorData = null
 

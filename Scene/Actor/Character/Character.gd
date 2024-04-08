@@ -4,6 +4,7 @@ class_name Character
 
 @onready var attack_behaviour = $AttackBehaviour
 @onready var interaction_area = $InteractionArea
+@onready var dodge_raycast = $RayCast2D
 
 @export var dodge_data : DodgeData = null
 
@@ -105,11 +106,28 @@ func hurt(damage_data: DamageData, crit: float) -> void:
 	if state_machine.get_state_name() != "Dodge":
 		super.hurt(damage_data, crit)
 
-func _dodge() -> void:
-	tween = create_tween()
+
+func _update_dodge_raycast() -> void:
+	dodge_raycast.set_target_position(Vector2(0, dodge_data.dodge_distance))
 	var vector_direction = Util.give_angle_direction(self, facing_direction)
 	
-	tween.tween_property(self, "position", global_position + dodge_data.dodge_distance*vector_direction.normalized(), 0.5)
+	dodge_raycast.set_rotation_degrees(rad_to_deg(vector_direction.normalized().angle()) - 90)
+
+func _check_collision() -> Vector2:
+	var collision_point
+	var point_to_dodge = global_position + (dodge_data.dodge_distance * Util.give_angle_direction(self, facing_direction).normalized())
+	if dodge_raycast.is_colliding():
+		collision_point = dodge_raycast.get_collision_point()
+		point_to_dodge = collision_point
+	return point_to_dodge
+
+
+func _dodge() -> void:
+	_update_dodge_raycast()
+	var tween = create_tween()
+	var point_to_dodge = _check_collision()
+	
+	tween.tween_property(self, "position", point_to_dodge, 0.5)
 	await get_tree().create_timer(0.5).timeout
 	
 	state_machine.set_state("Idle")
