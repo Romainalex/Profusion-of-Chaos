@@ -48,10 +48,8 @@ func _update_target() -> void:
 func _update_behavior_state() -> void:
 	if can_attack():
 		behavior_tree.set_state("Attack")
-	
 	elif target_in_chase_area:
 		behavior_tree.set_state("Chase")
-	
 	else:
 		behavior_tree.set_state("Wander")
 
@@ -60,6 +58,7 @@ func update_move_path(dest: Vector2) -> void:
 		path = [dest]
 	else:
 		path = pathfinder.find_path(global_position, dest)
+
 
 
 # A appeler dans le physics_process

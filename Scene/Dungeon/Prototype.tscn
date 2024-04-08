@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2wxmstdkbhme"]
+[gd_scene load_steps=9 format=3 uid="uid://c2wxmstdkbhme"]
 
 [ext_resource type="PackedScene" uid="uid://dlxgplis04r6a" path="res://Scene/Dungeon/Dungeon.tscn" id="1_aee4b"]
 [ext_resource type="PackedScene" uid="uid://cf5o2l1w6t83p" path="res://Scene/Dungeon/Room/OpenRoom/pyramyde_room.tscn" id="2_gcp00"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="5_b3la2"]
 [ext_resource type="PackedScene" uid="uid://b2rkt5hfuj4ee" path="res://Scene/InteractiveObject/OpenableObject/Door.tscn" id="6_48n3t"]
 [ext_resource type="PackedScene" uid="uid://2bd6ryf16qeo" path="res://Scene/Actor/Ennemy/hieroglyphe_gardien/hieroglyphe_gardien.tscn" id="7_3d7x8"]
+[ext_resource type="PackedScene" uid="uid://dj6x2s2nohx8i" path="res://Behaviour/RoomBehaviour.tscn" id="8_llqbd"]
 
 [node name="Dungeon" instance=ExtResource("1_aee4b")]
 position = Vector2(-1, 0)
@@ -32,3 +33,36 @@ layout_mode = 1
 
 [node name="Hieroglyphe_Gardien" parent="." index="6" instance=ExtResource("7_3d7x8")]
 position = Vector2(340, 301)
+
+[node name="Hieroglyphe_Gardien2" parent="." index="7" instance=ExtResource("7_3d7x8")]
+position = Vector2(172, 581)
+
+[node name="Hieroglyphe_Gardien3" parent="." index="8" instance=ExtResource("7_3d7x8")]
+position = Vector2(639, 622)
+
+[node name="Hieroglyphe_Gardien4" parent="." index="9" instance=ExtResource("7_3d7x8")]
+position = Vector2(426, 539)
+
+[node name="Hieroglyphe_Gardien5" parent="." index="10" instance=ExtResource("7_3d7x8")]
+position = Vector2(140, 168)
+
+[node name="Hieroglyphe_Gardien6" parent="." index="11" instance=ExtResource("7_3d7x8")]
+position = Vector2(705, 180)
+
+[node name="Door2" parent="." index="12" instance=ExtResource("6_48n3t")]
+position = Vector2(994, 284)
+
+[node name="RoomBehaviour" parent="." index="13" instance=ExtResource("8_llqbd")]
+position = Vector2(1, 0)
+control_children_dimension = Vector2(1050, 860)
+
+[node name="CollisionShape2D" parent="RoomBehaviour/CharacterDetectionArea" index="0"]
+position = Vector2(481, 416)
+
+[node name="ControlChildrenArea" parent="RoomBehaviour" index="1"]
+position = Vector2(470, 293)
+
+[node name="CollisionShape2D" parent="RoomBehaviour/ControlChildrenArea" index="0"]
+position = Vector2(33.5, 121)
+
+[editable path="RoomBehaviour"]

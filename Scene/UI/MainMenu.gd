@@ -30,7 +30,7 @@ func _ready() -> void:
 	credits.connect("return_menu", Callable(self, "_on_return_menu"))
 	options.connect("return_menu", Callable(self, "_on_return_menu"))
 	
-	buttons_container.set_visible(true)
+	Util.set_ui_visible(buttons_container, true)
 	
 	
 
@@ -61,12 +61,12 @@ func _on_NewGameButton_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scene/Dungeon/Prototype.tscn")
 
 func _on_OptionsButton_pressed() -> void:
-	buttons_container.set_visible(false)
-	options.set_visible(true)
+	Util.set_ui_visible(buttons_container, false)
+	Util.set_ui_visible(options, true)
 
 func _on_CreditsButton_pressed() -> void:
-	buttons_container.set_visible(false)
-	credits.set_visible(true)
+	Util.set_ui_visible(buttons_container, false)
+	Util.set_ui_visible(credits, true)
 
 func _on_QuitButton_pressed() -> void:
 	get_tree().quit()
@@ -76,6 +76,6 @@ func _on_ButtonsContainer_visibility_changed() -> void:
 		continue_button.grab_focus()
 
 func _on_return_menu(previous_menu: Control) -> void:
-	buttons_container.set_visible(true)
-	previous_menu.set_visible(false)
+	Util.set_ui_visible(buttons_container, true)
+	Util.set_ui_visible(previous_menu, false)
 

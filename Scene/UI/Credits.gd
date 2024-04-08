@@ -32,7 +32,7 @@ func _ready() -> void:
 	timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
 	label_start_position = label.position
 	label.text = text
-	set_visible(false)
+	Util.set_ui_visible(self, false)
 
 
 

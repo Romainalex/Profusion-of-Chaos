@@ -174,7 +174,7 @@ func _on_AnimatedSprite_frame_changed() -> void:
 			#_attack_effect()
 	pass
 
-func _on_pv_changed(new_hp: int) -> void:
+func _on_pv_changed(new_hp: int, max_hp: int) -> void:
 	#print(name + " : " + str(new_hp))
 	if new_hp == 0:
 		die()

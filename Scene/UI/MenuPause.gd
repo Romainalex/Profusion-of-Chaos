@@ -45,16 +45,17 @@ func _animation(_appear: bool) -> void:
 
 
 
+
 #### SIGNAL RESPONSES ####
 
 
 
 func _on_ContinueButton_pressed() -> void:
-	set_visible(false)
+	Util.set_ui_visible(self, false)
 
 func _on_OptionsButton_pressed() -> void:
-	buttons_container.set_visible(false)
-	options.set_visible(true)
+	Util.set_ui_visible(buttons_container,false)
+	Util.set_ui_visible(options, true)
 
 func _on_MainMenuButton_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scene/UI/MainMenu.tscn")
@@ -65,13 +66,13 @@ func _on_QuitButton_pressed() -> void:
 func _on_visibility_changed() -> void:
 	get_tree().paused = visible
 	if visible:
-		buttons_container.set_visible(true)
+		Util.set_ui_visible(buttons_container, true)
 
 func _on_ButtonContainer_visibility_changed() -> void:
 	if buttons_container.visible:
 		continue_button.grab_focus()
 
 func _on_return_menu(previous_menu: Control) -> void:
-	previous_menu.set_visible(false)
-	buttons_container.set_visible(true)
+	Util.set_ui_visible(previous_menu, false)
+	Util.set_ui_visible(buttons_container, true)
 

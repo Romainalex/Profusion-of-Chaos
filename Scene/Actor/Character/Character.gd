@@ -48,6 +48,9 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Interact_action"):
 		_interacting_attempt()
 	
+	if Input.is_action_just_pressed("Inventory_action"):
+		die()
+	
 	# Les inputs d'attaques
 	if Input.is_action_just_pressed("AttackPrincipal_action"): 
 		state_machine.set_state("AttackPrincipal")
@@ -89,7 +92,7 @@ func _update_interaction_area_direction() -> void:
 	interaction_area.set_rotation_degrees(rad_to_deg(angle) - 90)
 
 func _update_animation() -> void:
-	if not(state_machine.get_state_name() == "Hooked"):
+	if not(state_machine.get_state_name() in attack_array) and not(state_machine.get_state_name() == "Hooked"):
 		super._update_animation()
 
 ##Lance une tentative d'intéraction et retourne vrai si l'intéraction a été effectué, faux sinon
@@ -145,8 +148,8 @@ func _on_state_changed(_new_state: Object) -> void:
 	
 	super._on_StateMachine_state_changed(state_machine.get_state())
 	
-func _on_pv_changed(new_pv: int) -> void:
-	super._on_pv_changed(new_pv)
+func _on_pv_changed(new_pv: int, max_hp: int) -> void:
+	super._on_pv_changed(new_pv, max_hp)
 	
 	EVENTS.emit_signal("character_pv_changed", new_pv, max_pv)
 

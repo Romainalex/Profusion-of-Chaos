@@ -71,7 +71,9 @@ static func give_angle_direction(object: Object, facing_direction: Vector2) -> V
 		face_direction = object.get_global_mouse_position() - object.global_position
 	return face_direction
 
-#### INPUTS ####
+static func set_ui_visible(object: Control, val: bool) -> void:
+	object.set_visible(val)
+	object.set_as_top_level(val)
 
 
 

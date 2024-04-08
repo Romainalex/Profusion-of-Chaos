@@ -78,8 +78,8 @@ func _input(_event: InputEvent) -> void:
 	
 	if controller_panel.visible:
 		if Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("Menu_action"):
-			controller_panel.set_visible(false)
-			main_panel.set_visible(true)
+			Util.set_ui_visible(controller_panel, false)
+			Util.set_ui_visible(main_panel, true)
 		if Input.is_action_pressed("ui_down"):
 			_update_scrollbar(10)
 		if Input.is_action_pressed("ui_up"):
@@ -93,7 +93,7 @@ func _input(_event: InputEvent) -> void:
 
 func _on_visibility_changed() -> void:
 	if visible:
-		main_panel.set_visible(true)
+		Util.set_ui_visible(main_panel, true)
 
 func _on_MainPanel_visibility_changed() -> void:
 	if visible:
@@ -131,17 +131,17 @@ func _on_DualshockSchemeButton_focus_entered() -> void:
 	scrollbar = gamepad_scheme.get_v_scroll_bar()
 
 func _on_KeyboardMouseSchemeButton_focus_exited() -> void:
-	keyboard_mouse_scheme.set_visible(false)
+	Util.set_ui_visible(keyboard_mouse_scheme, false)
 
 func _on_XboxSchemeButton_focus_exited() -> void:
-	gamepad_scheme.set_visible(false)
+	Util.set_ui_visible(gamepad_scheme, false)
 
 func _on_DualshockSchemeButton_focus_exited() -> void:
-	gamepad_scheme.set_visible(false)
+	Util.set_ui_visible(gamepad_scheme, false)
 
 func _on_LanguageOptionButton_item_selected(index: int) -> void:
 	TranslationServer.set_locale(language_codes[index])
 
 func _on_ControllerButton_pressed() -> void:
-	main_panel.set_visible(false)
-	controller_panel.set_visible(true)
+	Util.set_ui_visible(main_panel, false)
+	Util.set_ui_visible(controller_panel,true)

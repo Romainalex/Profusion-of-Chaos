@@ -23,6 +23,7 @@ var traid_menu_dict := {
 
 func _ready() -> void:
 	EVENTS.connect("pnj_traid_started", Callable(self, "_on_EVENTS_pnj_traid_started"))
+	EVENTS.connect("actor_died", Callable(self, "_on_EVENTS_actor_died"))
 
 
 
@@ -46,7 +47,7 @@ func _input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("Menu_action"):
 		if _all_is_hide():
-			pause_menu.set_visible(true)
+			Util.set_ui_visible(pause_menu, true)
 
 
 #### SIGNAL RESPONSES ####
@@ -65,3 +66,7 @@ func _on_EVENTS_pnj_traid_started(pnj: String) -> void:
 			_open_traid_menu(traid_menu_dict[pnj])
 		_:
 			push_error("Error: pnj named %s no found" % pnj)
+
+func _on_EVENTS_actor_died(target: Actor) -> void:
+	if target in get_tree().get_nodes_in_group("Character"):
+		$GameOver.start_game_over()
