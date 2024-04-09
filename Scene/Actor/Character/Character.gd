@@ -58,8 +58,8 @@ func _input(_event: InputEvent) -> void:
 		state_machine.set_state("AttackSecondaire")
 	if Input.is_action_just_pressed("AttackSpecial1_action"): 
 		state_machine.set_state("AttackSpecial1")
-	if Input.is_action_just_pressed("AttackSpecial2_action"): 
-		state_machine.set_state("AttackSpecial2")
+	#if Input.is_action_just_pressed("AttackSpecial2_action"): 
+		#state_machine.set_state("AttackSpecial2")
 	
 	if Input.is_action_just_released("AttackPrincipal_action"):
 		attack_behaviour.stop_attack_behaviour(ATTACK.PRINCIPAL, get_facing_direction())
@@ -67,8 +67,8 @@ func _input(_event: InputEvent) -> void:
 		attack_behaviour.stop_attack_behaviour(ATTACK.SECONDAIRE, get_facing_direction())
 	if Input.is_action_just_released("AttackSpecial1_action"):
 		attack_behaviour.stop_attack_behaviour(ATTACK.SPECIAL1, get_facing_direction())
-	if Input.is_action_just_released("AttackSpecial2_action"):
-		attack_behaviour.stop_attack_behaviour(ATTACK.SPECIAL2, get_facing_direction())
+	#if Input.is_action_just_released("AttackSpecial2_action"):
+		#attack_behaviour.stop_attack_behaviour(ATTACK.SPECIAL2, get_facing_direction())
 	
 	_update_state()
 	

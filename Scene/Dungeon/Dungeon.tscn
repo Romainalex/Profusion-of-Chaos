@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dlxgplis04r6a"]
+[gd_scene load_steps=31 format=3 uid="uid://dlxgplis04r6a"]
 
 [ext_resource type="Script" path="res://Scene/UI/MenuManager.gd" id="1_cj8ci"]
 [ext_resource type="Script" path="res://Scene/Dungeon/Pathfinder.gd" id="1_dd8nb"]
@@ -10,6 +10,12 @@
 [ext_resource type="Script" path="res://Scene/UI/GameOver.gd" id="3_dfvws"]
 [ext_resource type="Texture2D" uid="uid://b2u6qvpc5f4i3" path="res://thiccomniman.png" id="4_lalbd"]
 [ext_resource type="AudioStream" uid="uid://cn3k6i0040lo6" path="res://Hot_Milk.mp3" id="5_mqqdr"]
+[ext_resource type="Texture2D" uid="uid://c4y031m48w8xt" path="res://Scene/UI/Image/attack_principal_input.png" id="5_yfas4"]
+[ext_resource type="Texture2D" uid="uid://cg4ahn37cpnlw" path="res://Scene/UI/Image/attack_secondaire_input.png" id="6_egksm"]
+[ext_resource type="Texture2D" uid="uid://dj0wocdex5p4a" path="res://Scene/UI/Image/attack_special2_input.png" id="6_n0el3"]
+[ext_resource type="Texture2D" uid="uid://ch6kcp5n2lwck" path="res://Scene/UI/Image/attack_special1_input.png" id="7_tqmos"]
+[ext_resource type="Texture2D" uid="uid://bmkpifilaytdk" path="res://Scene/UI/Image/use_object_input.png" id="9_tfgjn"]
+[ext_resource type="Script" path="res://Scene/UI/ControllerEchapTexture.gd" id="16_fx33x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjr2l"]
 bg_color = Color(0.0901961, 0.0901961, 0.0901961, 0.513726)
@@ -24,13 +30,37 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_ivwxc")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ov8v8"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ht6s6"]
+atlas = ExtResource("5_yfas4")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_qxbfy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o56co"]
+atlas = ExtResource("6_egksm")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_otslh"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiui8"]
+atlas = ExtResource("7_tqmos")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_hllsk"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryjv2"]
+atlas = ExtResource("6_n0el3")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_viaxc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5327"]
+atlas = ExtResource("9_tfgjn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlstw"]
+atlas = ExtResource("9_tfgjn")
+region = Rect2(0, 0, 64, 64)
 
 [node name="Dungeon" type="Node2D"]
 y_sort_enabled = true
@@ -106,6 +136,19 @@ grow_vertical = 2
 rotation = 3.14159
 color = Color(0, 0, 0, 1)
 
+[node name="ControlTextureRect" type="TextureRect" parent="CanvasLayer/HUD/Principal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+offset_right = 32.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_ht6s6")
+
 [node name="Secondaire" type="TextureRect" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 12
@@ -143,6 +186,19 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.14159
 color = Color(0, 0, 0, 1)
+
+[node name="ControlTextureRect" type="TextureRect" parent="CanvasLayer/HUD/Secondaire"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+offset_right = 32.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_o56co")
 
 [node name="Special1" type="TextureRect" parent="CanvasLayer/HUD"]
 layout_mode = 1
@@ -182,6 +238,19 @@ grow_vertical = 2
 rotation = 3.14159
 color = Color(0, 0, 0, 1)
 
+[node name="ControlTextureRect" type="TextureRect" parent="CanvasLayer/HUD/Special1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+offset_right = 32.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_hiui8")
+
 [node name="Special2" type="TextureRect" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 12
@@ -220,6 +289,19 @@ grow_vertical = 2
 rotation = 3.14159
 color = Color(0, 0, 0, 1)
 
+[node name="ControlTextureRect" type="TextureRect" parent="CanvasLayer/HUD/Special2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+offset_right = 32.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_ryjv2")
+
 [node name="Object" type="TextureRect" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 2
@@ -239,6 +321,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_viaxc")
+
+[node name="ControlTextureRect" type="TextureRect" parent="CanvasLayer/HUD/Object"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+offset_right = 32.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_n5327")
 
 [node name="MenuManager" type="Control" parent="CanvasLayer"]
 process_mode = 3
@@ -270,7 +365,6 @@ visible = false
 layout_mode = 1
 
 [node name="GameOver" type="Control" parent="CanvasLayer/MenuManager"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -332,3 +426,26 @@ text = "Recommencer"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/MenuManager/GameOver"]
 stream = ExtResource("5_mqqdr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MenuManager/GameOver"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -23.0
+offset_right = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/MenuManager/GameOver/HBoxContainer"]
+layout_mode = 2
+text = "MENU_VALID"
+
+[node name="ValidControllerTexture" type="TextureRect" parent="CanvasLayer/MenuManager/GameOver/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_mlstw")
+expand_mode = 3
+script = ExtResource("16_fx33x")

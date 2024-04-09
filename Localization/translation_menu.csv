@@ -6,6 +6,7 @@ MENU_CREDITS,Crédits,Credits
 MENU_MAIN_MENU,Retour à l'écran titre,Return to main title
 MENU_QUIT,Quitter le jeu,Quit the game
 MENU_BACK,Retour,Back
+MENU_VALID,Valider,Valid
 CREDITS_MEMBERS,Membres,Members
 CREDITS_THANKS,Remerciements,Thanks
 OPTIONS_LANGUAGE,Langue,Language

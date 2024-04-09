@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://2bd6ryf16qeo"]
+[gd_scene load_steps=24 format=3 uid="uid://2bd6ryf16qeo"]
 
 [ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="1_oplay"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnnemyMoveState.gd" id="3_4stwo"]
@@ -10,6 +10,14 @@
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/WaitState.gd" id="7_uoybo"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnemyAttackState.gd" id="7_wg0j8"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/GoToState.gd" id="8_r04h0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycyv7"]
+atlas = ExtResource("3_v0v66")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4hwc"]
+atlas = ExtResource("3_v0v66")
+region = Rect2(192, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xv4r"]
 atlas = ExtResource("3_v0v66")
@@ -37,6 +45,50 @@ region = Rect2(128, 192, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2tnjg"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycyv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycyv7")
+}],
+"loop": false,
+"name": &"AttackDown",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycyv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycyv7")
+}],
+"loop": false,
+"name": &"AttackLeft",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4hwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4hwc")
+}],
+"loop": false,
+"name": &"AttackRight",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4hwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4hwc")
+}],
+"loop": false,
+"name": &"AttackUp",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1xv4r")
@@ -157,7 +209,7 @@ max_pv = 50
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_2tnjg")
-animation = &"MoveUp"
+animation = &"IdleDown"
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_t1qu8")

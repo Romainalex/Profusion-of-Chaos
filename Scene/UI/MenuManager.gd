@@ -70,3 +70,4 @@ func _on_EVENTS_pnj_traid_started(pnj: String) -> void:
 func _on_EVENTS_actor_died(target: Actor) -> void:
 	if target in get_tree().get_nodes_in_group("Character"):
 		$GameOver.start_game_over()
+		
