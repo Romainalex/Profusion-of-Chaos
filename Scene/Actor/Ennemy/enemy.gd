@@ -4,6 +4,10 @@ class_name Ennemy
 @onready var behavior_tree = $BehaviorTree
 @onready var chase_area = $ChaseArea
 @onready var attack_area = $AttackArea
+@onready var attack_hitbox = $AttackHitbox
+
+@export var dammage_data : DamageData = null
+@export_range(0.0, 100.0, 0.25) var crit_rate : float = 0.0
 
 var target : Node2D = null
 var path : Array = []
@@ -15,6 +19,7 @@ var target_in_attack_area : bool = false
 signal target_in_chase_area_changed
 signal target_in_attack_area_changed
 signal move_path_finished
+
 
 #### ACCESSORS ####
 
@@ -59,7 +64,9 @@ func update_move_path(dest: Vector2) -> void:
 	else:
 		path = pathfinder.find_path(global_position, dest)
 
-
+func _update_attack_hitbox_direction() -> void:
+	var angle = facing_direction.angle()
+	attack_hitbox.set_rotation_degrees(rad_to_deg(angle) - 90)
 
 # A appeler dans le physics_process
 func move_along_path(delta : float) -> void:
@@ -88,6 +95,10 @@ func move_along_path(delta : float) -> void:
 func can_attack() -> bool:
 	return !$BehaviorTree/Attack.is_cooldown_running() && target_in_attack_area
 
+func _attack_effect() -> void:
+	for body in attack_hitbox.get_overlapping_bodies():
+		if body in get_tree().get_nodes_in_group("Character"):
+			body.hurt()
 
 
 #### SIGNAL RESPONSE ####
@@ -133,3 +144,12 @@ func _on_StateMachine_state_changed(state) -> void:
 	
 	if state.name == "Attack":
 		face_position(target.global_position)
+
+func _on_facing_direction_changed() -> void:
+	super._on_facing_direction_changed()
+	_update_attack_hitbox_direction()
+
+func _on_AnimatedSprite_frame_changed() -> void:
+	if "Attack".is_subsequence_of(animated_sprite.get_animation()):
+		if animated_sprite.get_frame() == 1:
+			_attack_effect()

@@ -169,9 +169,6 @@ func _on_moving_direction_changed() -> void:
 
 
 func _on_AnimatedSprite_frame_changed() -> void:
-	#if "Attack".is_subsequence_of(animated_sprite.get_animation()):
-		#if animated_sprite.get_frame() == 1:
-			#_attack_effect()
 	pass
 
 func _on_pv_changed(new_hp: int, max_hp: int) -> void:
