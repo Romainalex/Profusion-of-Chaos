@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2wxmstdkbhme"]
+[gd_scene load_steps=11 format=3 uid="uid://c2wxmstdkbhme"]
 
 [ext_resource type="PackedScene" uid="uid://dlxgplis04r6a" path="res://Scene/Dungeon/Dungeon.tscn" id="1_aee4b"]
 [ext_resource type="PackedScene" uid="uid://cf5o2l1w6t83p" path="res://Scene/Dungeon/Room/OpenRoom/pyramyde_room.tscn" id="2_gcp00"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b2rkt5hfuj4ee" path="res://Scene/InteractiveObject/OpenableObject/Door.tscn" id="6_48n3t"]
 [ext_resource type="PackedScene" uid="uid://2bd6ryf16qeo" path="res://Scene/Actor/Ennemy/hieroglyphe_gardien/hieroglyphe_gardien.tscn" id="7_3d7x8"]
 [ext_resource type="PackedScene" uid="uid://dj6x2s2nohx8i" path="res://Behaviour/RoomBehaviour.tscn" id="8_llqbd"]
+[ext_resource type="PackedScene" uid="uid://q4v1ub2jrjeb" path="res://Scene/victory_area.tscn" id="10_5pj0g"]
 
 [node name="Dungeon" instance=ExtResource("1_aee4b")]
 position = Vector2(-1, 0)
@@ -69,5 +70,8 @@ position = Vector2(470, 293)
 
 [node name="CollisionShape2D" parent="RoomBehaviour/ControlChildrenArea" index="0"]
 position = Vector2(33.5, 121)
+
+[node name="VictoryArea" parent="." index="14" instance=ExtResource("10_5pj0g")]
+position = Vector2(106, 1285)
 
 [editable path="RoomBehaviour"]

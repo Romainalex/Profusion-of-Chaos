@@ -12,7 +12,8 @@ CABIAS Simon
 RIVIERE Anaïs
 
 "+tr("CREDITS_THANKS")+" :
-MANGLOU Loïc"
+MANGLOU Loïc
+Baba Des Bois"
 
 var tween : Tween
 

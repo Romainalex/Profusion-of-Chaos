@@ -24,6 +24,7 @@ var traid_menu_dict := {
 func _ready() -> void:
 	EVENTS.connect("pnj_traid_started", Callable(self, "_on_EVENTS_pnj_traid_started"))
 	EVENTS.connect("actor_died", Callable(self, "_on_EVENTS_actor_died"))
+	EVENTS.connect("victory", Callable(self, "_on_EVENTS_victory"))
 
 
 
@@ -70,4 +71,7 @@ func _on_EVENTS_pnj_traid_started(pnj: String) -> void:
 func _on_EVENTS_actor_died(target: Actor) -> void:
 	if target in get_tree().get_nodes_in_group("Character"):
 		$GameOver.start_game_over()
-		
+
+func _on_EVENTS_victory() -> void:
+	$Victory.start_game_over()
+	get_tree().paused = true

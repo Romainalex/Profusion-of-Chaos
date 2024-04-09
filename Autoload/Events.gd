@@ -23,3 +23,6 @@ signal obstacle_destroyed(obstacle)
 signal room_finished()
 
 signal input_scheme_changed()
+
+# pour le prototype
+signal victory()
