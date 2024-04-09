@@ -5,8 +5,12 @@ class_name AttackState
 
 func enter_state() -> void:
 	owner.state_machine.set_state("Attack")
+	owner.animated_sprite.set_scale(Vector2(4,4))
+	$SlapAudio.play()
 	cooldown.start()
 
+func exit_state() -> void:
+	owner.animated_sprite.set_scale(Vector2(1,1))
 
 func is_cooldown_running() -> bool:
 	return !cooldown.is_stopped() && !cooldown.is_paused()

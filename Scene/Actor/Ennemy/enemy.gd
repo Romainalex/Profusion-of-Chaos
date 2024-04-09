@@ -98,7 +98,7 @@ func can_attack() -> bool:
 func _attack_effect() -> void:
 	for body in attack_hitbox.get_overlapping_bodies():
 		if body in get_tree().get_nodes_in_group("Character"):
-			body.hurt()
+			body.hurt(dammage_data, crit_rate)
 
 
 #### SIGNAL RESPONSE ####

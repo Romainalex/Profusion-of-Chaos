@@ -48,8 +48,8 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Interact_action"):
 		_interacting_attempt()
 	
-	if Input.is_action_just_pressed("Inventory_action"):
-		die()
+	#if Input.is_action_just_pressed("Inventory_action"):
+		#return
 	
 	# Les inputs d'attaques
 	if Input.is_action_just_pressed("AttackPrincipal_action"): 

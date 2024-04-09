@@ -29,7 +29,6 @@ direction = 2
 
 [node name="LHommeDAffaire" parent="." index="4" instance=ExtResource("5_b3la2")]
 position = Vector2(1365, 160)
-actor_data = null
 
 [node name="UpgradeSpell" parent="CanvasLayer/MenuManager" index="2" instance=ExtResource("3_xx5ka")]
 layout_mode = 1

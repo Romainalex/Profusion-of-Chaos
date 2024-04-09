@@ -7,6 +7,8 @@
 
 [node name="Ennemy" instance=ExtResource("1_jac0c")]
 script = ExtResource("1_yjmos")
+dammage_data = null
+crit_rate = 0.0
 metadata/_edit_lock_ = true
 
 [node name="StateMachine" parent="." index="2"]
