@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://2bd6ryf16qeo"]
+[gd_scene load_steps=26 format=3 uid="uid://2bd6ryf16qeo"]
 
 [ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="1_oplay"]
+[ext_resource type="Script" path="res://Resource/DamageData.gd" id="2_ugr2e"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnnemyMoveState.gd" id="3_4stwo"]
 [ext_resource type="Texture2D" uid="uid://0udj4h2hyly3" path="res://Scene/Actor/Ennemy/SpriteSheet/Hieroglyphe_sprite_sheet.png" id="3_v0v66"]
 [ext_resource type="Script" path="res://StateMachine/StateLabel.gd" id="4_7efai"]
@@ -11,6 +12,18 @@
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnemyAttackState.gd" id="7_wg0j8"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/GoToState.gd" id="8_r04h0"]
 
+<<<<<<< HEAD
+=======
+[sub_resource type="Resource" id="Resource_6rsoq"]
+script = ExtResource("2_ugr2e")
+damage = 69
+effect_array = Array[Resource("res://Resource/EffectData.gd")]([])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycyv7"]
+atlas = ExtResource("3_v0v66")
+region = Rect2(192, 0, 64, 64)
+
+>>>>>>> b289dd8dcc63d31923223d9acdf4778c4b18dba4
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4hwc"]
 atlas = ExtResource("3_v0v66")
 region = Rect2(192, 192, 64, 64)
@@ -204,6 +217,8 @@ size = Vector2(98, 36.525)
 
 [node name="Hieroglyphe_Gardien" groups=["Ennemy"] instance=ExtResource("1_oplay")]
 scale = Vector2(0.25, 0.25)
+dammage_data = SubResource("Resource_6rsoq")
+crit_rate = 5.0
 speed = 100.0
 max_pv = 200
 
@@ -212,6 +227,7 @@ sprite_frames = SubResource("SpriteFrames_2tnjg")
 animation = &"AttackDown"
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 shape = SubResource("CircleShape2D_t1qu8")
 debug_color = Color(1, 0.00784314, 0.0392157, 0.419608)
 
@@ -258,12 +274,20 @@ offset_right = 50.0
 offset_bottom = -70.0
 script = ExtResource("4_7efai")
 
+[node name="ChaseArea" parent="." index="4"]
+visible = false
+
 [node name="CollisionShape2D" parent="ChaseArea" index="0"]
 shape = SubResource("CircleShape2D_5uqw7")
 debug_color = Color(0.552941, 0.52549, 0.545098, 0.419608)
 
+[node name="AttackArea" parent="." index="5"]
+visible = false
+
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
+visible = false
 shape = SubResource("CircleShape2D_k5xae")
+debug_color = Color(0.831373, 0.156863, 1, 0.756863)
 
 [node name="CollisionShape2D" parent="AttackHitbox" index="0"]
 position = Vector2(-1, 49.7375)

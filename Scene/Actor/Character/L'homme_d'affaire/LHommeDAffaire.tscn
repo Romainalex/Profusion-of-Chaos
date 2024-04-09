@@ -33,6 +33,9 @@ animation = &"IdleDown"
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_2uivx")
 
+[node name="InteractionArea" parent="." index="3"]
+visible = false
+
 [node name="CollisionShape2D" parent="InteractionArea" index="0"]
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_05ets")
