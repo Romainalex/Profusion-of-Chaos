@@ -127,7 +127,7 @@ func _on_target_in_attack_area_changed(_value: bool) -> void:
 func _on_StateMachine_state_changed(state) -> void:
 	if state_machine == null:
 		return
-	
+	_update_animation()
 	if state_machine.previous_state == $StateMachine/Attack or state_machine.previous_state == $StateMachine/Hurt:
 		_update_behavior_state()
 	

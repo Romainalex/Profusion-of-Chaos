@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dlxgplis04r6a"]
+[gd_scene load_steps=33 format=3 uid="uid://dlxgplis04r6a"]
 
 [ext_resource type="Script" path="res://Scene/UI/MenuManager.gd" id="1_cj8ci"]
 [ext_resource type="Script" path="res://Scene/Dungeon/Pathfinder.gd" id="1_dd8nb"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bmkpifilaytdk" path="res://Scene/UI/Image/use_object_input.png" id="9_tfgjn"]
 [ext_resource type="Script" path="res://Scene/UI/ControllerEchapTexture.gd" id="16_fx33x"]
 [ext_resource type="Texture2D" uid="uid://ch1il2bhrsto4" path="res://win.jpg" id="17_mcfjp"]
+[ext_resource type="AudioStream" uid="uid://bai8c8gtr2lod" path="res://Funky_town.mp3" id="18_g1evk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjr2l"]
 bg_color = Color(0.0901961, 0.0901961, 0.0901961, 0.513726)
@@ -378,6 +379,7 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_dfvws")
+time = 1.5
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MenuManager/GameOver"]
 layout_mode = 1
@@ -513,6 +515,7 @@ grow_vertical = 2
 text = "Recommencer"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/MenuManager/Victory"]
+stream = ExtResource("18_g1evk")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MenuManager/Victory"]
 layout_mode = 1

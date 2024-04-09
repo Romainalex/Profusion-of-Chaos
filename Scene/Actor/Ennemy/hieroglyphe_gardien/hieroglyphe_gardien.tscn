@@ -11,13 +11,13 @@
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnemyAttackState.gd" id="7_wg0j8"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/GoToState.gd" id="8_r04h0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ycyv7"]
-atlas = ExtResource("3_v0v66")
-region = Rect2(192, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4hwc"]
 atlas = ExtResource("3_v0v66")
 region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycyv7"]
+atlas = ExtResource("3_v0v66")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xv4r"]
 atlas = ExtResource("3_v0v66")
@@ -47,47 +47,47 @@ region = Rect2(128, 192, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ycyv7")
+"texture": SubResource("AtlasTexture_g4hwc")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ycyv7")
 }],
 "loop": false,
 "name": &"AttackDown",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ycyv7")
+"texture": SubResource("AtlasTexture_g4hwc")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ycyv7")
 }],
 "loop": false,
 "name": &"AttackLeft",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4hwc")
+"texture": SubResource("AtlasTexture_ycyv7")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g4hwc")
 }],
 "loop": false,
 "name": &"AttackRight",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4hwc")
+"texture": SubResource("AtlasTexture_ycyv7")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g4hwc")
 }],
 "loop": false,
 "name": &"AttackUp",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -205,11 +205,11 @@ size = Vector2(98, 36.525)
 [node name="Hieroglyphe_Gardien" groups=["Ennemy"] instance=ExtResource("1_oplay")]
 scale = Vector2(0.25, 0.25)
 speed = 100.0
-max_pv = 50
+max_pv = 200
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_2tnjg")
-animation = &"IdleDown"
+animation = &"AttackDown"
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_t1qu8")

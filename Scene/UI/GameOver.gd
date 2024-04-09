@@ -3,6 +3,7 @@ class_name GameOverUI
 
 @onready var button = $Button
 
+@export var time : float = 0.0
 
 #### ACCESSORS ####
 
@@ -24,7 +25,7 @@ func _ready() -> void:
 
 func start_game_over() -> void:
 	$AudioStreamPlayer2D.play()
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(time).timeout
 	Util.set_ui_visible(self, true)
 	button.grab_focus()
 
