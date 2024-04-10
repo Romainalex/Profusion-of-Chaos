@@ -127,7 +127,7 @@ func _check_collision() -> Vector2:
 
 func _dodge() -> void:
 	_update_dodge_raycast()
-	var tween = create_tween()
+	tween = create_tween()
 	var point_to_dodge = _check_collision()
 	
 	tween.tween_property(self, "position", point_to_dodge, 0.5)

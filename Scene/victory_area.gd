@@ -12,7 +12,7 @@ extends StaticBody2D
 #### BUILT-IN ####
 
 func _ready() -> void:
-	area.connect("area_entered", Callable(self, "_on_area_entered"))
+	area.connect("body_entered", Callable(self, "_on_body_entered"))
 
 
 
@@ -28,5 +28,6 @@ func _ready() -> void:
 
 #### SIGNAL RESPONSES ####
 
-func _on_area_entered(body: Node2D) -> void:
-	EVENTS.emit_signal("victory")
+func _on_body_entered(body: Node2D) -> void:
+	if body in get_tree().get_nodes_in_group("Character"):
+		EVENTS.emit_signal("victory")

@@ -159,12 +159,12 @@ damage = 25
 effect_array = Array[ExtResource("5_idmjm")]([])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7ipk"]
-radius = 8.0
+radius = 16.0
 
 [sub_resource type="Resource" id="Resource_5041c"]
 script = ExtResource("4_xupl6")
 shape = SubResource("CircleShape2D_b7ipk")
-position = Vector2(0, 20)
+position = Vector2(0, 30)
 hit_frame = 1
 
 [sub_resource type="Resource" id="Resource_ebte6"]
@@ -326,11 +326,12 @@ damage = 25
 effect_array = Array[ExtResource("5_idmjm")]([])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvw2e"]
+radius = 20.0
 
 [sub_resource type="Resource" id="Resource_c6e6x"]
 script = ExtResource("4_xupl6")
 shape = SubResource("CircleShape2D_wvw2e")
-position = Vector2(0, 20)
+position = Vector2(0, 30)
 hit_frame = 1
 
 [sub_resource type="Resource" id="Resource_3crsu"]
@@ -498,12 +499,12 @@ damage = 50
 effect_array = Array[ExtResource("5_idmjm")]([SubResource("Resource_bhy7q")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5qhw"]
-size = Vector2(20, 30)
+size = Vector2(30, 40)
 
 [sub_resource type="Resource" id="Resource_hily7"]
 script = ExtResource("4_xupl6")
 shape = SubResource("RectangleShape2D_x5qhw")
-position = Vector2(0, 20)
+position = Vector2(0, 30)
 hit_frame = 1
 
 [sub_resource type="Resource" id="Resource_cm3c8"]

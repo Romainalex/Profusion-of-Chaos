@@ -171,7 +171,7 @@ func _on_moving_direction_changed() -> void:
 func _on_AnimatedSprite_frame_changed() -> void:
 	pass
 
-func _on_pv_changed(new_hp: int, max_hp: int) -> void:
+func _on_pv_changed(new_hp: int, _max_hp: int) -> void:
 	#print(name + " : " + str(new_hp))
 	if new_hp == 0:
 		die()

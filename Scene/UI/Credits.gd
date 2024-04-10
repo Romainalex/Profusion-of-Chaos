@@ -13,7 +13,10 @@ RIVIERE Anaïs
 
 "+tr("CREDITS_THANKS")+" :
 MANGLOU Loïc
-Baba Des Bois"
+Baba Des Bois
+VELIA Bastien
+Taïga
+"
 
 var tween : Tween
 
