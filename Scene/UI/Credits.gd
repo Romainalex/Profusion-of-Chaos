@@ -15,7 +15,7 @@ RIVIERE Anaïs
 MANGLOU Loïc
 Baba Des Bois
 VELIA Bastien
-Taïga
+Taiga
 "
 
 var tween : Tween
