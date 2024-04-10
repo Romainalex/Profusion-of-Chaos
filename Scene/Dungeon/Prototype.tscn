@@ -37,7 +37,7 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="AudioStreamPlayer2D" parent="CanvasLayer/MenuManager/GameOver" index="2"]
-volume_db = 24.0
+volume_db = 15.0
 
 [node name="Hieroglyphe_Gardien" parent="." index="6" instance=ExtResource("7_3d7x8")]
 position = Vector2(340, 301)

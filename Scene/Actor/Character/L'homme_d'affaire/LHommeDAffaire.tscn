@@ -11,7 +11,7 @@
 
 [sub_resource type="Resource" id="Resource_cvwa5"]
 script = ExtResource("2_np2g1")
-dodge_distance = 100
+dodge_speed = 400.0
 name = ""
 description = ""
 
@@ -33,11 +33,11 @@ dodge_data = SubResource("Resource_cvwa5")
 actor_data = SubResource("Resource_8valu")
 max_pv = 500
 
-[node name="AnimatedSprite" parent="." index="1"]
+[node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = ExtResource("3_jui7e")
 animation = &"IdleDown"
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_2uivx")
 
@@ -45,7 +45,7 @@ shape = SubResource("RectangleShape2D_2uivx")
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_05ets")
 
-[node name="AttackBehaviour" parent="." index="4"]
+[node name="AttackBehaviour" parent="." index="3"]
 attack_data_principal = ExtResource("3_0jn1e")
 attack_data_secondaire = ExtResource("4_din1h")
 attack_data_special1 = ExtResource("6_xjrm6")

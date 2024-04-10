@@ -1,4 +1,4 @@
 extends Data
 class_name DodgeData
 
-@export var dodge_distance : int = 0
+@export var dodge_speed : float = 0.0

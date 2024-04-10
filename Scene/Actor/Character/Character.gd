@@ -4,9 +4,9 @@ class_name Character
 
 @onready var attack_behaviour = $AttackBehaviour
 @onready var interaction_area = $InteractionArea
-@onready var dodge_raycast = $RayCast2D
 
 @export var dodge_data : DodgeData = null
+
 
 var attack_array = ["AttackPrincipal", "AttackSecondaire", "AttackSpecial1", "AttackSpecial2"]
 
@@ -77,7 +77,7 @@ func _input(_event: InputEvent) -> void:
 #### LOGIC ####
 
 func _update_state() -> void:
-	if not (state_machine.get_state_name() in attack_array):
+	if not (state_machine.get_state_name() in attack_array) and not (state_machine.get_state_name() == "Dodge"):
 		if Input.is_action_just_pressed("Esquive_action"):
 			state_machine.set_state("Dodge")
 		elif moving_direction == Vector2.ZERO:
@@ -110,30 +110,6 @@ func hurt(damage_data: DamageData, crit: float) -> void:
 		super.hurt(damage_data, crit)
 
 
-func _update_dodge_raycast() -> void:
-	dodge_raycast.set_target_position(Vector2(0, dodge_data.dodge_distance))
-	var vector_direction = Util.give_angle_direction(self, facing_direction)
-	
-	dodge_raycast.set_rotation_degrees(rad_to_deg(vector_direction.normalized().angle()) - 90)
-
-func _check_collision() -> Vector2:
-	var collision_point
-	var point_to_dodge = global_position + (dodge_data.dodge_distance * Util.give_angle_direction(self, facing_direction).normalized())
-	if dodge_raycast.is_colliding():
-		collision_point = dodge_raycast.get_collision_point()
-		point_to_dodge = collision_point
-	return point_to_dodge
-
-
-func _dodge() -> void:
-	_update_dodge_raycast()
-	tween = create_tween()
-	var point_to_dodge = _check_collision()
-	
-	tween.tween_property(self, "position", point_to_dodge, 0.5)
-	await get_tree().create_timer(0.5).timeout
-	
-	state_machine.set_state("Idle")
 
 
 #### SIGNAL RESPONSES ####
