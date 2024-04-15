@@ -12,5 +12,3 @@ func enter_state() -> void:
 func exit_state() -> void:
 	owner.animated_sprite.set_scale(Vector2(1,1))
 
-func is_cooldown_running() -> bool:
-	return !cooldown.is_stopped() && !cooldown.is_paused()

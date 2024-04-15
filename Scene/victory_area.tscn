@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://q4v1ub2jrjeb"]
+[gd_scene load_steps=4 format=3 uid="uid://q4v1ub2jrjeb"]
 
 [ext_resource type="Script" path="res://Scene/victory_area.gd" id="1_eepqf"]
+[ext_resource type="Texture2D" uid="uid://vb5kt27a4w47" path="res://Scene/InteractiveObject/Sprite/portail.png" id="2_bd1qt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5p5p3"]
-size = Vector2(100, 100)
+size = Vector2(70, 120)
 
 [node name="VictoryArea" type="StaticBody2D"]
 script = ExtResource("1_eepqf")
@@ -14,3 +15,5 @@ script = ExtResource("1_eepqf")
 shape = SubResource("RectangleShape2D_5p5p3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_bd1qt")

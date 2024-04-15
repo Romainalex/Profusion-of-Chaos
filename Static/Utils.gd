@@ -75,7 +75,8 @@ static func set_ui_visible(object: Control, val: bool) -> void:
 	object.set_visible(val)
 	object.set_as_top_level(val)
 
-
+static func is_timer_running(timer: Timer) -> bool:
+	return !timer.is_stopped() && !timer.is_paused()
 
 
 #### SIGNAL RESPONSES ####

@@ -33,6 +33,7 @@ func set_target_in_attack_area(value: bool) -> void:
 		target_in_attack_area = value
 		emit_signal("target_in_attack_area_changed", target_in_attack_area)
 
+
 #### BUILT-IN ####
 
 func _ready() -> void :
@@ -81,6 +82,7 @@ func move_along_path(delta : float) -> void:
 	
 	set_moving_direction(direction)
 	
+
 	if distance <= speed * delta:
 		# On arrive sur le prochain point
 		move_and_collide(direction * distance)
@@ -93,7 +95,7 @@ func move_along_path(delta : float) -> void:
 		move_and_collide(direction * speed * delta)
 
 func can_attack() -> bool:
-	return !$BehaviorTree/Attack.is_cooldown_running() && target_in_attack_area
+	return !Util.is_timer_running($BehaviorTree/Attack/Cooldown) && !Util.is_timer_running($StateMachine/Hurt/Timer) && target_in_attack_area
 
 func _attack_effect() -> void:
 	for body in attack_hitbox.get_overlapping_bodies():

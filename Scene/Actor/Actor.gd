@@ -91,7 +91,7 @@ func hurt(damage_data: DamageData, crit: float) -> void:
 				state_machine.set_state("Freeze")
 			_: #default
 				state_machine.set_state("Hurt")
-				dam = effect.damage_effect
+				dam = effect.effect_value
 				if randf_range(0.0,100.0) < effect.hit_chance:
 					dam *= 2
 				set_pv(pv - dam)

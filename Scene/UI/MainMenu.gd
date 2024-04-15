@@ -41,12 +41,11 @@ func _ready() -> void:
 
 
 #### INPUTS ####
-
-func _input(_event: InputEvent) -> void:
-	
-	
-	if !visible:
-		return
+#
+#func _input(_event: InputEvent) -> void:
+	#
+	#if !visible:
+		#return
 	
 	
 	
