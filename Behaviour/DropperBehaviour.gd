@@ -1,7 +1,7 @@
 extends Behaviour
 class_name DropperBehaviour
 
-@export var item_drop_weight_array : Array = []
+@export var item_drop_weight_array : Array[DropWeightData] = []
 
 
 func drop_item() -> void:
@@ -22,8 +22,8 @@ func _compute_total_weight() -> float:
 		total_weight += item.weight
 	return total_weight
 
-##Trouve l'item dans item_drop_weight_array qui correspond à la valeur donnée
-##Retourne alors l'item_data
+# trouve l'item dans item_drop_weight_array qui correspond à la valeur donnée
+# Retourne alors l'item_data
 func _find_item_by_weight_value(value: float) -> Object:
 	var current_total_weight : float = 0.0
 	

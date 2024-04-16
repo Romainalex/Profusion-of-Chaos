@@ -26,6 +26,7 @@ func _ready() -> void:
 	EVENTS.connect("attack_cooldown_start", Callable(self, "_on_EVENTS_attack_cooldown_start"))
 	EVENTS.connect("input_scheme_changed", Callable(self, "_on_EVENTS_input_scheme_changed"))
 	
+	_update_input_texture()
 
 
 
@@ -54,6 +55,12 @@ func _update_attack_cooldown(attack: Node, cooldown: float) -> void:
 	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(_get_subnode(attack, "ColorRect"), "size", Vector2(32,0), cooldown).from(Vector2(32,32))
 
+func _update_input_texture() -> void:
+	$Principal/ControlTextureRect.texture.set_region(Rect2(64*GAME.INPUT_SCHEME, 0,64,64))
+	$Secondaire/ControlTextureRect.texture.set_region(Rect2(64*GAME.INPUT_SCHEME, 0,64,64))
+	$Special1/ControlTextureRect.texture.set_region(Rect2(64*GAME.INPUT_SCHEME, 0,64,64))
+	$Special2/ControlTextureRect.texture.set_region(Rect2(64*GAME.INPUT_SCHEME, 0,64,64))
+	$Object/ControlTextureRect.texture.set_region(Rect2(64*GAME.INPUT_SCHEME, 0,64,64))
 
 
 #### INPUTS ####
@@ -73,8 +80,5 @@ func _on_EVENTS_attack_cooldown_start(type_attack: int, cooldown: float) -> void
 	_update_attack_cooldown(_find_attack(type_attack), cooldown)
 
 func _on_EVENTS_input_scheme_changed() -> void:
-	$Principal/ControlTextureRect.texture.set_region(Rect2(64*GAME.INPUT_SCHEME, 0,64,64))
-	$Secondaire/ControlTextureRect.texture.set_region(Rect2(64*GAME.INPUT_SCHEME, 0,64,64))
-	$Special1/ControlTextureRect.texture.set_region(Rect2(64*GAME.INPUT_SCHEME, 0,64,64))
-	$Special2/ControlTextureRect.texture.set_region(Rect2(64*GAME.INPUT_SCHEME, 0,64,64))
-	$Object/ControlTextureRect.texture.set_region(Rect2(64*GAME.INPUT_SCHEME, 0,64,64))
+	_update_input_texture()
+	

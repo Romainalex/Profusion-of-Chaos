@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcxmkrqbwgqdv"]
+
+[ext_resource type="Script" path="res://Scene/InteractiveObject/CollectableObject/BouleDeVie.gd" id="1_4gkf4"]
+[ext_resource type="PackedScene" uid="uid://chkcnu31oqfwk" path="res://Behaviour/CollectableBehaviour.tscn" id="2_2gkhu"]
+[ext_resource type="Texture2D" uid="uid://w8hht3swna8k" path="res://Scene/InteractiveObject/Sprite/boule_de_vie.png" id="2_636hi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tbag"]
+radius = 100.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fglfj"]
+atlas = ExtResource("2_636hi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i4gcq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fglfj")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mu8h5"]
+radius = 7.0
+
+[node name="BouleDeVie" type="Node2D"]
+script = ExtResource("1_4gkf4")
+
+[node name="FollowArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FollowArea"]
+shape = SubResource("CircleShape2D_0tbag")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i4gcq")
+animation = &"Idle"
+
+[node name="CollectableBehaviour" parent="." instance=ExtResource("2_2gkhu")]
+
+[node name="CollisionShape2D" parent="CollectableBehaviour/CollectArea" index="0"]
+shape = SubResource("CircleShape2D_mu8h5")
+
+[editable path="CollectableBehaviour"]
