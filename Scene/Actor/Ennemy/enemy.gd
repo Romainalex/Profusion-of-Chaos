@@ -102,6 +102,8 @@ func _attack_effect() -> void:
 		if body in get_tree().get_nodes_in_group("Character"):
 			body.hurt(dammage_data, crit_rate)
 
+func _search_character() -> void:
+	pass
 
 #### SIGNAL RESPONSE ####
 
@@ -140,6 +142,10 @@ func _on_target_in_attack_area_changed(_value: bool) -> void:
 func _on_StateMachine_state_changed(state) -> void:
 	if state_machine == null:
 		return
+	
+	if state_machine.get_previous_state_name() == "Dead":
+		return
+	
 	_update_animation()
 	if state_machine.previous_state == $StateMachine/Attack or state_machine.previous_state == $StateMachine/Hurt:
 		_update_behavior_state()

@@ -57,8 +57,9 @@ func _on_OptionsButton_pressed() -> void:
 	Util.set_ui_visible(buttons_container,false)
 	Util.set_ui_visible(options, true)
 
-#func _on_MainMenuButton_pressed() -> void:
-	#get_tree().change_scene_to_file("res://Scene/UI/MainMenu.tscn")
+func _on_MainMenuButton_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scene/UI/MainMenu.tscn")
 
 func _on_QuitButton_pressed() -> void:
 	get_tree().quit()

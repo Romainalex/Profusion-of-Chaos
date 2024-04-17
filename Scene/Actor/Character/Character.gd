@@ -31,6 +31,7 @@ func _ready() -> void:
 	attack_behaviour.connect("hooked", Callable(self, "_on_AttackBehaviour_hooked"))
 	interaction_area.connect("body_entered", Callable(self, "_on_InteractionArea_body_entered"))
 	interaction_area.connect("body_exited", Callable(self, "_on_InteractionArea_body_exited"))
+	EVENTS.connect("object_collected", Callable(self, "_on_EVENTS_object_collected"))
 	
 
 
@@ -118,8 +119,8 @@ func _on_facing_direction_changed() -> void:
 	super._on_facing_direction_changed()
 	_update_interaction_area_direction()
 
-func _on_state_changed(_new_state: Object) -> void:
-	if state_machine.get_previous_state_name() in attack_array:
+func _on_StateMachine_state_changed(_new_state: Object) -> void:
+	if state_machine.get_previous_state_name() in attack_array or state_machine.get_previous_state_name() == "Dodge" :
 		_update_state()
 	
 	super._on_StateMachine_state_changed(state_machine.get_state())
@@ -147,3 +148,7 @@ func _on_AttackBehaviour_hooked(hooked_position: Vector2, time_to_throw: float, 
 	tween.tween_property(self, "position", hooked_position, time_hooked)
 	await get_tree().create_timer(time_hooked).timeout
 	state_machine.set_state("Idle")
+
+func _on_EVENTS_object_collected(object: Object) -> void:
+	if object is BouleDeVie:
+		set_pv(pv + 50)

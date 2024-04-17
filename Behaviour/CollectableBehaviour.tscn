@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://o18dwsf2q3kq"]
+
+[ext_resource type="Script" path="res://Behaviour/CollectableBehaviour.gd" id="1_hflh2"]
+[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="2_7j5dv"]
+[ext_resource type="Script" path="res://StateMachine/State/CollectableSpawnState.gd" id="3_ovrvo"]
+[ext_resource type="Script" path="res://StateMachine/State.gd" id="4_qeetp"]
+[ext_resource type="Script" path="res://StateMachine/State/CollectableFollowState.gd" id="5_gpx1j"]
+
+[node name="CollectableBehaviour" type="Node"]
+script = ExtResource("1_hflh2")
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("2_7j5dv")
+metadata/_edit_lock_ = true
+
+[node name="Spawn" type="Node" parent="StateMachine"]
+script = ExtResource("3_ovrvo")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_qeetp")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("5_gpx1j")
+
+[node name="Collect" type="Node" parent="StateMachine"]
+script = ExtResource("4_qeetp")
+
+[node name="CollectArea" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollectSound" type="AudioStreamPlayer2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="SpawnDurationTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
