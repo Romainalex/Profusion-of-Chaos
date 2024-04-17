@@ -94,7 +94,7 @@ func hurt(damage_data: DamageData, crit: float) -> void:
 				if randf_range(0.0,100.0) < effect.hit_chance:
 					dam *= 2
 				set_pv(pv - dam)
-	#state_machine.set_state("Hurt")
+	state_machine.set_state("Hurt")
 	dam = damage_data.damage
 	if randf_range(0.0,100.0) < crit:
 		dam *= 2
@@ -150,6 +150,9 @@ func _on_AnimatedSprite_animation_finished() -> void:
 			state_machine.set_state("Idle")
 
 func _on_facing_direction_changed() -> void:
+	if state_machine.get_previous_state_name() == "Dead":
+		return
+	
 	_update_animation()
 	
 

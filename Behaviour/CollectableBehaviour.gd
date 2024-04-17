@@ -48,6 +48,10 @@ func _on_FollowArea_body_entered(body : Node2D) -> void:
 		_follow_target(body)
 
 func _on_StateMachine_state_changed(_new_state: Object):
+	if state_machine.get_previous_state_name() == "Spawn":
+		if owner.has_method("appear"):
+			owner.appear()
+	
 	if state_machine.get_state_name() == "Idle":
 		for body in follow_area.get_overlapping_bodies():
 			if body is Character:

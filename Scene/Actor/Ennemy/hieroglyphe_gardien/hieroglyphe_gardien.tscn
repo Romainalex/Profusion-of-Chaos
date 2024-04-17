@@ -214,7 +214,7 @@ size = Vector2(200, 80)
 scale = Vector2(0.25, 0.25)
 dammage_data = SubResource("Resource_qy38u")
 speed = 100.0
-max_pv = 200
+max_pv = 150
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_2tnjg")
@@ -230,10 +230,15 @@ script = ExtResource("3_4stwo")
 [node name="Attack" type="Node" parent="StateMachine" index="2"]
 script = ExtResource("5_qt8et")
 
+[node name="Timer" parent="StateMachine/Hurt" index="0"]
+wait_time = 0.5
+
 [node name="StateLabel" type="Label" parent="StateMachine" index="7"]
 visible = false
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -36.0
+offset_top = -68.0
+offset_right = 4.0
+offset_bottom = -45.0
 script = ExtResource("4_7efai")
 
 [node name="Wander" parent="BehaviorTree" index="0"]

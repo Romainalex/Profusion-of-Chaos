@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://StateMachine/State.gd" id="1_3xsrm"]
 [ext_resource type="Script" path="res://Scene/Actor/Actor.gd" id="1_b3uf1"]
 [ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="1_qnkym"]
-[ext_resource type="Script" path="res://Scene/Actor/State/ActorMoveState.gd" id="3_4wlnk"]
+[ext_resource type="Script" path="res://StateMachine/State/ActorMoveState.gd" id="4_u40el"]
 
 [node name="Actor" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -23,7 +23,7 @@ script = ExtResource("1_qnkym")
 script = ExtResource("1_3xsrm")
 
 [node name="Move" type="Node" parent="StateMachine"]
-script = ExtResource("3_4wlnk")
+script = ExtResource("4_u40el")
 
 [node name="Dead" type="Node" parent="StateMachine"]
 script = ExtResource("1_3xsrm")

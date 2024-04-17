@@ -27,6 +27,7 @@ func destroy() -> void:
 	
 	state_machine.set_state("Break")
 	animated_sprite.play("PyramideBreak")
+	$DropperBehaviour.drop_item()
 
 #### INPUTS ####
 
@@ -39,6 +40,7 @@ func _on_AnimatedSprite_animation_changed() -> void:
 	if "Break".is_subsequence_of(animated_sprite.get_animation()):
 		state_machine.set_state("Broken")
 		hitbox.set_disabled(true)
+		
 		
 		await get_tree().create_timer(2).timeout
 		EVENTS.emit_signal("obstacle_destroyed", self)

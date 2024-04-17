@@ -102,6 +102,7 @@ func _attack_attempt(hitbox_name: String, attack_anim: AttackAnimationData) -> v
 	var bodies_array = area.get_overlapping_bodies()
 	for body in bodies_array:
 		if body.has_method("hurt") and (body in get_tree().get_nodes_in_group("Ennemy")):
+			body.face_position(global_position)
 			body.hurt(attack_anim.damage_data, crit)
 		if body.has_method("destroy"):
 			body.destroy()
