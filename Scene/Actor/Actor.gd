@@ -89,6 +89,9 @@ func hurt(damage_data: DamageData, crit: float) -> void:
 		match effect.effect_type:
 			effect.EFFECT_TYPE.HOOK:
 				state_machine.set_state("Freeze")
+			effect.EFFECT_TYPE.REPOUSSE:
+				#TODO 
+				pass
 			_: #default
 				dam = effect.effect_value
 				if randf_range(0.0,100.0) < effect.hit_chance:
