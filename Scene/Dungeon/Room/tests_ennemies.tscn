@@ -11,5 +11,4 @@ position = Vector2(-1, -2)
 [node name="Hieroglyphe_Gardien" parent="." instance=ExtResource("2_fjjit")]
 position = Vector2(200, -4)
 dammage_data = null
-crit_rate = 0.0
 speed = 1.0
