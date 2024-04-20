@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://2bd6ryf16qeo"]
+[gd_scene load_steps=29 format=3 uid="uid://2bd6ryf16qeo"]
 
 [ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="1_oplay"]
 [ext_resource type="Script" path="res://Resource/DamageData.gd" id="2_j7ckw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/ChaseState.gd" id="4_mw78t"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnnemyWanderState.gd" id="5_cqe0s"]
 [ext_resource type="Script" path="res://StateMachine/State.gd" id="5_qt8et"]
+[ext_resource type="AudioStream" uid="uid://des3ok5jbrsa7" path="res://Audio/groove-battle-death.wav" id="6_42ud3"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/WaitState.gd" id="7_uoybo"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnemyAttackState.gd" id="7_wg0j8"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/GoToState.gd" id="8_r04h0"]
@@ -230,6 +231,9 @@ script = ExtResource("3_4stwo")
 [node name="Attack" type="Node" parent="StateMachine" index="2"]
 script = ExtResource("5_qt8et")
 
+[node name="DeadAudio" parent="StateMachine/Dead" index="0"]
+stream = ExtResource("6_42ud3")
+
 [node name="Timer" parent="StateMachine/Hurt" index="0"]
 wait_time = 0.5
 
@@ -272,7 +276,7 @@ one_shot = true
 [node name="SlapAudio" type="AudioStreamPlayer2D" parent="BehaviorTree/Attack" index="1"]
 scale = Vector2(0.25, 0.25)
 stream = ExtResource("12_tt0tt")
-volume_db = 24.0
+volume_db = 10.0
 
 [node name="Label" type="Label" parent="BehaviorTree" index="3"]
 visible = false

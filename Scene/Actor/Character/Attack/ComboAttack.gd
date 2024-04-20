@@ -40,6 +40,12 @@ func _init_animation() -> void:
 			for shape in animation.shape_array:
 				if shape != null:
 					_add_hitbox(shape, normalized_name_hitbox+str(i))
+		if animation.hit_sound_effect != null:
+			if animation.hit_sound_effect.sound != null:
+				_add_sound_effect(animation.hit_sound_effect.sound, normalized_name_hit_sound_effect+str(i), animation.hit_sound_effect.volume_db)
+		if animation.start_sound_effect != null:
+			if animation.start_sound_effect.sound != null:
+				_add_sound_effect(animation.start_sound_effect.sound, normalized_name_start_sound_effect+str(i), animation.start_sound_effect.volume_db)
 		
 	# Update the number of attack animations in the combo attack
 	attacks_count = animation_array.size()
@@ -75,10 +81,15 @@ func _on_AnimatedSprite_animation_finished() -> void:
 	super._on_AnimatedSprite_animation_finished()
 
 func _on_AnimatedSprite_frame_changed() -> void:
+	var frame = animated_sprite_body.get_frame()
 	if str(attack_index).is_subsequence_of(animated_sprite_body.get_animation()):
-		for shape in _get_attack_animation(attack_index).shape_array:
-			if shape.hit_frame == animated_sprite_body.get_frame():
-				_attack_attempt(normalized_name_hitbox+str(attack_index)+"_"+str(shape.hit_frame), _get_attack_animation(attack_index))
-		for projectil in _get_attack_animation(attack_index).projectil_array:
-			if animated_sprite_body.get_frame() == projectil.frame_to_start:
+		var attack = _get_attack_animation(attack_index)
+		for shape in attack.shape_array:
+			if shape.hit_frame == frame:
+				_attack_attempt(_get_attack_animation(attack_index), normalized_name_hitbox+str(attack_index)+"_"+str(shape.hit_frame), normalized_name_hit_sound_effect+str(attack_index))
+		for projectil in attack.projectil_array:
+			if frame == projectil.frame_to_start:
 				_throw_projectil(projectil)
+		if attack.start_sound_effect != null:
+			if attack.start_sound_effect.frame_to_start == frame:
+				_start_audio(normalized_name_start_sound_effect+str(attack_index), attack.start_sound_effect.time_to_start)

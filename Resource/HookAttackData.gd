@@ -11,6 +11,9 @@ class_name HookAttackData
 @export var time_to_throw : float = 0.0
 @export var time_to_retract : float = 0.0
 
+@export var start_sound_effect : SoundEffectData = null
+@export var hit_sound_effect : SoundEffectData = null
+
 @export var damage_data : DamageData = null
 #@export var projectil_array : Array[ProjectilData] = []
 

@@ -1,7 +1,7 @@
 extends State
+class_name DeadState
 
-
-
+@onready var dead_audio = $DeadAudio
 
 #### ACCESSORS ####
 
@@ -19,7 +19,7 @@ func _ready() -> void:
 #### LOGICS ####
 
 func enter_state() -> void:
-	$AudioStreamPlayer2D.play(0.2)
+	dead_audio.play()
 
 
 #### INPUTS ####

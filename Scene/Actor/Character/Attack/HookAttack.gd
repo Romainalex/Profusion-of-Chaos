@@ -31,6 +31,13 @@ func _init_animation() -> void:
 		animation_name = normalized_name_attack+facing_dir
 		_add_animation(animated_sprite_body, animation_name, attack_data.animation_body_sprite_frames, facing_dir)
 	
+	if attack_data.hit_sound_effect != null:
+		if attack_data.hit_sound_effect.sound != null:
+			_add_sound_effect(attack_data.hit_sound_effect.sound, normalized_name_hit_sound_effect, attack_data.hit_sound_effect.volume_db)
+	if attack_data.start_sound_effect != null:
+		if attack_data.start_sound_effect.sound != null:
+			_add_sound_effect(attack_data.start_sound_effect.sound, normalized_name_start_sound_effect, attack_data.start_sound_effect.volume_db)
+	
 	ray_cast.set_target_position(Vector2(0, attack_data.hook_length))
 
 func _update_hitbox_and_attack_direction(facing_direction: Vector2) -> void:
@@ -85,8 +92,12 @@ func _check_collision() -> float:
 #### SIGNAL RESPONSES ####
 
 func _on_AnimatedSprite_frame_changed() -> void:
-	if attack_data.frame_to_start_hook == animated_sprite_body.get_frame():
+	var frame = animated_sprite_body.get_frame()
+	if attack_data.frame_to_start_hook == frame:
 		_start_hook()
+	if attack_data.start_sound_effect != null:
+		if attack_data.start_sound_effect.frame_to_start == frame:
+			_start_audio(normalized_name_start_sound_effect, attack_data.start_sound_effect.time_to_start)
 
 func _on_AnimatedSprite_animation_finished() -> void:
 	pass

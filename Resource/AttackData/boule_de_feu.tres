@@ -197,6 +197,8 @@ animation_body_sprite_frames = SubResource("SpriteFrames_k450n")
 animation_attack_sprite_frames = SubResource("SpriteFrames_q334w")
 shape_array = Array[Resource("res://Resource/ShapeData.gd")]([])
 projectil_array = Array[ExtResource("3_kealm")]([SubResource("Resource_phawv")])
+frame_to_start_sound = 0
+sound_time_to_start = 0.0
 damage_data = SubResource("Resource_kwcbh")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5m6u0"]

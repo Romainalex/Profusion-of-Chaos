@@ -10,6 +10,8 @@ class_name Attack
 
 @export var normalized_name_attack : String = "Attack"
 @export var normalized_name_hitbox : String =  "Hitbox"
+@export var normalized_name_hit_sound_effect : String =  "AudioHit"
+@export var normalized_name_start_sound_effect : String =  "AudioStart"
 
 var crit : float = 0.0
 var direction : Vector2 = Vector2.ZERO
@@ -55,6 +57,12 @@ func _init_animation() -> void:
 		for shape in attack_animation.shape_array:
 			if shape != null:
 				_add_hitbox(shape, normalized_name_hitbox)
+	if attack_animation.hit_sound_effect != null:
+		if attack_animation.hit_sound_effect.sound != null:
+			_add_sound_effect(attack_animation.hit_sound_effect.sound, normalized_name_hit_sound_effect, attack_animation.hit_sound_effect.volume_db)
+	if attack_animation.start_sound_effect != null:
+		if attack_animation.start_sound_effect.sound != null:
+			_add_sound_effect(attack_animation.start_sound_effect.sound, normalized_name_start_sound_effect, attack_animation.start_sound_effect.volume_db)
 
 func _add_hitbox(shape_resource: ShapeData, hitbox_name: String) -> void:
 	var area = Area2D.new()
@@ -64,6 +72,13 @@ func _add_hitbox(shape_resource: ShapeData, hitbox_name: String) -> void:
 	area.set_name(hitbox_name+"_"+str(shape_resource.hit_frame))
 	area.add_child(collision_shape)
 	add_child(area)
+
+func _add_sound_effect(sound: AudioStream, sound_name: String, db: float) -> void:
+	var audio_stream = AudioStreamPlayer2D.new()
+	audio_stream.set_stream(sound)
+	audio_stream.set_name(sound_name)
+	audio_stream.set_volume_db(db)
+	add_child(audio_stream)
 
 func _add_animation(animated_sprite_to_change: AnimatedSprite2D, animated_sprite_name: String, sprite_frames_to_add: SpriteFrames, sprite_frames_name: String) -> void:
 	animated_sprite_to_change.sprite_frames.add_animation(animated_sprite_name)
@@ -97,15 +112,24 @@ func _set_animation(animated_sprite_to_change: AnimatedSprite2D, animated_sprite
 		animated_sprite_to_change.sprite_frames.add_frame(animated_sprite_name, sprite_frames_to_add.get_frame_texture(sprite_frames_name,i),sprite_frames_to_add.get_frame_duration(sprite_frames_name, i))
 
 ##Start attack attemption with every bodies in the area hitbox named [param hitbox_name]
-func _attack_attempt(hitbox_name: String, attack_anim: AttackAnimationData) -> void:
+func _attack_attempt(attack_anim: AttackAnimationData, hitbox_name: String, audio_name: String) -> void:
 	var area = find_child(hitbox_name,false, false)
 	var bodies_array = area.get_overlapping_bodies()
 	for body in bodies_array:
 		if body.has_method("hurt") and (body in get_tree().get_nodes_in_group("Ennemy")):
 			body.face_position(global_position)
 			body.hurt(attack_anim.damage_data, crit)
+			if attack_anim.hit_sound_effect != null:
+				_start_audio(audio_name, attack_anim.hit_sound_effect.time_to_start)
 		if body.has_method("destroy"):
 			body.destroy()
+			if attack_anim.hit_sound_effect != null:
+				_start_audio(audio_name, attack_anim.hit_sound_effect.time_to_start)
+
+func _start_audio(sound_effect_name: String, time_to_start: float) -> void:
+	var audio_stream = find_child(sound_effect_name, false, false)
+	if audio_stream != null:
+		audio_stream.play(time_to_start)
 
 ##Update [member Attack.hitbox_direction] and [member Attack.animated_sprite_attack] based on [param facing_direction]
 func _update_hitbox_and_attack_direction(facing_direction: Vector2) -> void:
@@ -139,12 +163,16 @@ func _on_AnimatedSprite_animation_finished() -> void:
 	emit_signal("attack_finished", self, attack_data.cooldown)
 
 func _on_AnimatedSprite_frame_changed() -> void:
+	var frame = animated_sprite_body.get_frame()
 	for shape in attack_data.attack_animation.shape_array:
-		if shape.hit_frame == animated_sprite_body.get_frame():
-			_attack_attempt(normalized_name_hitbox+"_"+str(shape.hit_frame), attack_data.attack_animation)
+		if shape.hit_frame == frame:
+			_attack_attempt(attack_data.attack_animation, normalized_name_hitbox+"_"+str(shape.hit_frame), normalized_name_hit_sound_effect)
 	for projectil in attack_data.attack_animation.projectil_array:
-		if animated_sprite_body.get_frame() == projectil.frame_to_start:
+		if frame == projectil.frame_to_start:
 			_throw_projectil(projectil)
+	if attack_data.attack_animation.start_sound_effect != null:
+		if attack_data.attack_animation.sound_effect_start.frame_to_start_sound == frame:
+			_start_audio(normalized_name_start_sound_effect, attack_data.attack_animation.start_sound_effect.time_to_start)
 
 func _on_Cooldown_timeout() ->  void:
 	pass
