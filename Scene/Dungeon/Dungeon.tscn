@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dlxgplis04r6a"]
+[gd_scene load_steps=37 format=3 uid="uid://dlxgplis04r6a"]
 
 [ext_resource type="Script" path="res://Scene/UI/MenuManager.gd" id="1_cj8ci"]
 [ext_resource type="Script" path="res://Scene/Dungeon/Pathfinder.gd" id="1_dd8nb"]
@@ -15,7 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cg4ahn37cpnlw" path="res://Scene/UI/Image/attack_secondaire_input.png" id="6_egksm"]
 [ext_resource type="Texture2D" uid="uid://dj0wocdex5p4a" path="res://Scene/UI/Image/attack_special2_input.png" id="6_n0el3"]
 [ext_resource type="Texture2D" uid="uid://ch6kcp5n2lwck" path="res://Scene/UI/Image/attack_special1_input.png" id="7_tqmos"]
-[ext_resource type="Texture2D" uid="uid://bmkpifilaytdk" path="res://Scene/UI/Image/use_object_input.png" id="9_tfgjn"]
+[ext_resource type="Texture2D" uid="uid://dqs6p0x1jfnvj" path="res://Scene/UI/Image/icon_HUD_sprite_sheet.png" id="10_0jp0g"]
+[ext_resource type="Texture2D" uid="uid://bn6hcljaioqwt" path="res://Scene/UI/Image/dodge_input.png" id="10_8oum7"]
 [ext_resource type="Texture2D" uid="uid://bxegwwaayg1a7" path="res://Scene/UI/Image/valid_menu_input.png" id="16_cs533"]
 [ext_resource type="Script" path="res://Scene/UI/ControllerEchapTexture.gd" id="16_fx33x"]
 [ext_resource type="AudioStream" uid="uid://dpxquvn3lfxi4" path="res://Audio/Never_Gonna_Give_You_Up_in_low_quality.mp3" id="19_lm01g"]
@@ -55,10 +56,12 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("6_n0el3")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_viaxc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_riwv4"]
+atlas = ExtResource("10_0jp0g")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5327"]
-atlas = ExtResource("9_tfgjn")
+atlas = ExtResource("10_8oum7")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlstw"]
@@ -264,6 +267,7 @@ scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_hiui8")
 
 [node name="Special2" type="TextureRect" parent="CanvasLayer/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -332,7 +336,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_viaxc")
+texture = SubResource("AtlasTexture_riwv4")
 
 [node name="ControlTextureRect" type="TextureRect" parent="CanvasLayer/HUD/Object"]
 layout_mode = 1
@@ -495,13 +499,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = 124.0
-offset_right = 103.0
-offset_bottom = 147.0
+offset_left = -650.0
+offset_top = -244.0
+offset_right = 769.0
+offset_bottom = 169.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 150
 text = "Merci d'avoir joué à
 Profusion of chaos"
 

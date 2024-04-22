@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2wxmstdkbhme"]
+[gd_scene load_steps=13 format=3 uid="uid://c2wxmstdkbhme"]
 
 [ext_resource type="PackedScene" uid="uid://dlxgplis04r6a" path="res://Scene/Dungeon/Dungeon.tscn" id="1_aee4b"]
 [ext_resource type="PackedScene" uid="uid://cf5o2l1w6t83p" path="res://Scene/Dungeon/Room/OpenRoom/pyramyde_room.tscn" id="2_gcp00"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dj6x2s2nohx8i" path="res://Behaviour/RoomBehaviour.tscn" id="8_llqbd"]
 [ext_resource type="PackedScene" uid="uid://q4v1ub2jrjeb" path="res://Scene/victory_area.tscn" id="10_5pj0g"]
 [ext_resource type="PackedScene" uid="uid://3u5ru68ope1e" path="res://Scene/InteractiveObject/BreakableObject/LittleJarre.tscn" id="11_tb3ep"]
+[ext_resource type="PackedScene" uid="uid://bcxmkrqbwgqdv" path="res://Scene/InteractiveObject/CollectableObject/BouleDeVie.tscn" id="12_i63yb"]
 
 [node name="Dungeon" instance=ExtResource("1_aee4b")]
 position = Vector2(-1, 0)
@@ -118,5 +119,20 @@ position = Vector2(1217, 96)
 
 [node name="LittleJarre9" parent="." index="28" instance=ExtResource("11_tb3ep")]
 position = Vector2(1185, 128)
+
+[node name="BouleDeVie" parent="." index="29" instance=ExtResource("12_i63yb")]
+position = Vector2(1345, 416)
+
+[node name="LittleJarre10" parent="." index="30" instance=ExtResource("11_tb3ep")]
+position = Vector2(1523, 290)
+
+[node name="LittleJarre11" parent="." index="31" instance=ExtResource("11_tb3ep")]
+position = Vector2(1522, 318)
+
+[node name="LittleJarre12" parent="." index="32" instance=ExtResource("11_tb3ep")]
+position = Vector2(1521, 349)
+
+[node name="LittleJarre13" parent="." index="33" instance=ExtResource("11_tb3ep")]
+position = Vector2(1521, 380)
 
 [editable path="RoomBehaviour"]

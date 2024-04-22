@@ -143,6 +143,8 @@ func _update_hitbox_and_attack_direction(facing_direction: Vector2) -> void:
 func _throw_projectil(projectil_data: ProjectilData) -> void:
 	var projectil = projectil_data.scene.instantiate()
 	add_child(projectil)
+	if projectil_data.hit_sound_effect != null:
+		projectil.add_audio(projectil_data.hit_sound_effect.sound)
 	projectil.set_rotation(direction.angle())
 
 func _hide(hide_animation: bool) -> void:
@@ -171,7 +173,7 @@ func _on_AnimatedSprite_frame_changed() -> void:
 		if frame == projectil.frame_to_start:
 			_throw_projectil(projectil)
 	if attack_data.attack_animation.start_sound_effect != null:
-		if attack_data.attack_animation.sound_effect_start.frame_to_start_sound == frame:
+		if attack_data.attack_animation.start_sound_effect.frame_to_start == frame:
 			_start_audio(normalized_name_start_sound_effect, attack_data.attack_animation.start_sound_effect.time_to_start)
 
 func _on_Cooldown_timeout() ->  void:

@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnemyAttackState.gd" id="7_wg0j8"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/GoToState.gd" id="8_r04h0"]
 [ext_resource type="AudioStream" uid="uid://b5yqw8w3cgord" path="res://Audio/Grimlin_Baveu.mp3" id="11_i701c"]
-[ext_resource type="AudioStream" uid="uid://dpn5gjgkolbbp" path="res://Audio/TerminalMontage's_Famous_Slap_Sound_Effect.mp3" id="12_tt0tt"]
+[ext_resource type="AudioStream" uid="uid://dms4aymgil31y" path="res://Audio/TerminalMontages_Famous_Slap_Sound_Effect.wav" id="14_gimk0"]
 
 [sub_resource type="Resource" id="Resource_qy38u"]
 script = ExtResource("2_j7ckw")
@@ -275,8 +275,7 @@ one_shot = true
 
 [node name="SlapAudio" type="AudioStreamPlayer2D" parent="BehaviorTree/Attack" index="1"]
 scale = Vector2(0.25, 0.25)
-stream = ExtResource("12_tt0tt")
-volume_db = 10.0
+stream = ExtResource("14_gimk0")
 
 [node name="Label" type="Label" parent="BehaviorTree" index="3"]
 visible = false

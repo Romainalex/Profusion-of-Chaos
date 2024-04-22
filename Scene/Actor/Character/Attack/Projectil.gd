@@ -4,10 +4,10 @@ class_name Projectil
 
 @onready var animated_sprite = $AnimatedSprite
 @onready var collision_shape = $CollisionShape
+@onready var hit_audio = $HitAudio
 
 @export var speed : int = 100
 @export var damage_data : DamageData = null
-
 
 #### ACCESSORS ####
 
@@ -19,6 +19,7 @@ class_name Projectil
 
 func _ready() -> void:
 	connect("body_shape_entered", Callable(self, "_on_body_shape_entered"))
+	hit_audio.connect("finished", Callable(self, "_on_HitAudio_finished"))
 	animated_sprite.connect("animation_finished", Callable(self, "_on_AnimatedSprite_animation_finished"))
 	animated_sprite.play("Throw")
 
@@ -26,12 +27,15 @@ func _physics_process(delta: float) -> void:
 	var dir = Vector2.RIGHT.rotated(rotation)
 	global_position += speed * dir * delta
 
-
+func add_audio(audio: AudioStream) -> void:
+	hit_audio.set_stream(audio)
 
 #### LOGICS ####
 
 func _touch() -> void:
 	speed = 0
+	if hit_audio.stream != null:
+		hit_audio.play()
 	animated_sprite.play("Touch")
 
 
@@ -61,6 +65,11 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, _body_shape_index: int,
 	
 
 func _on_AnimatedSprite_animation_finished() -> void:
-	queue_free()
+	if hit_audio.stream == null:
+		queue_free()
+	else:
+		animated_sprite.set_visible(false)
 
+func _on_HitAudio_finished() -> void:
+	queue_free()
 

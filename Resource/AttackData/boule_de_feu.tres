@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SimpleAttackData" load_steps=31 format=3 uid="uid://by55vhwybfm1h"]
+[gd_resource type="Resource" script_class="SimpleAttackData" load_steps=36 format=3 uid="uid://by55vhwybfm1h"]
 
 [ext_resource type="Script" path="res://Resource/SimpleAttackData.gd" id="1_hrt1x"]
 [ext_resource type="Texture2D" uid="uid://cdbr22tksnoat" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme_d'affaire_Move_Principal_SpriteSheet.png" id="1_ioaay"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bivwrbv0ud1l2" path="res://Scene/Actor/Character/Attack/AttackInstance/BouleDeFeu.tscn" id="2_n3h4x"]
 [ext_resource type="Script" path="res://Resource/AttackAnimationData.gd" id="2_vfljp"]
 [ext_resource type="Script" path="res://Resource/ProjectilData.gd" id="3_kealm"]
+[ext_resource type="Script" path="res://Resource/SoundEffectData.gd" id="3_tey3h"]
+[ext_resource type="AudioStream" uid="uid://ch1yuf8xyy775" path="res://Audio/sfx-explosion2.wav" id="4_g1yb1"]
 [ext_resource type="Texture2D" uid="uid://dqs6p0x1jfnvj" path="res://Scene/UI/Image/icon_HUD_sprite_sheet.png" id="7_2fjpg"]
+[ext_resource type="AudioStream" uid="uid://fbv5iarupuqf" path="res://Audio/Boule02.wav" id="8_hle5m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chou3"]
 atlas = ExtResource("1_ioaay")
@@ -186,10 +189,25 @@ script = ExtResource("2_kitrg")
 damage = 0
 effect_array = Array[Resource("res://Resource/EffectData.gd")]([])
 
+[sub_resource type="Resource" id="Resource_u86np"]
+script = ExtResource("3_tey3h")
+sound = ExtResource("4_g1yb1")
+frame_to_start = 0
+time_to_start = 0.0
+volume_db = -5.0
+
 [sub_resource type="Resource" id="Resource_phawv"]
 script = ExtResource("3_kealm")
 scene = ExtResource("2_n3h4x")
 frame_to_start = 1
+hit_sound_effect = SubResource("Resource_u86np")
+
+[sub_resource type="Resource" id="Resource_ee3pu"]
+script = ExtResource("3_tey3h")
+sound = ExtResource("8_hle5m")
+frame_to_start = 1
+time_to_start = 0.0
+volume_db = 0.0
 
 [sub_resource type="Resource" id="Resource_get4a"]
 script = ExtResource("2_vfljp")
@@ -197,8 +215,7 @@ animation_body_sprite_frames = SubResource("SpriteFrames_k450n")
 animation_attack_sprite_frames = SubResource("SpriteFrames_q334w")
 shape_array = Array[Resource("res://Resource/ShapeData.gd")]([])
 projectil_array = Array[ExtResource("3_kealm")]([SubResource("Resource_phawv")])
-frame_to_start_sound = 0
-sound_time_to_start = 0.0
+start_sound_effect = SubResource("Resource_ee3pu")
 damage_data = SubResource("Resource_kwcbh")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5m6u0"]

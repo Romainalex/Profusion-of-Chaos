@@ -33,6 +33,8 @@ func _ready() -> void:
 	interaction_area.connect("body_exited", Callable(self, "_on_InteractionArea_body_exited"))
 	EVENTS.connect("object_collected", Callable(self, "_on_EVENTS_object_collected"))
 	
+	#TEST: pour le prototype
+	set_pv(max_pv - 75)
 
 
 #### INPUT ####
@@ -151,4 +153,4 @@ func _on_AttackBehaviour_hooked(hooked_position: Vector2, time_to_throw: float, 
 
 func _on_EVENTS_object_collected(object: Object) -> void:
 	if object is BouleDeVie:
-		set_pv(pv + 50)
+		set_pv(pv + 75)

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://w8hht3swna8k" path="res://Scene/InteractiveObject/Sprite/boule_de_vie.png" id="2_636hi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tbag"]
-radius = 100.0
+radius = 50.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4p72"]
 atlas = ExtResource("2_8ytf7")
