@@ -18,7 +18,6 @@ class_name Actor
 var moving_direction  := Vector2.ZERO # créer un vecteur x-y dont x et y sont initialisé à 0
 var facing_direction := Vector2.DOWN
 
-
 @export var max_pv : int = 100
 @onready var pv : int = max_pv
 
@@ -90,8 +89,8 @@ func hurt(damage_data: DamageData, crit: float) -> void:
 			effect.EFFECT_TYPE.HOOK:
 				state_machine.set_state("Freeze")
 			effect.EFFECT_TYPE.REPOUSSE:
-				#TODO 
-				pass
+				set_moving_direction(get_facing_direction()*-1)
+				move_and_collide(get_moving_direction()*effect.effect_value)
 			_: #default
 				dam = effect.effect_value
 				if randf_range(0.0,100.0) < effect.hit_chance:
@@ -107,8 +106,8 @@ func hurt(damage_data: DamageData, crit: float) -> void:
 
 func _hurt_feedback() -> void:
 	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
-	#tween.tween_property(animated_sprite, "material:shader_parameter/opacity", 1.0, 0.1).from(0.0)
-	#tween.tween_property(animated_sprite, "material:shader_parameter/opacity", 0.0, 0.1).from(1.0)
+	tween.tween_property(animated_sprite, "material:shader_parameter/opacity", 1.0, 0.1).from(0.0)
+	tween.tween_property(animated_sprite, "material:shader_parameter/opacity", 0.0, 0.1).from(1.0)
 
 
 func die() -> void:

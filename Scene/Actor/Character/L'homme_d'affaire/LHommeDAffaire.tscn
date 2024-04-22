@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcqgi85erd4p3"]
+[gd_scene load_steps=15 format=3 uid="uid://dcqgi85erd4p3"]
 
 [ext_resource type="PackedScene" uid="uid://dqkmyvvmo4itf" path="res://Scene/Actor/Character/Character.tscn" id="1_p7yas"]
 [ext_resource type="Script" path="res://Resource/DodgeData.gd" id="2_np2g1"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://diryhf05ebh51" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire_sprite_frame.tres" id="3_jui7e"]
 [ext_resource type="Script" path="res://Resource/CharacterData.gd" id="3_s64pt"]
 [ext_resource type="Resource" uid="uid://5hqeudv5p8ty" path="res://Resource/AttackData/cravate_enchantee.tres" id="4_din1h"]
+[ext_resource type="Shader" path="res://Scene/Actor/ActorShader.gdshader" id="4_r5tj3"]
 [ext_resource type="Resource" uid="uid://by55vhwybfm1h" path="res://Resource/AttackData/boule_de_feu.tres" id="6_xjrm6"]
 [ext_resource type="Script" path="res://Scene/Actor/Character/L'homme_d'affaire/AttackSpecial1State.gd" id="7_84ald"]
 
@@ -21,6 +22,11 @@ crit_rate = 25.0
 name = "L'homme d'affaire"
 description = ""
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nx840"]
+shader = ExtResource("4_r5tj3")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2uivx"]
 size = Vector2(20, 24)
 
@@ -29,11 +35,13 @@ radius = 34.0588
 
 [node name="LHommeDAffaire" groups=["Character"] instance=ExtResource("1_p7yas")]
 y_sort_enabled = false
+knockback_power = null
+max_pv = 500
 dodge_data = SubResource("Resource_cvwa5")
 actor_data = SubResource("Resource_8valu")
-max_pv = 500
 
 [node name="AnimatedSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_nx840")
 sprite_frames = ExtResource("3_jui7e")
 animation = &"IdleDown"
 

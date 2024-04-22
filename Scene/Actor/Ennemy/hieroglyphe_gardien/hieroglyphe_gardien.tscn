@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://2bd6ryf16qeo"]
+[gd_scene load_steps=32 format=3 uid="uid://2bd6ryf16qeo"]
 
 [ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="1_oplay"]
 [ext_resource type="Script" path="res://Resource/DamageData.gd" id="2_j7ckw"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnnemyMoveState.gd" id="3_4stwo"]
+[ext_resource type="Shader" path="res://Scene/Actor/ActorShader.gdshader" id="3_tqsq4"]
 [ext_resource type="Texture2D" uid="uid://0udj4h2hyly3" path="res://Scene/Actor/Ennemy/SpriteSheet/Hieroglyphe_sprite_sheet.png" id="3_v0v66"]
 [ext_resource type="Script" path="res://StateMachine/StateLabel.gd" id="4_7efai"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/ChaseState.gd" id="4_mw78t"]
@@ -15,10 +16,19 @@
 [ext_resource type="AudioStream" uid="uid://b5yqw8w3cgord" path="res://Audio/Grimlin_Baveu.mp3" id="11_i701c"]
 [ext_resource type="AudioStream" uid="uid://dpn5gjgkolbbp" path="res://Audio/TerminalMontage's_Famous_Slap_Sound_Effect.mp3" id="12_tt0tt"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n7uk"]
+resource_local_to_scene = true
+
 [sub_resource type="Resource" id="Resource_qy38u"]
 script = ExtResource("2_j7ckw")
 damage = 50
 effect_array = Array[Resource("res://Resource/EffectData.gd")]([])
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sa0p5"]
+resource_local_to_scene = true
+shader = ExtResource("3_tqsq4")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4hwc"]
 atlas = ExtResource("3_v0v66")
@@ -212,16 +222,21 @@ radius = 136.0
 size = Vector2(200, 80)
 
 [node name="Hieroglyphe_Gardien" groups=["Ennemy"] instance=ExtResource("1_oplay")]
+material = SubResource("ShaderMaterial_0n7uk")
+use_parent_material = true
 scale = Vector2(0.25, 0.25)
-dammage_data = SubResource("Resource_qy38u")
 speed = 100.0
 max_pv = 150
+dammage_data = SubResource("Resource_qy38u")
+knockback_power = null
 
 [node name="AnimatedSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_sa0p5")
 sprite_frames = SubResource("SpriteFrames_2tnjg")
-animation = &"AttackUp"
+animation = &"IdleDown"
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 shape = SubResource("CircleShape2D_t1qu8")
 debug_color = Color(1, 0.00784314, 0.0392157, 0.419608)
 
@@ -286,9 +301,15 @@ offset_right = 50.0
 offset_bottom = -70.0
 script = ExtResource("4_7efai")
 
+[node name="ChaseArea" parent="." index="4"]
+visible = false
+
 [node name="CollisionShape2D" parent="ChaseArea" index="0"]
 shape = SubResource("CircleShape2D_5uqw7")
 debug_color = Color(0.552941, 0.52549, 0.545098, 0.419608)
+
+[node name="AttackArea" parent="." index="5"]
+visible = false
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_k5xae")

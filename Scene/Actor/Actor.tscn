@@ -1,15 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cswyylwaj4a33"]
+[gd_scene load_steps=7 format=3 uid="uid://cswyylwaj4a33"]
 
 [ext_resource type="Script" path="res://StateMachine/State.gd" id="1_3xsrm"]
 [ext_resource type="Script" path="res://Scene/Actor/Actor.gd" id="1_b3uf1"]
 [ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="1_qnkym"]
+[ext_resource type="Shader" path="res://Scene/Actor/ActorShader.gdshader" id="2_7qwny"]
 [ext_resource type="Script" path="res://StateMachine/State/ActorMoveState.gd" id="4_u40el"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sh1bi"]
+resource_local_to_scene = true
+shader = ExtResource("2_7qwny")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
 
 [node name="Actor" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_b3uf1")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_sh1bi")
 animation = &""
 metadata/_edit_lock_ = true
 

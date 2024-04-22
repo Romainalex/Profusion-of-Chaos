@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b02qj4hjdoup"]
+[gd_scene load_steps=4 format=3 uid="uid://b02qj4hjdoup"]
 
 [ext_resource type="PackedScene" uid="uid://dcqgi85erd4p3" path="res://Scene/Actor/Character/L'homme_d'affaire/LHommeDAffaire.tscn" id="1_g8k83"]
 [ext_resource type="PackedScene" uid="uid://2bd6ryf16qeo" path="res://Scene/Actor/Ennemy/hieroglyphe_gardien/hieroglyphe_gardien.tscn" id="2_fjjit"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mm46"]
+resource_local_to_scene = true
 
 [node name="TestsEnnemies" type="Node2D"]
 
 [node name="LHommeDAffaire" parent="." instance=ExtResource("1_g8k83")]
 position = Vector2(-1, -2)
+knockback_power = null
 
 [node name="Hieroglyphe_Gardien" parent="." instance=ExtResource("2_fjjit")]
+material = SubResource("ShaderMaterial_0mm46")
 position = Vector2(200, -4)
-dammage_data = null
 speed = 1.0
+knockback_power = null
+dammage_data = null
