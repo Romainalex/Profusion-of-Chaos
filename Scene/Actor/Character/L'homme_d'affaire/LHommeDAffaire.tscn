@@ -35,10 +35,9 @@ radius = 34.0588
 
 [node name="LHommeDAffaire" groups=["Character"] instance=ExtResource("1_p7yas")]
 y_sort_enabled = false
-knockback_power = null
-max_pv = 500
 dodge_data = SubResource("Resource_cvwa5")
 actor_data = SubResource("Resource_8valu")
+max_pv = 500
 
 [node name="AnimatedSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_nx840")

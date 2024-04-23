@@ -216,7 +216,7 @@ radius = 30.1496
 radius = 900.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5xae"]
-radius = 136.0
+radius = 112.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tgtj"]
 size = Vector2(200, 80)
@@ -225,10 +225,9 @@ size = Vector2(200, 80)
 material = SubResource("ShaderMaterial_0n7uk")
 use_parent_material = true
 scale = Vector2(0.25, 0.25)
+dammage_data = SubResource("Resource_qy38u")
 speed = 100.0
 max_pv = 150
-dammage_data = SubResource("Resource_qy38u")
-knockback_power = null
 
 [node name="AnimatedSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_sa0p5")
@@ -307,9 +306,6 @@ visible = false
 [node name="CollisionShape2D" parent="ChaseArea" index="0"]
 shape = SubResource("CircleShape2D_5uqw7")
 debug_color = Color(0.552941, 0.52549, 0.545098, 0.419608)
-
-[node name="AttackArea" parent="." index="5"]
-visible = false
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_k5xae")
