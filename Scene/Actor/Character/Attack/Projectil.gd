@@ -50,10 +50,12 @@ func _touch() -> void:
 
 
 func _on_body_shape_entered(body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+	if animated_sprite.get_animation() == "Touch":
+		return
+	
 	if body in get_tree().get_nodes_in_group("Ennemy") or body in get_tree().get_nodes_in_group("InteractiveObject"):
 		if body.has_method("hurt"):
 			body.hurt(damage_data, 1.0)
-			animated_sprite.play("Touch")
 		if body.has_method("destroy"):
 			body.destroy()
 		_touch()

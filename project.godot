@@ -13,7 +13,6 @@ config_version=5
 config/name="Prototype"
 run/main_scene="res://Scene/UI/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://BTM_logo.png"
 
 [audio]
@@ -214,3 +213,4 @@ locale/translations=PackedStringArray("res://Localization/translation_menu.en.tr
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

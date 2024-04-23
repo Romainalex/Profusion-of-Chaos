@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://2bd6ryf16qeo"]
+[gd_scene load_steps=31 format=3 uid="uid://2bd6ryf16qeo"]
 
 [ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="1_oplay"]
 [ext_resource type="Script" path="res://Resource/DamageData.gd" id="2_j7ckw"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnnemyMoveState.gd" id="3_4stwo"]
+[ext_resource type="Shader" path="res://Scene/Actor/ActorShader.gdshader" id="3_fgfln"]
 [ext_resource type="Texture2D" uid="uid://0udj4h2hyly3" path="res://Scene/Actor/Ennemy/SpriteSheet/Hieroglyphe_sprite_sheet.png" id="3_v0v66"]
 [ext_resource type="Script" path="res://StateMachine/StateLabel.gd" id="4_7efai"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/ChaseState.gd" id="4_mw78t"]
@@ -19,6 +20,12 @@
 script = ExtResource("2_j7ckw")
 damage = 50
 effect_array = Array[Resource("res://Resource/EffectData.gd")]([])
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ne5ve"]
+resource_local_to_scene = true
+shader = ExtResource("3_fgfln")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4hwc"]
 atlas = ExtResource("3_v0v66")
@@ -218,6 +225,7 @@ speed = 100.0
 max_pv = 150
 
 [node name="AnimatedSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_ne5ve")
 sprite_frames = SubResource("SpriteFrames_2tnjg")
 animation = &"AttackUp"
 
@@ -276,6 +284,7 @@ one_shot = true
 [node name="SlapAudio" type="AudioStreamPlayer2D" parent="BehaviorTree/Attack" index="1"]
 scale = Vector2(0.25, 0.25)
 stream = ExtResource("14_gimk0")
+volume_db = -5.0
 
 [node name="Label" type="Label" parent="BehaviorTree" index="3"]
 visible = false

@@ -30,6 +30,8 @@ func _ready() -> void:
 	credits.connect("return_menu", Callable(self, "_on_return_menu"))
 	options.connect("return_menu", Callable(self, "_on_return_menu"))
 	
+	
+	
 	Util.set_ui_visible(buttons_container, true)
 	
 	
