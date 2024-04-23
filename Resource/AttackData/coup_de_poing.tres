@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ComboAttackData" load_steps=65 format=3 uid="uid://cxrbo6ash7ym8"]
+[gd_resource type="Resource" script_class="ComboAttackData" load_steps=66 format=3 uid="uid://cxrbo6ash7ym8"]
 
 [ext_resource type="Texture2D" uid="uid://dkfplw5fmijid" path="res://Scene/Actor/Character/L'homme_d'affaire/Sprite/L'homme d'affaire_attaque_principal_SpriteSheet.png" id="1_6rcsr"]
 [ext_resource type="Script" path="res://Resource/ComboAttackData.gd" id="1_077d5"]
@@ -332,10 +332,16 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Resource" id="Resource_6ycll"]
+script = ExtResource("5_idmjm")
+effect_type = 6
+effect_value = 30
+hit_chance = 100.0
+
 [sub_resource type="Resource" id="Resource_j78us"]
 script = ExtResource("2_qsijh")
 damage = 25
-effect_array = Array[ExtResource("5_idmjm")]([])
+effect_array = Array[ExtResource("5_idmjm")]([SubResource("Resource_6ycll")])
 
 [sub_resource type="Resource" id="Resource_x351q"]
 script = ExtResource("6_qksxd")
@@ -507,7 +513,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Resource" id="Resource_bhy7q"]
+[sub_resource type="Resource" id="Resource_5g8at"]
 script = ExtResource("5_idmjm")
 effect_type = 6
 effect_value = 50
@@ -516,7 +522,7 @@ hit_chance = 100.0
 [sub_resource type="Resource" id="Resource_80f6l"]
 script = ExtResource("2_qsijh")
 damage = 50
-effect_array = Array[ExtResource("5_idmjm")]([SubResource("Resource_bhy7q")])
+effect_array = Array[ExtResource("5_idmjm")]([SubResource("Resource_5g8at")])
 
 [sub_resource type="Resource" id="Resource_kbd7s"]
 script = ExtResource("6_qksxd")

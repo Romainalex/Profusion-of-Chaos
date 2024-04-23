@@ -22,7 +22,7 @@ func _ready() -> void:
 func enter_state() -> void:
 	gpu_particul.process_material.set_direction(Vector3(owner.facing_direction.x * -1, owner.facing_direction.y * -1, 0))
 	gpu_particul.set_emitting(true)
-	timer.start(0.5)
+	timer.start(2)
 	
 
 
