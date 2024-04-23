@@ -10,11 +10,9 @@ resource_local_to_scene = true
 
 [node name="LHommeDAffaire" parent="." instance=ExtResource("1_g8k83")]
 position = Vector2(-1, -2)
-knockback_power = null
 
 [node name="Hieroglyphe_Gardien" parent="." instance=ExtResource("2_fjjit")]
 material = SubResource("ShaderMaterial_0mm46")
 position = Vector2(200, -4)
-speed = 1.0
-knockback_power = null
 dammage_data = null
+speed = 1.0
