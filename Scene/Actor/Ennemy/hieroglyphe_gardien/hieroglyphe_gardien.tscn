@@ -227,7 +227,7 @@ max_pv = 150
 [node name="AnimatedSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_ne5ve")
 sprite_frames = SubResource("SpriteFrames_2tnjg")
-animation = &"AttackUp"
+animation = &"IdleRight"
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_t1qu8")

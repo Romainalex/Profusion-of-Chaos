@@ -1,6 +1,7 @@
 extends State
 
 @onready var timer = $Timer
+@onready var dodge_audio = $DodgeAudio
 
 var direction_to_dodge = Vector2.ZERO
 
@@ -30,6 +31,7 @@ func enter_state() -> void:
 		direction_to_dodge = owner.facing_direction
 	else:
 		direction_to_dodge = owner.moving_direction
+	dodge_audio.play()
 	timer.start()
 	
 

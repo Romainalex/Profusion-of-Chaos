@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vbl6pamnom28"]
+[gd_scene load_steps=9 format=3 uid="uid://vbl6pamnom28"]
 
 [ext_resource type="Script" path="res://Scene/UI/MainMenu.gd" id="1_0whei"]
 [ext_resource type="Texture2D" uid="uid://c37qwtledj5uj" path="res://Scene/UI/Image/accueil.png" id="2_utjpu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scene/UI/ControllerEchapTexture.gd" id="4_6nwie"]
 [ext_resource type="Texture2D" uid="uid://b26wlxoyj1r2t" path="res://Scene/UI/Image/back_input.png" id="4_jlrvn"]
 [ext_resource type="PackedScene" uid="uid://5vsi6tcbajlq" path="res://Scene/UI/OptionsMenu.tscn" id="6_5sq18"]
+[ext_resource type="AudioStream" uid="uid://cgiw5p13docga" path="res://Audio/Minecraft - Antoine Daniel - Musique libre de droit.mp3" id="6_88mu4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yh41v"]
 atlas = ExtResource("4_jlrvn")
@@ -75,7 +76,6 @@ action_mode = 0
 text = "MENU_QUIT"
 
 [node name="Credits" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,6 +132,9 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_yh41v")
 expand_mode = 3
 script = ExtResource("4_6nwie")
+
+[node name="CreditMusic" type="AudioStreamPlayer2D" parent="Credits"]
+stream = ExtResource("6_88mu4")
 
 [node name="OptionsMenu" parent="." instance=ExtResource("6_5sq18")]
 visible = false

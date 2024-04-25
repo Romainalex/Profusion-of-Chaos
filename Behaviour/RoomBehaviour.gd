@@ -36,7 +36,7 @@ func _ready() -> void:
 	connect("control_children_dimension_changed", Callable(self, "_on_control_children_dimension_changed"))
 	connect("control_children_position_changed", Callable(self, "_on_control_children_position_changed"))
 	
-	_init_children_controllable()
+	
 
 
 #### LOGICS ####
@@ -51,6 +51,10 @@ func _init_children_controllable() -> void:
 			doors_array.append(body)
 		if body is Ennemy:
 			ennemies_array.append(body)
+	print("--------")
+	print(ennemies_array)
+	print("--------")
+	print(doors_array)
 
 func _open_doors(open: bool) -> void:
 	for door in doors_array:
@@ -72,7 +76,9 @@ func _check_is_ennemies_array_is_empty() -> void:
 
 func _on_ChracterDetectionArea_body_entered(body: Node2D) -> void:
 	if body in get_tree().get_nodes_in_group("Character"):
-		_open_doors(false)
+		_init_children_controllable()
+		if !ennemies_array.is_empty():
+			_open_doors(false)
 
 func _on_EVENTS_actor_died(target: Actor) -> void:
 	if target in ennemies_array:

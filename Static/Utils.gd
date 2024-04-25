@@ -45,13 +45,13 @@ static func find_direction_name_8_dir(dir: Vector2) -> String:
 			return "Left"
 		var a when 22.5 >= a and a >= -22.5: #Right
 			return "Right"
-		var a when -67.5 < a and a < -22.5 : #Up-Right
+		var a when 22.5 < a and a < 67.5 : #Up-Right
 			return "Up-Right"
-		var a when 22.5 < a and a < 67.5: #Down-Right
+		var a when -67.5 < a and a < -22.5: #Down-Right
 			return "Down-Right"
-		var a when 112.5 < a and a < 157.5: #Down-Left
+		var a when -157.5 < a and a < -112.5: #Down-Left
 			return "Down-Left"
-		var a when -157.5 < a and a < -112.5: #Up-Left
+		var a when 112.5 < a and a < 157.5: #Up-Left
 			return "Up-Left"
 		_: #default
 			var d = dir.normalized()
@@ -64,11 +64,11 @@ static func give_angle_direction(object: Object, facing_direction: Vector2) -> V
 		var attack_direction = Input.get_vector("Attack_direction_Left","Attack_direction_Right","Attack_direction_Up","Attack_direction_Down")
 		var move_direction = Input.get_vector("Left_action","Right_action","Up_action","Down_action")
 		if attack_direction != Vector2.ZERO:
-			face_direction = attack_direction
+			face_direction = dir_dict[find_direction_name_8_dir(attack_direction.normalized())]
 		elif move_direction != Vector2.ZERO:
 			face_direction = move_direction
 	elif GAME.INPUT_SCHEME == GAME.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
-		face_direction = object.get_global_mouse_position() - object.global_position
+		face_direction = dir_dict[find_direction_name_8_dir((object.get_global_mouse_position() - object.global_position).normalized())]
 	return face_direction
 
 static func set_ui_visible(object: Control, val: bool) -> void:

@@ -1,17 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqkmyvvmo4itf"]
+[gd_scene load_steps=10 format=3 uid="uid://dqkmyvvmo4itf"]
 
 [ext_resource type="PackedScene" uid="uid://cswyylwaj4a33" path="res://Scene/Actor/Actor.tscn" id="1_m5txu"]
 [ext_resource type="Script" path="res://Scene/Actor/Character/Character.gd" id="2_n5pxn"]
+[ext_resource type="Shader" path="res://Scene/Actor/ActorShader.gdshader" id="3_doo61"]
 [ext_resource type="Script" path="res://StateMachine/State.gd" id="3_kshho"]
 [ext_resource type="Script" path="res://Behaviour/AttackBehaviour.gd" id="3_xrrth"]
 [ext_resource type="Script" path="res://StateMachine/State/AttackPrincipalState.gd" id="6_ji7ar"]
 [ext_resource type="Script" path="res://StateMachine/State/AttackSecondaireState.gd" id="7_wxkyb"]
 [ext_resource type="Script" path="res://StateMachine/State/DodgeState.gd" id="8_5wvw8"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1plm4"]
+resource_local_to_scene = true
+shader = ExtResource("3_doo61")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
 [node name="Character" instance=ExtResource("1_m5txu")]
 script = ExtResource("2_n5pxn")
 dodge_data = null
 speed = 200.0
+
+[node name="AnimatedSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_1plm4")
 
 [node name="CollisionShape2D" parent="." index="1"]
 visibility_layer = 3
@@ -46,6 +56,8 @@ script = ExtResource("8_5wvw8")
 [node name="Timer" type="Timer" parent="StateMachine/Dodge" index="0"]
 wait_time = 0.3
 one_shot = true
+
+[node name="DodgeAudio" type="AudioStreamPlayer2D" parent="StateMachine/Dodge" index="1"]
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 position_smoothing_enabled = true

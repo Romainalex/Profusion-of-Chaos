@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgiw5p13docga"
+path="res://.godot/imported/Minecraft - Antoine Daniel - Musique libre de droit.mp3-f354add4cad89193ccadf578b33e1d05.mp3str"
+
+[deps]
+
+source_file="res://Audio/Minecraft - Antoine Daniel - Musique libre de droit.mp3"
+dest_files=["res://.godot/imported/Minecraft - Antoine Daniel - Musique libre de droit.mp3-f354add4cad89193ccadf578b33e1d05.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

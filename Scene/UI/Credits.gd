@@ -4,6 +4,7 @@ class_name Credits
 
 @onready var label = $Label
 @onready var timer = $Timer
+@onready var credit_music = $CreditMusic
 
 var text = tr("CREDITS_MEMBERS")+" :
 HOARAU Romain
@@ -61,6 +62,7 @@ func _input(_event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("Menu_action"):
 		timer.stop()
+		credit_music.stop()
 		emit_signal("return_menu", self)
 
 
@@ -70,6 +72,8 @@ func _input(_event: InputEvent) -> void:
 func _on_visibility_changed() -> void:
 	if visible:
 		_scroll_text()
+		credit_music.play()
 
 func _on_Timer_timeout() -> void:
+	credit_music.stop()
 	emit_signal("return_menu", self)
