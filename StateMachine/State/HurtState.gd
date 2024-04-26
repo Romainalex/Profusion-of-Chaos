@@ -2,7 +2,7 @@ extends State
 class_name HurtState
 
 @onready var timer = $Timer
-@onready var gpu_particul = $GPUParticles2D
+@onready var gpu_particul = $"../../HurtGPUParticul"
 
 #### ACCESSORS ####
 

@@ -1,7 +1,7 @@
 extends State
 
 @onready var timer = $Timer
-@onready var dodge_audio = $DodgeAudio
+@onready var dodge_audio = $"../../DodgeAudio"
 
 var direction_to_dodge = Vector2.ZERO
 

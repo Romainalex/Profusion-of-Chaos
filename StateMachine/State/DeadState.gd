@@ -1,7 +1,7 @@
 extends State
 class_name DeadState
 
-@onready var dead_audio = $DeadAudio
+@onready var dead_audio = $"../../DeadAudio"
 
 #### ACCESSORS ####
 

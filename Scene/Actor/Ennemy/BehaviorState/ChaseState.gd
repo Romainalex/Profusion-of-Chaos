@@ -1,7 +1,7 @@
 extends State
 class_name ChaseState
 
-@onready var follow_audio = $FollowAudio
+@onready var follow_audio = $"../../FollowAudio"
 
 func _ready() -> void:
 	follow_audio.connect("finished", Callable(self, "_on_FollowAudio_finished"))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://2bd6ryf16qeo"]
+[gd_scene load_steps=30 format=3 uid="uid://2bd6ryf16qeo"]
 
 [ext_resource type="PackedScene" uid="uid://j52h3qadapdb" path="res://Scene/Actor/Ennemy/enemy.tscn" id="1_oplay"]
 [ext_resource type="Script" path="res://Resource/DamageData.gd" id="2_j7ckw"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/ChaseState.gd" id="4_mw78t"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnnemyWanderState.gd" id="5_cqe0s"]
 [ext_resource type="Script" path="res://StateMachine/State.gd" id="5_qt8et"]
-[ext_resource type="AudioStream" uid="uid://des3ok5jbrsa7" path="res://Audio/groove-battle-death.wav" id="6_42ud3"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/WaitState.gd" id="7_uoybo"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/State/EnemyAttackState.gd" id="7_wg0j8"]
 [ext_resource type="Script" path="res://Scene/Actor/Ennemy/BehaviorState/GoToState.gd" id="8_r04h0"]
@@ -233,14 +232,21 @@ animation = &"IdleRight"
 shape = SubResource("CircleShape2D_t1qu8")
 debug_color = Color(1, 0.00784314, 0.0392157, 0.419608)
 
+[node name="SlapAudio" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("14_gimk0")
+volume_db = -5.0
+metadata/_edit_lock_ = true
+
+[node name="FollowAudio" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("11_i701c")
+volume_db = 5.0
+metadata/_edit_lock_ = true
+
 [node name="Move" parent="StateMachine" index="1"]
 script = ExtResource("3_4stwo")
 
 [node name="Attack" type="Node" parent="StateMachine" index="2"]
 script = ExtResource("5_qt8et")
-
-[node name="DeadAudio" parent="StateMachine/Dead" index="0"]
-stream = ExtResource("6_42ud3")
 
 [node name="Timer" parent="StateMachine/Hurt" index="0"]
 wait_time = 0.5
@@ -252,6 +258,7 @@ offset_top = -68.0
 offset_right = 4.0
 offset_bottom = -45.0
 script = ExtResource("4_7efai")
+metadata/_edit_lock_ = true
 
 [node name="Wander" parent="BehaviorTree" index="0"]
 script = ExtResource("5_cqe0s")
@@ -270,21 +277,11 @@ script = ExtResource("8_r04h0")
 [node name="Chase" type="Node" parent="BehaviorTree" index="1"]
 script = ExtResource("4_mw78t")
 
-[node name="FollowAudio" type="AudioStreamPlayer2D" parent="BehaviorTree/Chase" index="0"]
-scale = Vector2(0.25, 0.25)
-stream = ExtResource("11_i701c")
-volume_db = 5.0
-
 [node name="Attack" type="Node" parent="BehaviorTree" index="2"]
 script = ExtResource("7_wg0j8")
 
 [node name="Cooldown" type="Timer" parent="BehaviorTree/Attack" index="0"]
 one_shot = true
-
-[node name="SlapAudio" type="AudioStreamPlayer2D" parent="BehaviorTree/Attack" index="1"]
-scale = Vector2(0.25, 0.25)
-stream = ExtResource("14_gimk0")
-volume_db = -5.0
 
 [node name="Label" type="Label" parent="BehaviorTree" index="3"]
 visible = false
@@ -293,6 +290,7 @@ offset_top = -100.0
 offset_right = 50.0
 offset_bottom = -70.0
 script = ExtResource("4_7efai")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="ChaseArea" index="0"]
 shape = SubResource("CircleShape2D_5uqw7")

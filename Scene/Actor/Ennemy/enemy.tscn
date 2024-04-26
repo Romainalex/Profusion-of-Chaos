@@ -35,13 +35,21 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_vat15")
 
-[node name="StateMachine" parent="." index="2"]
+[node name="HurtGPUParticul" type="GPUParticles2D" parent="." index="2"]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_68l2r")
+lifetime = 0.5
+one_shot = true
+
+[node name="DeadAudio" type="AudioStreamPlayer2D" parent="." index="3"]
+metadata/_edit_lock_ = true
+
+[node name="StateMachine" parent="." index="4"]
 metadata/_edit_lock_ = true
 
 [node name="Dead" parent="StateMachine" index="2"]
 script = ExtResource("3_vwvmc")
-
-[node name="DeadAudio" type="AudioStreamPlayer2D" parent="StateMachine/Dead" index="0"]
 
 [node name="Hurt" parent="StateMachine" index="3"]
 script = ExtResource("3_x22aw")
@@ -49,31 +57,24 @@ script = ExtResource("3_x22aw")
 [node name="Timer" type="Timer" parent="StateMachine/Hurt" index="0"]
 one_shot = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="StateMachine/Hurt" index="1"]
-emitting = false
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_68l2r")
-lifetime = 0.5
-one_shot = true
-
-[node name="BehaviorTree" type="Node2D" parent="." index="3"]
+[node name="BehaviorTree" type="Node2D" parent="." index="5"]
 script = ExtResource("3_nv5xs")
 metadata/_edit_lock_ = true
 
 [node name="Wander" type="Node" parent="BehaviorTree" index="0"]
 script = ExtResource("4_2c0rf")
 
-[node name="ChaseArea" type="Area2D" parent="." index="4"]
+[node name="ChaseArea" type="Area2D" parent="." index="6"]
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea" index="0"]
 
-[node name="AttackArea" type="Area2D" parent="." index="5"]
+[node name="AttackArea" type="Area2D" parent="." index="7"]
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
 
-[node name="AttackHitbox" type="Area2D" parent="." index="6"]
+[node name="AttackHitbox" type="Area2D" parent="." index="8"]
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" index="0"]
