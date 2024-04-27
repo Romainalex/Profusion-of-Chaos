@@ -119,9 +119,9 @@ func _on_ChaseArea_body_entered(body : Node2D) -> void:
 		set_target_in_chase_area(true)
 		target = body
 
-func _on_ChaseArea_body_exited(body : Node2D) -> void:
-	if body is Character:
-		set_target_in_chase_area(false)
+#func _on_ChaseArea_body_exited(body : Node2D) -> void:
+	#if body is Character:
+		#set_target_in_chase_area(false)
 
 func _on_AttackArea_body_entered(body : Node2D) -> void:
 	if body is Character:

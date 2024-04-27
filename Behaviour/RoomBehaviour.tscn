@@ -1,23 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj6x2s2nohx8i"]
+[gd_scene load_steps=2 format=3 uid="uid://dj6x2s2nohx8i"]
 
 [ext_resource type="Script" path="res://Behaviour/RoomBehaviour.gd" id="1_eioqy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2kkr"]
-size = Vector2(946, 694)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jp6r"]
-size = Vector2(1053, 876)
 
 [node name="RoomBehaviour" type="Node2D"]
 script = ExtResource("1_eioqy")
 
 [node name="CharacterDetectionArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterDetectionArea"]
-shape = SubResource("RectangleShape2D_n2kkr")
-
-[node name="ControlChildrenArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ControlChildrenArea"]
-position = Vector2(0, 10)
-shape = SubResource("RectangleShape2D_6jp6r")

@@ -3,7 +3,7 @@ class_name Door
 
 @onready var state_machine = $StateMachine
 @onready var animated_sprite = $AnimatedSprite
-@onready var collision_shape = $CollisionShape
+@onready var hitbox = $Hitbox
 
 enum DIRECTION {
 	UP,
@@ -21,9 +21,7 @@ var dir_name = ["Up", "Right", "Down", "Left"]
 
 func _ready() -> void:
 	state_machine.connect("state_changed", Callable(self, "_on_StateMachine_state_changed"))
-	animated_sprite.connect("animation_changed", Callable(self, "_on_AnimatedSprite_animation_changed"))
-	
-	
+	_update_animation()
 
 
 #### LOGICS ####
@@ -32,10 +30,15 @@ func _update_animation() -> void:
 	animated_sprite.play(state_machine.get_state_name()+dir_name[direction])
 
 func close() -> void:
-	state_machine.set_state("Door")
+	state_machine.set_state("Close")
+	await get_tree().create_timer(0.5).timeout
+	hitbox.set_disabled(false)
+
 
 func open() -> void:
 	state_machine.set_state("Open")
+	hitbox.set_disabled(true)
+
 
 
 
@@ -44,9 +47,5 @@ func open() -> void:
 func _on_StateMachine_state_changed(_state: State) -> void:
 	_update_animation()
 
-func _on_AnimatedSprite_animation_changed() -> void:
-	if "Close".is_subsequence_of(animated_sprite.get_animation()):
-		collision_shape.set_disable(false)
-	if "Open".is_subsequence_of(animated_sprite.get_animation()):
-		collision_shape.set_disable(true)
+
 

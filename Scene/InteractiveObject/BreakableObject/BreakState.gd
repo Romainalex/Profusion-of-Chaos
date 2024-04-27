@@ -19,7 +19,7 @@ func _ready() -> void:
 #### LOGICS ####
 
 func enter_state() -> void:
-	$AudioStreamPlayer2D.play(0.2)
+	$"../../AudioStreamPlayer2D".play(0.2)
 
 
 #### INPUTS ####

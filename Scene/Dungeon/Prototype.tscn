@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2wxmstdkbhme"]
+[gd_scene load_steps=15 format=3 uid="uid://c2wxmstdkbhme"]
 
 [ext_resource type="PackedScene" uid="uid://dlxgplis04r6a" path="res://Scene/Dungeon/Dungeon.tscn" id="1_aee4b"]
 [ext_resource type="PackedScene" uid="uid://cf5o2l1w6t83p" path="res://Scene/Dungeon/Room/OpenRoom/pyramyde_room.tscn" id="2_gcp00"]
@@ -13,6 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://3u5ru68ope1e" path="res://Scene/InteractiveObject/BreakableObject/LittleJarre.tscn" id="11_tb3ep"]
 [ext_resource type="PackedScene" uid="uid://bcxmkrqbwgqdv" path="res://Scene/InteractiveObject/CollectableObject/BouleDeVie.tscn" id="12_i63yb"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwqlv"]
+size = Vector2(920, 681)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecwuv"]
+size = Vector2(609, 433)
+
 [node name="Dungeon" instance=ExtResource("1_aee4b")]
 position = Vector2(-1, 0)
 
@@ -22,64 +28,52 @@ layer_0/tile_data = PackedInt32Array(0, 65536, 1, 1, 65536, 1, 2, 65536, 1, 3, 6
 [node name="Room" parent="." index="2" instance=ExtResource("2_gcp00")]
 script = null
 
-[node name="Door" parent="." index="3" instance=ExtResource("6_48n3t")]
-position = Vector2(416, 803)
-direction = 2
-
-[node name="LHommeDAffaire" parent="." index="4" instance=ExtResource("5_b3la2")]
+[node name="LHommeDAffaire" parent="." index="3" instance=ExtResource("5_b3la2")]
 position = Vector2(1365, 160)
 
-[node name="ObstacleTileMap" parent="." index="5"]
+[node name="ObstacleTileMap" parent="." index="4"]
 tile_set = ExtResource("2_v4e3n")
 
-[node name="Hieroglyphe_Gardien" parent="." index="6" instance=ExtResource("7_3d7x8")]
+[node name="Hieroglyphe_Gardien" parent="." index="5" instance=ExtResource("7_3d7x8")]
 position = Vector2(340, 301)
 
-[node name="Hieroglyphe_Gardien2" parent="." index="7" instance=ExtResource("7_3d7x8")]
+[node name="Hieroglyphe_Gardien2" parent="." index="6" instance=ExtResource("7_3d7x8")]
 position = Vector2(172, 581)
 
-[node name="Hieroglyphe_Gardien3" parent="." index="8" instance=ExtResource("7_3d7x8")]
+[node name="Hieroglyphe_Gardien3" parent="." index="7" instance=ExtResource("7_3d7x8")]
 position = Vector2(639, 622)
 
-[node name="Hieroglyphe_Gardien4" parent="." index="9" instance=ExtResource("7_3d7x8")]
+[node name="Hieroglyphe_Gardien4" parent="." index="8" instance=ExtResource("7_3d7x8")]
 position = Vector2(426, 539)
 
-[node name="Hieroglyphe_Gardien5" parent="." index="10" instance=ExtResource("7_3d7x8")]
+[node name="Hieroglyphe_Gardien5" parent="." index="9" instance=ExtResource("7_3d7x8")]
 position = Vector2(140, 168)
 
-[node name="Hieroglyphe_Gardien6" parent="." index="11" instance=ExtResource("7_3d7x8")]
+[node name="Hieroglyphe_Gardien6" parent="." index="10" instance=ExtResource("7_3d7x8")]
 position = Vector2(705, 180)
 
-[node name="Door2" parent="." index="12" instance=ExtResource("6_48n3t")]
-position = Vector2(994, 284)
-direction = 1
-
-[node name="RoomBehaviour" parent="." index="13" instance=ExtResource("8_llqbd")]
+[node name="RoomBehaviour" parent="." index="11" node_paths=PackedStringArray("ennemies_array", "doors_array") instance=ExtResource("8_llqbd")]
 position = Vector2(1, 0)
-control_children_dimension = Vector2(1050, 860)
+ennemies_array = [NodePath("../Hieroglyphe_Gardien"), NodePath("../Hieroglyphe_Gardien2"), NodePath("../Hieroglyphe_Gardien3"), NodePath("../Hieroglyphe_Gardien4"), NodePath("../Hieroglyphe_Gardien5"), NodePath("../Hieroglyphe_Gardien6")]
+doors_array = [NodePath("../Door"), NodePath("../Door2")]
 
-[node name="CollisionShape2D" parent="RoomBehaviour/CharacterDetectionArea" index="0"]
-position = Vector2(481, 416)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBehaviour/CharacterDetectionArea" index="0"]
+position = Vector2(474, 413.5)
+shape = SubResource("RectangleShape2D_gwqlv")
 
-[node name="ControlChildrenArea" parent="RoomBehaviour" index="1"]
-position = Vector2(470, 293)
-
-[node name="CollisionShape2D" parent="RoomBehaviour/ControlChildrenArea" index="0"]
-position = Vector2(33.5, 121)
-
-[node name="VictoryArea" parent="." index="14" instance=ExtResource("10_5pj0g")]
+[node name="VictoryArea" parent="." index="12" instance=ExtResource("10_5pj0g")]
 position = Vector2(106, 1285)
 
-[node name="Hieroglyphe_Gardien7" parent="." index="15" instance=ExtResource("7_3d7x8")]
+[node name="Hieroglyphe_Gardien7" parent="." index="13" instance=ExtResource("7_3d7x8")]
 position = Vector2(913, 1156)
 
-[node name="Hieroglyphe_Gardien8" parent="." index="16" instance=ExtResource("7_3d7x8")]
+[node name="Hieroglyphe_Gardien8" parent="." index="14" instance=ExtResource("7_3d7x8")]
 position = Vector2(1170, 1302)
 
-[node name="Hieroglyphe_Gardien9" parent="." index="17" instance=ExtResource("7_3d7x8")]
+[node name="Hieroglyphe_Gardien9" parent="." index="15" instance=ExtResource("7_3d7x8")]
 position = Vector2(1678, 1058)
 
-[node name="Hieroglyphe_Gardien10" parent="." index="18" instance=ExtResource("7_3d7x8")]
+[node name="Hieroglyphe_Gardien10" parent="." index="16" instance=ExtResource("7_3d7x8")]
 position = Vector2(1760, 551)
 
 [node name="UpgradeSpell" parent="CanvasLayer/MenuManager" index="2" instance=ExtResource("3_xx5ka")]
@@ -93,46 +87,106 @@ layout_mode = 1
 [node name="AudioStreamPlayer2D" parent="CanvasLayer/MenuManager/GameOver" index="2"]
 volume_db = 15.0
 
-[node name="LittleJarre" parent="." index="20" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre" parent="." index="18" instance=ExtResource("11_tb3ep")]
 position = Vector2(1377, 1120)
 
-[node name="LittleJarre2" parent="." index="21" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre2" parent="." index="19" instance=ExtResource("11_tb3ep")]
 position = Vector2(1170, 224)
 
-[node name="LittleJarre3" parent="." index="22" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre3" parent="." index="20" instance=ExtResource("11_tb3ep")]
 position = Vector2(1170, 248)
 
-[node name="LittleJarre4" parent="." index="23" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre4" parent="." index="21" instance=ExtResource("11_tb3ep")]
 position = Vector2(1170, 276)
 
-[node name="LittleJarre5" parent="." index="24" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre5" parent="." index="22" instance=ExtResource("11_tb3ep")]
 position = Vector2(1170, 301)
 
-[node name="LittleJarre6" parent="." index="25" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre6" parent="." index="23" instance=ExtResource("11_tb3ep")]
 position = Vector2(1170, 327)
 
-[node name="LittleJarre7" parent="." index="26" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre7" parent="." index="24" instance=ExtResource("11_tb3ep")]
 position = Vector2(1185, 96)
 
-[node name="LittleJarre8" parent="." index="27" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre8" parent="." index="25" instance=ExtResource("11_tb3ep")]
 position = Vector2(1217, 96)
 
-[node name="LittleJarre9" parent="." index="28" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre9" parent="." index="26" instance=ExtResource("11_tb3ep")]
 position = Vector2(1185, 128)
 
-[node name="BouleDeVie" parent="." index="29" instance=ExtResource("12_i63yb")]
+[node name="BouleDeVie" parent="." index="27" instance=ExtResource("12_i63yb")]
 position = Vector2(1322, 296)
 
-[node name="LittleJarre10" parent="." index="30" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre10" parent="." index="28" instance=ExtResource("11_tb3ep")]
 position = Vector2(1523, 290)
 
-[node name="LittleJarre11" parent="." index="31" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre11" parent="." index="29" instance=ExtResource("11_tb3ep")]
 position = Vector2(1522, 318)
 
-[node name="LittleJarre12" parent="." index="32" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre12" parent="." index="30" instance=ExtResource("11_tb3ep")]
 position = Vector2(1521, 349)
 
-[node name="LittleJarre13" parent="." index="33" instance=ExtResource("11_tb3ep")]
+[node name="LittleJarre13" parent="." index="31" instance=ExtResource("11_tb3ep")]
 position = Vector2(1521, 380)
 
+[node name="Door" parent="." index="32" instance=ExtResource("6_48n3t")]
+position = Vector2(992, 282)
+direction = 1
+
+[node name="Door2" parent="." index="33" instance=ExtResource("6_48n3t")]
+position = Vector2(416, 803)
+direction = 2
+
+[node name="LittleJarre18" parent="." index="34" instance=ExtResource("11_tb3ep")]
+position = Vector2(1376, 1409)
+
+[node name="LittleJarre19" parent="." index="35" instance=ExtResource("11_tb3ep")]
+position = Vector2(1345, 1441)
+
+[node name="LittleJarre20" parent="." index="36" instance=ExtResource("11_tb3ep")]
+position = Vector2(790, 1034)
+
+[node name="LittleJarre21" parent="." index="37" instance=ExtResource("11_tb3ep")]
+position = Vector2(819, 1035)
+
+[node name="LittleJarre22" parent="." index="38" instance=ExtResource("11_tb3ep")]
+position = Vector2(851, 1035)
+
+[node name="RoomBehaviour2" parent="." index="39" node_paths=PackedStringArray("collision_shape", "ennemies_array", "doors_array") instance=ExtResource("8_llqbd")]
+position = Vector2(967, 1228)
+collision_shape = NodePath("CharacterDetectionArea/CollisionShape2D")
+ennemies_array = [NodePath("../Hieroglyphe_Gardien7"), NodePath("../Hieroglyphe_Gardien8"), NodePath("../Hieroglyphe_Gardien12"), NodePath("../Hieroglyphe_Gardien11")]
+doors_array = [NodePath("../Door3"), NodePath("../Door4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBehaviour2/CharacterDetectionArea" index="0"]
+position = Vector2(122.5, 18.5)
+shape = SubResource("RectangleShape2D_ecwuv")
+
+[node name="Hieroglyphe_Gardien11" parent="." index="40" instance=ExtResource("7_3d7x8")]
+position = Vector2(905, 1373)
+
+[node name="Hieroglyphe_Gardien12" parent="." index="41" instance=ExtResource("7_3d7x8")]
+position = Vector2(1140, 1119)
+
+[node name="LittleJarre14" parent="." index="42" instance=ExtResource("11_tb3ep")]
+position = Vector2(1005, 1437)
+
+[node name="LittleJarre15" parent="." index="43" instance=ExtResource("11_tb3ep")]
+position = Vector2(1034, 1435)
+
+[node name="LittleJarre16" parent="." index="44" instance=ExtResource("11_tb3ep")]
+position = Vector2(1060, 1434)
+
+[node name="LittleJarre17" parent="." index="45" instance=ExtResource("11_tb3ep")]
+position = Vector2(1377, 1440)
+
+[node name="Door3" parent="." index="46" instance=ExtResource("6_48n3t")]
+position = Vector2(1441, 1051)
+direction = 1
+
+[node name="Door4" parent="." index="47" instance=ExtResource("6_48n3t")]
+position = Vector2(736, 1241)
+direction = 3
+
 [editable path="RoomBehaviour"]
+[editable path="RoomBehaviour2"]
