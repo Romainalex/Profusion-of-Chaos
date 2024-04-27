@@ -26,6 +26,7 @@ func _ready() -> void:
 func start_game_over() -> void:
 	$AudioStreamPlayer2D.play()
 	await get_tree().create_timer(time).timeout
+	get_tree().paused = true
 	Util.set_ui_visible(self, true)
 	
 	await get_tree().create_timer(1.0).timeout

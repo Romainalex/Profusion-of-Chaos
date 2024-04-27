@@ -35,7 +35,8 @@ func add_audio(audio: AudioStream) -> void:
 func _touch() -> void:
 	speed = 0
 	if hit_audio.stream != null:
-		hit_audio.play()
+		if !hit_audio.is_playing():
+			hit_audio.play()
 	animated_sprite.play("Touch")
 
 

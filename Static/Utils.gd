@@ -68,7 +68,7 @@ static func give_angle_direction(object: Object, facing_direction: Vector2) -> V
 		elif move_direction != Vector2.ZERO:
 			face_direction = move_direction
 	elif GAME.INPUT_SCHEME == GAME.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
-		face_direction = dir_dict[find_direction_name_8_dir((object.get_global_mouse_position() - object.global_position).normalized())]
+		face_direction = (object.get_global_mouse_position() - object.global_position)
 	return face_direction
 
 static func set_ui_visible(object: Control, val: bool) -> void:

@@ -129,7 +129,8 @@ func _attack_attempt(attack_anim: AttackAnimationData, hitbox_name: String, audi
 func _start_audio(sound_effect_name: String, time_to_start: float) -> void:
 	var audio_stream = find_child(sound_effect_name, false, false)
 	if audio_stream != null:
-		audio_stream.play(time_to_start)
+		if !audio_stream.is_playing():
+			audio_stream.play(time_to_start)
 
 ##Update [member Attack.hitbox_direction] and [member Attack.animated_sprite_attack] based on [param facing_direction]
 func _update_hitbox_and_attack_direction(facing_direction: Vector2) -> void:

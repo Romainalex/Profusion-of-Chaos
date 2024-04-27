@@ -100,6 +100,8 @@ func can_attack() -> bool:
 func _attack_effect() -> void:
 	for body in attack_hitbox.get_overlapping_bodies():
 		if body in get_tree().get_nodes_in_group("Character"):
+			if !$SlapAudio.is_playing():
+				$SlapAudio.play()
 			body.hurt(dammage_data, crit_rate)
 
 func _search_character() -> void:

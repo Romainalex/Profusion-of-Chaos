@@ -2,6 +2,7 @@ extends Control
 class_name HUD
 
 @onready var life_progress_bar = $LifeProgressBar
+@onready var life_label = $LifeProgressBar/LifeLabel
 @onready var principal_texture_rect = $Principal
 @onready var secondaire_texture_rect = $Secondaire
 @onready var special1_texture_rect = $Special1
@@ -71,7 +72,10 @@ func _update_input_texture() -> void:
 #### SIGNAL RESPONSES ####
 
 func _on_EVENTS_chracter_pv_changed(pv: int, max_pv: int) -> void:
-	life_progress_bar.set_value(pv*life_progress_bar.get("max_value")/float(max_pv))
+	var progress_tween : Tween = create_tween()
+	life_label.set_text(str(pv)+"/"+str(max_pv))
+	
+	progress_tween.tween_property(life_progress_bar, "value", pv*life_progress_bar.get("max_value")/float(max_pv), 0.3).from(life_progress_bar.get_value())
 
 func _on_EVENTS_attack_create(type_attack: int, texture) -> void:
 	_update_attack(_find_attack(type_attack), texture)
