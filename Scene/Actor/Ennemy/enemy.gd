@@ -8,6 +8,7 @@ class_name Ennemy
 
 @export var dammage_data : DamageData = null
 @export_range(0.0, 100.0, 0.25) var crit_rate : float = 0.0
+@export var chase_charged_by_room : bool = false
 
 var target : Node2D = null
 var path : Array = []
@@ -115,13 +116,15 @@ func _on_moving_direction_changed() -> void:
 	face_direction(moving_direction)
 
 func _on_ChaseArea_body_entered(body : Node2D) -> void:
-	if body is Character:
-		set_target_in_chase_area(true)
-		target = body
+	if !chase_charged_by_room:
+		if body is Character:
+			set_target_in_chase_area(true)
+			target = body
 
-#func _on_ChaseArea_body_exited(body : Node2D) -> void:
-	#if body is Character:
-		#set_target_in_chase_area(false)
+func _on_ChaseArea_body_exited(body : Node2D) -> void:
+	if !chase_charged_by_room:
+		if body is Character:
+			set_target_in_chase_area(false)
 
 func _on_AttackArea_body_entered(body : Node2D) -> void:
 	if body is Character:

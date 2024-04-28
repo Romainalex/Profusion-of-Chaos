@@ -30,6 +30,7 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("1_yjmos")
 dammage_data = null
 crit_rate = 0.0
+chase_charged_by_room = false
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite" parent="." index="0"]

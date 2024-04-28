@@ -220,6 +220,7 @@ size = Vector2(200, 80)
 [node name="Hieroglyphe_Gardien" groups=["Ennemy"] instance=ExtResource("1_oplay")]
 scale = Vector2(0.25, 0.25)
 dammage_data = SubResource("Resource_qy38u")
+chase_charged_by_room = false
 speed = 100.0
 max_pv = 150
 

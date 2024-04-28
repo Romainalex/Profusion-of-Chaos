@@ -20,7 +20,8 @@ func _ready() -> void:
 	character_detection_area.connect("body_entered", Callable(self, "_on_ChracterDetectionArea_body_entered"))
 	EVENTS.connect("actor_died", Callable(self, "_on_EVENTS_actor_died"))
 	
-	character_detection_area.add_child(collision_shape)
+	if !_as_collision_shape():
+		character_detection_area.add_child(collision_shape)
 
 
 #### LOGICS ####
@@ -35,12 +36,24 @@ func _open_doors(open: bool) -> void:
 
 func _start_chase(target: Node2D) -> void:
 	for ennemy in ennemies_array:
+		ennemy.chase_charged_by_room = true
 		ennemy.set_target_in_chase_area(true)
 		ennemy.target = target
+
+func _stop_chase() -> void:
+	for ennemy in ennemies_array:
+		ennemy.set_target_in_chase_area(false)
+		ennemy.target = null
 
 func _check_is_ennemies_array_is_empty() -> void:
 	if ennemies_array.is_empty():
 		_open_doors(true)
+
+func _as_collision_shape() -> bool:
+	for child in character_detection_area.get_children():
+		if child is CollisionShape2D:
+			return true
+	return false
 
 #### INPUTS ####
 
@@ -59,5 +72,7 @@ func _on_EVENTS_actor_died(target: Actor) -> void:
 	if target in ennemies_array:
 		ennemies_array.pop_at(ennemies_array.find(target))
 		_check_is_ennemies_array_is_empty()
+	if target is Character:
+		_stop_chase()
 
 
